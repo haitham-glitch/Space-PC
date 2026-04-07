@@ -1,0 +1,131 @@
+/* Reset Basic Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Master Menu Styling [cite: 58] */
+.navbar {
+    background-color: #2f3542;
+    position: fixed; /* تثبيت القائمة في الأعلى */
+    top: 0;
+    width: 100%;
+    /* استخدام تقنية الطبقات (Layering) لضمان بقاء القائمة فوق المحتوى [cite: 56] */
+    z-index: 1000; 
+    /* إضافة ظل للقائمة (Shadows) [cite: 57] */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+.nav-links li {
+    margin: 0 20px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff4757;
+}
+
+/* Image Mapping Banner */
+.header-section {
+    margin-top: 60px; /* لإبعاد الصورة عن القائمة المثبتة */
+    text-align: center;
+}
+
+.banner-img {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    /* إضافة حدود (Borders) للصورة [cite: 57] */
+    border: 3px solid #ced6e0; 
+    border-radius: 8px;
+}
+
+/* General Classes (فئات عامة) [cite: 55] */
+.container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.content-box {
+    background: white;
+    padding: 25px;
+    /* حدود ناعمة وظلال (Shadows & Borders) [cite: 57] */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+/* Table Styling */
+.hardware-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.hardware-table th, .hardware-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.hardware-table th {
+    background-color: #2f3542;
+    color: white;
+}
+
+/* Form Styling */
+.advice-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.advice-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.advice-form input {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #ff4757;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #ff6b81;
+}
