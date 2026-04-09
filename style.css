@@ -1,4 +1,4 @@
-/* Reset Basic Styles */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,15 +12,15 @@ body {
     line-height: 1.6;
 }
 
-/* Master Menu Styling [cite: 58] */
+
 .navbar {
     background-color: #2f3542;
-    position: fixed; /* تثبيت القائمة في الأعلى */
+    position: fixed; 
     top: 0;
     width: 100%;
-    /* استخدام تقنية الطبقات (Layering) لضمان بقاء القائمة فوق المحتوى [cite: 56] */
+    
     z-index: 1000; 
-    /* إضافة ظل للقائمة (Shadows) [cite: 57] */
+   
     box-shadow: 0 4px 6px rgba(0,0,0,0.3); 
 }
 
@@ -49,7 +49,7 @@ body {
 
 /* Image Mapping Banner */
 .header-section {
-    margin-top: 60px; /* لإبعاد الصورة عن القائمة المثبتة */
+    margin-top: 100px; 
     text-align: center;
 }
 
@@ -57,12 +57,12 @@ body {
     width: 100%;
     max-width: 250px;
     height: auto;
-    /* إضافة حدود (Borders) للصورة [cite: 57] */
+    
     border: 3px solid #ced6e0; 
     border-radius: 8px;
 }
 
-/* General Classes (فئات عامة) [cite: 55] */
+
 .container {
     width: 80%;
     margin: 30px auto;
@@ -71,7 +71,7 @@ body {
 .content-box {
     background: white;
     padding: 25px;
-    /* حدود ناعمة وظلال (Shadows & Borders) [cite: 57] */
+   
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     margin-bottom: 20px;
@@ -129,3 +129,76 @@ body {
 .btn:hover {
     background-color: #ff6b81;
 }
+
+
+
+
+.content-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.content-box:hover {
+    transform: translateY(-8px); 
+    box-shadow: 0 12px 24px rgba(255, 71, 87, 0.15); 
+    border: 1px solid #ff4757; 
+}
+
+
+.hardware-table tr {
+    transition: background-color 0.2s; 
+}
+
+.hardware-table tr:hover {
+    background-color: #f1f2f6; 
+}
+
+
+.btn {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 0 #b33939; 
+}
+
+.btn:hover {
+    transform: scale(1.05); 
+    background-color: #ff6b81; 
+}
+
+.btn:active {
+    transform: translateY(3px); 
+    box-shadow: 0 1px 0 #b33939; 
+}
+
+
+.nav-links a.active {
+    color: #ff4757 !important; 
+    border-bottom: 2px solid #ff4757; 
+    padding-bottom: 5px;
+}
+
+.content-box h2 {
+    color: #ff4757; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.content-box ul {
+    list-style: none; 
+}
+
+.advice-form input:focus {
+    outline: none;
+    border-color: #ff4757; 
+    box-shadow: 0 0 8px rgba(255, 71, 87, 0.3); 
+    transition: all 0.3s ease;
+}
+
+.advice-form a {
+    color: #ff4757;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.advice-form a:hover {
+    text-decoration: underline; 
+}
+
