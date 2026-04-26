@@ -1,38 +1,316 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - SPACE PC</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Login to Space-PC — your beginner-friendly PC building companion." />
+  <title data-en="Login | Space-PC" data-ar="تسجيل الدخول | سبيس-بي سي">Login | Space-PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Internal CSS (page-specific tweaks for the auth side panel) -->
+  <style>
+    .auth-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 76px);
+    }
+    .auth-side {
+      position: relative;
+      background: var(--color-ink);
+      color: var(--color-bg);
+      padding: var(--sp-7);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+    .auth-side::before {
+      content: '';
+      position: absolute;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: var(--color-primary);
+      opacity: 0.5;
+      filter: blur(80px);
+      top: -100px; right: -80px;
+      z-index: 0;
+    }
+    .auth-side::after {
+      content: '';
+      position: absolute;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: var(--color-secondary);
+      opacity: 0.45;
+      filter: blur(80px);
+      bottom: -80px; left: -60px;
+      z-index: 0;
+    }
+    .auth-side > * { position: relative; z-index: 1; }
+
+    .auth-side .quote {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      line-height: 1.3;
+      max-width: 18ch;
+      margin-top: var(--sp-7);
+    }
+    .auth-side .quote::before {
+      content: '"';
+      font-size: 4rem;
+      line-height: 0.8;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: var(--sp-2);
+    }
+    .auth-side .signature {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      margin-top: var(--sp-4);
+      text-transform: uppercase;
+    }
+
+    .auth-side-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      background-image: url('https://images.unsplash.com/photo-1591488320449-011701bb6704?auto=format&fit=crop&w=900&q=70');
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--r-md);
+      border: var(--border-bold);
+      box-shadow: var(--shadow-md);
+      margin-top: var(--sp-6);
+      transform: rotate(-1.5deg);
+      transition: transform var(--t-base);
+    }
+    .auth-side-image:hover { transform: rotate(0); }
+
+    .auth-form-side {
+      padding: var(--sp-7) var(--sp-5);
+      display: grid;
+      place-items: center;
+    }
+
+    .success-msg {
+      display: none;
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--color-success);
+      color: #fff;
+      border-radius: var(--r-sm);
+      border: var(--border-base);
+      font-family: var(--font-display);
+      font-weight: 600;
+      margin-top: var(--sp-4);
+      animation: fadeInUp 0.4s var(--ease) both;
+    }
+
+    @media (max-width: 880px) {
+      .auth-layout { grid-template-columns: 1fr; }
+      .auth-side { display: none; }
+    }
+  </style>
 </head>
+
 <body>
+  <a href="#main" class="skip-link" data-en="Skip to content" data-ar="تخطّي إلى المحتوى">Skip to content</a>
 
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#builds-section">Top Builds</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="login.html" class="active">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
+  <!-- Master Page Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+          <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+          <li><a href="cpu.html"   data-en="Components" data-ar="القطع">Components</a></li>
         </ul>
-    </nav>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <a href="signup.html" class="btn btn--primary" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
 
-    <section class="container" style="margin-top: 100px;">
-        <article class="content-box">
-            <h2 style="text-align: center;">Account Login</h2>
-            <form action="#" method="POST" class="advice-form" style="margin: 0 auto;">
-                <label for="username">Username or Email:</label>
-                <input type="text" id="username" name="username" required>
-                
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-                
-                <button type="submit" class="btn">Login</button>
-                <p style="margin-top: 15px; text-align: center;">Don't have an account? <a href="signup.html">Sign up here</a>.</p>
-            </form>
-        </article>
-    </section>
+  <main id="main">
+    <div class="auth-layout">
 
+      <!-- LEFT: Brand panel with project image (project-representative image required by the assignment) -->
+      <aside class="auth-side">
+        <div>
+          <a href="index.html" class="brand" style="color: var(--color-bg);">
+            <span class="brand-mark" style="background: var(--color-accent); color: var(--color-ink);">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي" style="color: var(--color-bg);">Space-PC</span>
+          </a>
+          <blockquote class="quote"
+            data-en="Every PC builder started with one part they didn't understand."
+            data-ar="كل مجمّع حاسوب بدأ بقطعة واحدة لم يفهمها.">
+            Every PC builder started with one part they didn't understand.
+          </blockquote>
+          <p class="signature" data-en="// SPACE-PC PHILOSOPHY" data-ar="// فلسفة سبيس-بي سي">// SPACE-PC PHILOSOPHY</p>
+        </div>
+
+        <!-- Project image (one image per page requirement) -->
+        <div class="auth-side-image" role="img"
+             aria-label="Custom PC build with components laid out"
+             data-en-alt="Custom PC build with components laid out"
+             data-ar-alt="تجميعة حاسوب مخصصة مع القطع المنظّمة"></div>
+      </aside>
+
+      <!-- RIGHT: Form -->
+      <section class="auth-form-side">
+        <div class="auth-card">
+          <span class="eyebrow" data-en="// LOG IN" data-ar="// تسجيل الدخول">// LOG IN</span>
+          <h1 data-en="Welcome back." data-ar="مرحباً بعودتك.">Welcome back.</h1>
+          <p class="sub"
+             data-en="Sign in to continue your PC building journey."
+             data-ar="سجّل دخولك لمواصلة رحلتك في بناء الحاسوب.">
+            Sign in to continue your PC building journey.
+          </p>
+
+          <form id="login-form" novalidate>
+
+            <div class="field">
+              <label for="login-email" data-en="Email address" data-ar="البريد الإلكتروني">Email address</label>
+              <input type="email"
+                     id="login-email"
+                     class="input"
+                     autocomplete="email"
+                     placeholder="you@example.com"
+                     data-en-placeholder="you@example.com"
+                     data-ar-placeholder="you@example.com"
+                     required />
+              <span class="error-msg"
+                    data-en="Please enter a valid email address."
+                    data-ar="يرجى إدخال بريد إلكتروني صحيح.">
+                Please enter a valid email address.
+              </span>
+            </div>
+
+            <div class="field">
+              <label for="login-password" data-en="Password" data-ar="كلمة المرور">Password</label>
+              <div class="password-wrap">
+                <input type="password"
+                       id="login-password"
+                       class="input"
+                       autocomplete="current-password"
+                       placeholder="••••••••"
+                       data-en-placeholder="••••••••"
+                       data-ar-placeholder="••••••••"
+                       required />
+                <button type="button"
+                        class="toggle-password"
+                        data-target="login-password"
+                        data-show="SHOW"
+                        data-hide="HIDE"
+                        aria-label="Toggle password visibility">SHOW</button>
+              </div>
+              <span class="error-msg"
+                    data-en="Password must be at least 6 characters."
+                    data-ar="كلمة المرور يجب أن تكون 6 أحرف على الأقل.">
+                Password must be at least 6 characters.
+              </span>
+            </div>
+
+            <div class="checkbox-row">
+              <label class="checkbox">
+                <input type="checkbox" id="remember-me" />
+                <span data-en="Remember me" data-ar="تذكّرني">Remember me</span>
+              </label>
+              <!-- Inline CSS used here on this link to demonstrate the inline-CSS technique -->
+              <a href="#"
+                 style="color: var(--color-secondary); font-weight: 600; font-size: 0.9rem; border-bottom: 2px solid var(--color-secondary);"
+                 data-en="Forgot password?"
+                 data-ar="نسيت كلمة المرور؟">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="btn btn--primary btn--lg"
+                    data-en="Login →" data-ar="تسجيل الدخول →">Login →</button>
+
+            <div class="success-msg" id="login-success" role="status"></div>
+          </form>
+
+          <p class="auth-divider">
+            <span data-en="Don't have an account?" data-ar="ليس لديك حساب؟">Don't have an account?</span>
+            <a href="signup.html" data-en="Sign up here." data-ar="أنشئ حساباً هنا.">Sign up here.</a>
+          </p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Master Page Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+          </div>
+          <p class="footer-tagline"
+             data-en="From zero to your first build — without the jargon."
+             data-ar="من الصفر إلى أوّل تجميعة — بلا مصطلحات معقّدة.">
+            From zero to your first build — without the jargon.
+          </p>
+        </div>
+        <div>
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home"     data-ar="الرئيسية">Home</a></li>
+            <li><a href="about.html" data-en="About Us" data-ar="من نحن">About Us</a></li>
+            <li><a href="cpu.html"   data-en="Components" data-ar="القطع">Components</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Account" data-ar="الحساب">Account</h4>
+          <ul>
+            <li><a href="login.html"  data-en="Login"   data-ar="تسجيل الدخول">Login</a></li>
+            <li><a href="signup.html" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+          <ul>
+            <li><a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+            <li><a href="#" data-en="Terms"   data-ar="الشروط">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year">2026</span> · Space-PC ·
+        <span data-en="A CPIS-358 student project" data-ar="مشروع طلاّبي لمقرر CPIS-358">A CPIS-358 student project</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External script -->
+  <script src="script.js"></script>
+
+  <!-- Embedded script: small UX nudge that auto-focuses the email field
+       and logs a friendly note for developers checking the console. -->
+  <script>
+    (function loginPageEmbedded() {
+      'use strict';
+      const email = document.getElementById('login-email');
+      if (email) email.focus();
+      console.log('%cSpace-PC ✦ Login page loaded.', 'color:#ec4899; font-weight:700; font-family:monospace;');
+    })();
+  </script>
 </body>
 </html>

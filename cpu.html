@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The CPU explained — what a processor does, Intel vs AMD, modern standards, and how to choose the right one for your use case." />
+  <title data-en="CPU | The Brain — Space-PC" data-ar="المعالج (CPU) | العقل — سبيس-بي سي">CPU | The Brain — Space-PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Internal CSS — page-specific styles for the component template -->
+  <style>
+    .breadcrumbs {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      padding-top: var(--sp-5);
+      margin-bottom: 0;
+    }
+    .breadcrumbs a { color: var(--color-muted); border-bottom: 1px dashed transparent; transition: all var(--t-fast); }
+    .breadcrumbs a:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .breadcrumbs .sep { margin: 0 var(--sp-2); color: var(--color-soft); }
+
+    /* Inline-style emphasis on the component label */
+    .component-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      border-radius: var(--r-sm);
+      margin-bottom: var(--sp-4);
+      text-transform: uppercase;
+    }
+
+    /* CPU SVG illustration in the header */
+    .cpu-illustration {
+      width: 100%;
+      height: 100%;
+      max-width: 360px;
+      max-height: 360px;
+    }
+
+    /* Quick-jump navigation (internal links to in-page sections) */
+    .quick-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      padding: var(--sp-5);
+      background: var(--color-surface);
+      border: var(--border-base);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--sp-7);
+    }
+    .quick-jump a {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--color-bg);
+      border: var(--border-thin);
+      border-radius: var(--r-sm);
+      transition: all var(--t-fast);
+    }
+    .quick-jump a:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      color: var(--color-ink);
+    }
+    .quick-jump strong {
+      align-self: center;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link" data-en="Skip to content" data-ar="تخطّي إلى المحتوى">Skip to content</a>
+
+  <!-- Master Page Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+          <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+          <li><a href="cpu.html"   data-en="Components" data-ar="القطع">Components</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <a href="login.html"  class="btn btn--ghost"   data-en="Login"   data-ar="تسجيل الدخول">Login</a>
+        <a href="signup.html" class="btn btn--primary" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============= COMPONENT HEADER ============= -->
+    <section>
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html"   data-en="Home"          data-ar="الرئيسية">Home</a>
+          <span class="sep">/</span>
+          <a href="index.html#components" data-en="Components" data-ar="القطع">Components</a>
+          <span class="sep">/</span>
+          <span data-en="CPU" data-ar="المعالج (CPU)">CPU</span>
+        </nav>
+
+        <div class="component-header">
+          <div class="reveal">
+            <span class="component-tag" data-en="// COMPONENT 01" data-ar="// القطعة 01">// COMPONENT 01</span>
+            <h1>
+              <span data-en="CPU." data-ar="المعالج (CPU).">CPU.</span><br />
+              <span class="section-title"
+                    data-en="The Brain."
+                    data-ar="العقل.">The Brain.</span>
+            </h1>
+            <p class="lead" style="color: var(--color-muted);"
+               data-en="Every click. Every keystroke. Every game tick. Every browser tab. It all flows through the CPU."
+               data-ar="كل نقرة. كل ضغطة على لوحة المفاتيح. كل لحظة في اللعبة. كل تبويب في المتصفح. كله يمرّ عبر المعالج (CPU).">
+              Every click. Every keystroke. Every game tick. Every browser tab. It all flows through the CPU.
+            </p>
+
+            <!-- Simple Definition box -->
+            <div class="definition reveal reveal-delay-1">
+              <strong data-en="In plain English:" data-ar="بكل بساطة:">In plain English:</strong>
+              <span data-en="The CPU (Central Processing Unit) is the brain of your computer. It reads instructions, does the math, and tells every other part what to do — billions of times per second."
+                    data-ar="المعالج (CPU) - وحدة المعالجة المركزية - هو العقل المدبّر لجهازك. يقرأ التعليمات، ينفّذ العمليات الحسابية، ويأمر بقية القطع بما يجب فعله — ملايين المرات في الثانية الواحدة.">
+                The CPU (Central Processing Unit) is the brain of your computer. It reads instructions, does the math, and tells every other part what to do — billions of times per second.
+              </span>
+            </div>
+          </div>
+
+          <!-- Component image: SVG illustration of a CPU (project image, no external dependency) -->
+          <div class="component-image reveal reveal-delay-2">
+            <svg class="cpu-illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-labelledby="cpu-svg-title">
+              <title id="cpu-svg-title"
+                     data-en="Illustration of a modern CPU with pin contacts"
+                     data-ar="رسم توضيحي لمعالج حديث مع منافذ التوصيل">Modern CPU illustration</title>
+              <!-- pins (top, bottom, left, right) -->
+              <g stroke="#0a0a0a" stroke-width="3" fill="none">
+                <!-- Top pins -->
+                <line x1="120" y1="40" x2="120" y2="80"/>
+                <line x1="160" y1="40" x2="160" y2="80"/>
+                <line x1="200" y1="40" x2="200" y2="80"/>
+                <line x1="240" y1="40" x2="240" y2="80"/>
+                <line x1="280" y1="40" x2="280" y2="80"/>
+                <!-- Bottom pins -->
+                <line x1="120" y1="320" x2="120" y2="360"/>
+                <line x1="160" y1="320" x2="160" y2="360"/>
+                <line x1="200" y1="320" x2="200" y2="360"/>
+                <line x1="240" y1="320" x2="240" y2="360"/>
+                <line x1="280" y1="320" x2="280" y2="360"/>
+                <!-- Left pins -->
+                <line x1="40"  y1="120" x2="80"  y2="120"/>
+                <line x1="40"  y1="160" x2="80"  y2="160"/>
+                <line x1="40"  y1="200" x2="80"  y2="200"/>
+                <line x1="40"  y1="240" x2="80"  y2="240"/>
+                <line x1="40"  y1="280" x2="80"  y2="280"/>
+                <!-- Right pins -->
+                <line x1="320" y1="120" x2="360" y2="120"/>
+                <line x1="320" y1="160" x2="360" y2="160"/>
+                <line x1="320" y1="200" x2="360" y2="200"/>
+                <line x1="320" y1="240" x2="360" y2="240"/>
+                <line x1="320" y1="280" x2="360" y2="280"/>
+              </g>
+              <!-- Outer body -->
+              <rect x="80" y="80" width="240" height="240" rx="8" fill="#f5f1e8" stroke="#0a0a0a" stroke-width="4"/>
+              <!-- Inner die (the silicon chip) -->
+              <rect x="130" y="130" width="140" height="140" rx="6" fill="#ec4899" stroke="#0a0a0a" stroke-width="3"/>
+              <!-- Die circuit lines -->
+              <g stroke="#0a0a0a" stroke-width="2" fill="none">
+                <line x1="150" y1="150" x2="250" y2="150"/>
+                <line x1="150" y1="170" x2="230" y2="170"/>
+                <line x1="150" y1="190" x2="240" y2="190"/>
+                <line x1="150" y1="210" x2="220" y2="210"/>
+                <line x1="150" y1="230" x2="250" y2="230"/>
+                <line x1="150" y1="250" x2="225" y2="250"/>
+                <circle cx="260" cy="160" r="3" fill="#0a0a0a"/>
+                <circle cx="260" cy="200" r="3" fill="#0a0a0a"/>
+                <circle cx="260" cy="240" r="3" fill="#0a0a0a"/>
+              </g>
+              <!-- Notch indicator (top-left orientation marker, like real CPUs) -->
+              <polygon points="80,80 110,80 80,110" fill="#fde047" stroke="#0a0a0a" stroke-width="3"/>
+              <!-- Label -->
+              <text x="200" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="700" fill="#0a0a0a">CPU</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Quick jump (internal page links) -->
+        <div class="quick-jump scroll-reveal" aria-label="Section quick links">
+          <strong data-en="Jump to:" data-ar="انتقل إلى:">Jump to:</strong>
+          <a href="#history"   data-en="History"   data-ar="التاريخ">History</a>
+          <a href="#market"    data-en="Market"    data-ar="السوق">Market</a>
+          <a href="#standards" data-en="Standards" data-ar="المعايير">Standards</a>
+          <a href="#buying"    data-en="Buying Guide" data-ar="دليل الشراء">Buying Guide</a>
+          <a href="#tip"       data-en="Golden Tip" data-ar="النصيحة الذهبية">Golden Tip</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= HISTORY ============= -->
+    <section id="history" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// EVOLUTION" data-ar="// التطوّر">// EVOLUTION</span>
+        <h2>
+          <span data-en="A brief" data-ar="تاريخ موجز">A brief</span>
+          <span class="section-title" data-en="history" data-ar="للقطعة">history</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The story of the CPU is the story of personal computing itself — from a single silicon chip the size of a fingernail to the multi-core monsters in your gaming rig today."
+           data-ar="قصة المعالج (CPU) هي قصة الحاسوب الشخصي بحدّ ذاته — من شريحة سيليكون واحدة بحجم الظفر، إلى الوحوش متعددة النوى في حاسوبك اليوم.">
+          The story of the CPU is the story of personal computing itself — from a single silicon chip the size of a fingernail to the multi-core monsters in your gaming rig today.
+        </p>
+
+        <!-- Ordered list with custom timeline styling -->
+        <ol class="history-timeline scroll-reveal">
+          <li>
+            <span class="year">1971</span>
+            <div>
+              <strong data-en="Intel 4004 — the first commercial microprocessor."
+                      data-ar="معالج Intel 4004 — أول معالج تجاري في التاريخ.">
+                Intel 4004 — the first commercial microprocessor.
+              </strong>
+              <p style="margin-top: 4px; color: var(--color-muted); font-size: 0.92rem;"
+                 data-en="2,300 transistors. Designed for a calculator. Ran at 740 kHz. Started everything."
+                 data-ar="2,300 ترانزستور. صُمّم للآلة الحاسبة. تردد 740 كيلوهرتز. بدأ كل شيء.">
+                2,300 transistors. Designed for a calculator. Ran at 740 kHz. Started everything.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="year">1985</span>
+            <div>
+              <strong data-en="Intel 386 — the 32-bit era begins."
+                      data-ar="معالج Intel 386 — بداية عصر 32-بت.">
+                Intel 386 — the 32-bit era begins.
+              </strong>
+              <p style="margin-top: 4px; color: var(--color-muted); font-size: 0.92rem;"
+                 data-en="True multitasking arrives. The architecture that powered Windows for a generation."
+                 data-ar="وصول تعدّد المهام الحقيقي. المعمارية التي شغّلت ويندوز لجيل كامل.">
+                True multitasking arrives. The architecture that powered Windows for a generation.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2003</span>
+            <div>
+              <strong data-en="AMD Athlon 64 — first 64-bit consumer CPU."
+                      data-ar="معالج AMD Athlon 64 — أول معالج استهلاكي بـ 64-بت.">
+                AMD Athlon 64 — first 64-bit consumer CPU.
+              </strong>
+              <p style="margin-top: 4px; color: var(--color-muted); font-size: 0.92rem;"
+                 data-en="AMD beat Intel to 64-bit on desktops. Memory limits exploded from 4 GB to terabytes."
+                 data-ar="AMD سبقت Intel إلى 64-بت في الحواسيب المكتبية. حدود الذاكرة قفزت من 4 جيجا إلى تيرابايت.">
+                AMD beat Intel to 64-bit on desktops. Memory limits exploded from 4 GB to terabytes.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2017</span>
+            <div>
+              <strong data-en="AMD Ryzen — the multi-core revolution."
+                      data-ar="معالج AMD Ryzen — ثورة تعدّد النوى.">
+                AMD Ryzen — the multi-core revolution.
+              </strong>
+              <p style="margin-top: 4px; color: var(--color-muted); font-size: 0.92rem;"
+                 data-en="Suddenly 8 cores were affordable. Intel was forced to respond. The price-per-core wars began."
+                 data-ar="فجأة، أصبحت 8 أنوية في متناول الجميع. اضطرت Intel للردّ. وبدأت حرب السعر مقابل النواة.">
+                Suddenly 8 cores were affordable. Intel was forced to respond. The price-per-core wars began.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="year">2024</span>
+            <div>
+              <strong data-en="The hybrid era — performance + efficiency cores."
+                      data-ar="عصر الهجين — أنوية الأداء + أنوية الكفاءة.">
+                The hybrid era — performance + efficiency cores.
+              </strong>
+              <p style="margin-top: 4px; color: var(--color-muted); font-size: 0.92rem;"
+                 data-en="Both Intel and AMD now build chips that mix powerful cores with efficient cores — like a smartphone scaled up."
+                 data-ar="كلتا الشركتان تبنيان رقاقات تمزج بين أنوية قوية وأنوية موفّرة — مثل الهاتف الذكي بحجم أكبر.">
+                Both Intel and AMD now build chips that mix powerful cores with efficient cores — like a smartphone scaled up.
+              </p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============= MARKET LANDSCAPE ============= -->
+    <section id="market" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE BIG TWO" data-ar="// الكبيران">// THE BIG TWO</span>
+        <h2>
+          <span data-en="The market" data-ar="ساحة">The market</span>
+          <span class="section-title" data-en="rivalry" data-ar="المنافسة">rivalry</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Two companies make almost every desktop CPU you'll consider buying: Intel and AMD. Their decades-long rivalry is why your CPU keeps getting faster — and cheaper."
+           data-ar="شركتان تصنعان تقريباً كل معالج حاسوب مكتبي ستفكّر بشرائه: Intel و AMD. منافستهما عبر العقود هي سبب أن معالجك يصبح أسرع — وأرخص.">
+          Two companies make almost every desktop CPU you'll consider buying: Intel and AMD. Their decades-long rivalry is why your CPU keeps getting faster — and cheaper.
+        </p>
+
+        <div class="brands-grid scroll-reveal">
+
+          <!-- Intel card -->
+          <article class="brand-card is-intel">
+            <h3>Intel</h3>
+            <p class="tagline" data-en="// EST. 1968 · SANTA CLARA, USA"
+                              data-ar="// تأسست 1968 · سانتا كلارا، أمريكا">// EST. 1968 · SANTA CLARA, USA</p>
+            <p data-en="The classic name. Long the default for laptops, business PCs, and anyone who valued stability above all. Strong single-core performance and pre-built compatibility."
+               data-ar="الاسم الكلاسيكي. كان الخيار الافتراضي للمحمولة وأجهزة الأعمال ومن يفضّلون الاستقرار. أداء قوي للنواة الواحدة وتوافقية ممتازة مع الأجهزة الجاهزة.">
+              The classic name. Long the default for laptops, business PCs, and anyone who valued stability above all. Strong single-core performance and pre-built compatibility.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Product lineup" data-ar="تشكيلة المنتجات">Product lineup</h4>
+            <ul>
+              <li><strong>Core i3</strong> — <span data-en="Entry / office work" data-ar="مبتدئ / أعمال مكتبية">Entry / office work</span></li>
+              <li><strong>Core i5</strong> — <span data-en="Mainstream / gaming sweet-spot" data-ar="عام / النقطة المثالية للألعاب">Mainstream / gaming sweet-spot</span></li>
+              <li><strong>Core i7</strong> — <span data-en="High-end / serious work" data-ar="راقٍ / للأعمال الجادّة">High-end / serious work</span></li>
+              <li><strong>Core i9</strong> — <span data-en="Top-tier / no compromise" data-ar="القمة / بلا تنازلات">Top-tier / no compromise</span></li>
+            </ul>
+          </article>
+
+          <!-- AMD card -->
+          <article class="brand-card is-amd">
+            <h3>AMD</h3>
+            <p class="tagline" data-en="// EST. 1969 · SANTA CLARA, USA"
+                              data-ar="// تأسست 1969 · سانتا كلارا، أمريكا">// EST. 1969 · SANTA CLARA, USA</p>
+            <p data-en="The challenger that became the champion. AMD's Ryzen line redefined value in 2017 by giving users more cores at lower prices. Today, both companies trade blows on every tier."
+               data-ar="المتحدّي الذي صار البطل. سلسلة Ryzen من AMD أعادت تعريف القيمة عام 2017 بتقديم أنوية أكثر بأسعار أقل. اليوم، الشركتان تتبادلان الضربات في كل فئة.">
+              The challenger that became the champion. AMD's Ryzen line redefined value in 2017 by giving users more cores at lower prices. Today, both companies trade blows on every tier.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Product lineup" data-ar="تشكيلة المنتجات">Product lineup</h4>
+            <ul>
+              <li><strong>Ryzen 3</strong> — <span data-en="Entry / office work" data-ar="مبتدئ / أعمال مكتبية">Entry / office work</span></li>
+              <li><strong>Ryzen 5</strong> — <span data-en="Mainstream / gaming sweet-spot" data-ar="عام / النقطة المثالية للألعاب">Mainstream / gaming sweet-spot</span></li>
+              <li><strong>Ryzen 7</strong> — <span data-en="High-end / creator workloads" data-ar="راقٍ / للأعمال الإبداعية">High-end / creator workloads</span></li>
+              <li><strong>Ryzen 9</strong> — <span data-en="Top-tier / no compromise" data-ar="القمة / بلا تنازلات">Top-tier / no compromise</span></li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= MODERN STANDARDS (TABLE) ============= -->
+    <section id="standards" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// 2026 SNAPSHOT" data-ar="// لقطة 2026">// 2026 SNAPSHOT</span>
+        <h2>
+          <span data-en="Modern" data-ar="المعايير">Modern</span>
+          <span class="section-title" data-en="standards" data-ar="الحديثة">standards</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The specs you'll see on every product page — and what they actually mean today. Use this table as a quick decoder."
+           data-ar="المواصفات التي تراها في كل صفحة منتج — وما تعنيه فعلاً اليوم. استخدم هذا الجدول كمفكّ شيفرة سريع.">
+          The specs you'll see on every product page — and what they actually mean today. Use this table as a quick decoder.
+        </p>
+
+        <table class="standards-table scroll-reveal">
+          <thead>
+            <tr>
+              <th data-en="Standard" data-ar="المعيار">Standard</th>
+              <th data-en="What it means" data-ar="ما يعنيه">What it means</th>
+              <th data-en="Status (2026)" data-ar="الحالة (2026)">Status (2026)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DDR5</strong></td>
+              <td data-en="Latest RAM type. ~2× faster than DDR4."
+                  data-ar="أحدث نوع للرام. أسرع تقريباً بمرتين من DDR4.">
+                Latest RAM type. ~2× faster than DDR4.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>DDR4</strong></td>
+              <td data-en="Previous generation. Still common, still supported on older boards."
+                  data-ar="الجيل السابق. لا يزال شائعاً ومدعوماً على اللوحات الأقدم.">
+                Previous generation. Still common, still supported on older boards.
+              </td>
+              <td><span class="status aging" data-en="AGING" data-ar="يتقادم">AGING</span></td>
+            </tr>
+            <tr>
+              <td><strong>PCIe Gen 5</strong></td>
+              <td data-en="High-speed lane for GPUs and SSDs. Future-proof."
+                  data-ar="مسار عالي السرعة لكروت الشاشة وأقراص SSD. مستقبلي.">
+                High-speed lane for GPUs and SSDs. Future-proof.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>PCIe Gen 4</strong></td>
+              <td data-en="Plenty fast for almost any 2026 build. Still excellent."
+                  data-ar="سريع بما يكفي لأي تجميعة في 2026. لا يزال ممتازاً.">
+                Plenty fast for almost any 2026 build. Still excellent.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>Socket LGA 1700</strong></td>
+              <td data-en="Intel's previous-gen socket. Still buyable, but EOL soon."
+                  data-ar="منفذ Intel للجيل السابق. لا يزال متاحاً للشراء، لكن قارب على الانتهاء.">
+                Intel's previous-gen socket. Still buyable, but EOL soon.
+              </td>
+              <td><span class="status aging" data-en="AGING" data-ar="يتقادم">AGING</span></td>
+            </tr>
+            <tr>
+              <td><strong>Socket AM5</strong></td>
+              <td data-en="AMD's current socket. Long upgrade runway through 2027+."
+                  data-ar="منفذ AMD الحالي. مسار ترقية طويل حتى 2027 وما بعده.">
+                AMD's current socket. Long upgrade runway through 2027+.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>Socket AM4</strong></td>
+              <td data-en="Older AMD socket. Great for budget builds with used parts."
+                  data-ar="منفذ AMD أقدم. مناسب للتجميعات الاقتصادية بقطع مستعملة.">
+                Older AMD socket. Great for budget builds with used parts.
+              </td>
+              <td><span class="status legacy" data-en="LEGACY" data-ar="قديم">LEGACY</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============= USE-CASE BUYING GUIDE ============= -->
+    <section id="buying" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// PICK YOUR FIGHTER" data-ar="// اختر مقاتلك">// PICK YOUR FIGHTER</span>
+        <h2>
+          <span data-en="Buying" data-ar="دليل">Buying</span>
+          <span class="section-title" data-en="guide" data-ar="الشراء">guide</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Forget benchmarks for a second. Start with what you actually do on a computer. The right CPU is the cheapest one that handles your workload without breaking a sweat."
+           data-ar="انسَ الاختبارات للحظة. ابدأ بما تفعله فعلاً على الحاسوب. المعالج المناسب هو الأرخص الذي يتعامل مع عملك دون أن يتعرّق.">
+          Forget benchmarks for a second. Start with what you actually do on a computer. The right CPU is the cheapest one that handles your workload without breaking a sweat.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <!-- Office / Study -->
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">📊</div>
+            <h3 data-en="Office &amp; Study" data-ar="مكتب ودراسة">Office &amp; Study</h3>
+            <p class="price">~ $120 – $180</p>
+            <p data-en="Browser tabs, Microsoft Office, Zoom calls, light photo edits, occasional YouTube. You don't need power — you need quiet and reliable."
+               data-ar="تبويبات متصفّح، أوفيس، مكالمات زووم، تعديلات صور خفيفة، يوتيوب أحياناً. لا تحتاج قوّة — تحتاج هدوءاً وموثوقية.">
+              Browser tabs, Microsoft Office, Zoom calls, light photo edits, occasional YouTube. You don't need power — you need quiet and reliable.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" Intel Core i3 or AMD Ryzen 3" data-ar=" Intel Core i3 أو AMD Ryzen 3">Intel Core i3 or AMD Ryzen 3</span>
+            </p>
+          </article>
+
+          <!-- Gaming -->
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">🎮</div>
+            <h3 data-en="Gaming" data-ar="ألعاب">Gaming</h3>
+            <p class="price">~ $250 – $400</p>
+            <p data-en="High-refresh esports, AAA single-player, the occasional stream. You want a CPU that won't bottleneck your GPU on modern titles."
+               data-ar="ألعاب إلكترونية عالية المعدّل، ألعاب AAA فردية، بثّ أحياناً. تريد معالجاً لا يعرقل كرت الشاشة في الألعاب الحديثة.">
+              High-refresh esports, AAA single-player, the occasional stream. You want a CPU that won't bottleneck your GPU on modern titles.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" Intel Core i5/i7 or AMD Ryzen 5/7"
+                    data-ar=" Intel Core i5/i7 أو AMD Ryzen 5/7">Intel Core i5/i7 or AMD Ryzen 5/7</span>
+            </p>
+          </article>
+
+          <!-- Content Creation -->
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🎬</div>
+            <h3 data-en="Content Creation" data-ar="صناعة المحتوى">Content Creation</h3>
+            <p class="price">~ $400 – $700</p>
+            <p data-en="Video editing in Premiere/DaVinci, 3D rendering, music production, code compilation, AI workloads. More cores = more done in less time."
+               data-ar="تحرير فيديو على Premiere/DaVinci، تصيير ثلاثي الأبعاد، إنتاج موسيقى، تجميع كود، أعمال ذكاء اصطناعي. أنوية أكثر = إنجاز أكثر في وقت أقل.">
+              Video editing in Premiere/DaVinci, 3D rendering, music production, code compilation, AI workloads. More cores = more done in less time.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" Intel Core i7/i9 or AMD Ryzen 7/9"
+                    data-ar=" Intel Core i7/i9 أو AMD Ryzen 7/9">Intel Core i7/i9 or AMD Ryzen 7/9</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= GOLDEN TIP ============= -->
+    <section id="tip" class="section">
+      <div class="container">
+        <div class="golden-tip scroll-reveal">
+          <div class="tip-icon">⚡</div>
+          <div>
+            <span class="eyebrow" style="color: var(--color-accent);"
+                  data-en="// SPACE-PC GOLDEN TIP" data-ar="// النصيحة الذهبية من سبيس-بي سي">// SPACE-PC GOLDEN TIP</span>
+            <h3 data-en="Avoid the bottleneck trap." data-ar="تجنّب فخّ الاختناق.">Avoid the bottleneck trap.</h3>
+            <p data-en="The most common beginner mistake: pairing a powerful GPU with a weak CPU. You'll only get the performance of the slowest part. A $700 graphics card paired with a $100 CPU will perform like a $250 card at full speed — that's $450 wasted. Match your CPU tier to your GPU tier and your workload, not to whatever you have left in the budget."
+               data-ar="الخطأ الأكثر شيوعاً للمبتدئ: ربط كرت شاشة قوي بمعالج (CPU) ضعيف. ستحصل فقط على أداء أبطأ قطعة بينهما. كرت شاشة بـ 700$ مع معالج بـ 100$ سيؤدّي مثل كرت بـ 250$ يعمل بكامل سرعته — هذا 450$ ضائعة. طابق فئة المعالج (CPU) مع فئة كرت الشاشة (GPU) وحجم عملك، لا مع ما تبقّى من الميزانية.">
+              The most common beginner mistake: pairing a powerful GPU with a weak CPU. You'll only get the performance of the slowest part. A $700 graphics card paired with a $100 CPU will perform like a $250 card at full speed — that's $450 wasted. Match your CPU tier to your GPU tier and your workload, not to whatever you have left in the budget.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= NEXT COMPONENT TEASER ============= -->
+    <section class="section section--ink">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="color: var(--color-accent);"
+              data-en="// UP NEXT" data-ar="// التالي">// UP NEXT</span>
+        <h2 data-en="Now meet the artist." data-ar="والآن، تعرّف على الفنان.">Now meet the artist.</h2>
+        <p style="max-width: 50ch; margin: var(--sp-4) auto var(--sp-6); opacity: 0.85;"
+           data-en="The CPU does the thinking. The GPU does the painting. Together they're your computer's dream team."
+           data-ar="المعالج (CPU) يفكّر. كرت الشاشة (GPU) يرسم. معاً، يشكّلان فريق أحلام جهازك.">
+          The CPU does the thinking. The GPU does the painting. Together they're your computer's dream team.
+        </p>
+        <a href="index.html#components" class="btn btn--accent btn--lg"
+           data-en="Browse all components" data-ar="استعرض كل القطع">Browse all components</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Master Page Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+          </div>
+          <p class="footer-tagline"
+             data-en="From zero to your first build — without the jargon."
+             data-ar="من الصفر إلى أوّل تجميعة — بلا مصطلحات معقّدة.">
+            From zero to your first build — without the jargon.
+          </p>
+        </div>
+        <div>
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home"     data-ar="الرئيسية">Home</a></li>
+            <li><a href="about.html" data-en="About Us" data-ar="من نحن">About Us</a></li>
+            <li><a href="cpu.html"   data-en="Components" data-ar="القطع">Components</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Account" data-ar="الحساب">Account</h4>
+          <ul>
+            <li><a href="login.html"  data-en="Login"   data-ar="تسجيل الدخول">Login</a></li>
+            <li><a href="signup.html" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+          <ul>
+            <li><a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+            <li><a href="#" data-en="Terms"   data-ar="الشروط">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year">2026</span> · Space-PC ·
+        <span data-en="A CPIS-358 student project" data-ar="مشروع طلاّبي لمقرر CPIS-358">A CPIS-358 student project</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Embedded script — page-specific console branding + simple smooth-scroll polish
+    (function () {
+      'use strict';
+      console.log('%cSpace-PC ✦ CPU page loaded — the brain of every build.',
+                  'color:#ec4899; font-weight:700; font-family:monospace;');
+    })();
+  </script>
+</body>
+</html>

@@ -1,36 +1,297 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - SPACE PC</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="About Space-PC — our story, our vision, and why beginner-friendly PC education matters." />
+  <title data-en="About Us | Space-PC" data-ar="من نحن | سبيس-بي سي">About Us | Space-PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Internal CSS — page-specific decorations -->
+  <style>
+    .about-hero-image {
+      max-width: 760px;
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      margin: var(--sp-6) auto 0;
+      display: block;
+      border: var(--border-bold);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-lg);
+      transform: rotate(-1deg);
+      transition: transform var(--t-base);
+    }
+    .about-hero-image:hover { transform: rotate(0); }
+
+    .principle-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-4);
+      margin: var(--sp-7) 0;
+      padding: var(--sp-6);
+      background: var(--color-ink);
+      color: var(--color-bg);
+      border-radius: var(--r-md);
+      border: var(--border-bold);
+    }
+    .principle-strip .item {
+      text-align: center;
+      padding: var(--sp-3);
+    }
+    .principle-strip .item h4 {
+      font-size: 1.05rem;
+      color: var(--color-accent);
+      margin-bottom: var(--sp-2);
+    }
+    .principle-strip .item p {
+      font-size: 0.88rem;
+      opacity: 0.85;
+      margin: 0;
+    }
+
+    @media (max-width: 880px) {
+      .principle-strip { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .principle-strip { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+
 <body>
+  <a href="#main" class="skip-link" data-en="Skip to content" data-ar="تخطّي إلى المحتوى">Skip to content</a>
 
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index.html#builds-section">Top Builds</a></li>
-            <li><a href="about.html" class="active">About Us</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="signup.html">Signup</a></li>
+  <!-- Master Page Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+          <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+          <li><a href="cpu.html"   data-en="Components" data-ar="القطع">Components</a></li>
         </ul>
-    </nav>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <a href="login.html"  class="btn btn--ghost"   data-en="Login"   data-ar="تسجيل الدخول">Login</a>
+        <a href="signup.html" class="btn btn--primary" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
 
-    <section class="container" style="margin-top: 100px;">
-        <article class="content-box">
-            <h2 style="text-align: center; border-bottom: 2px solid #ddd; padding-bottom: 10px;">About Our Team</h2>
-            <p style="margin-top: 15px;">We are a group of passionate Information Systems students dedicated to simplifying the PC building experience. This project was developed as part of the CPIS-358 Internet Applications & Web Programming course.</p>
-            
-            <h3 style="margin-top: 20px;">Project Details:</h3>
-            <ul style="margin-top: 10px;">
-                <li><strong>Course:</strong> CPIS-358 </li>
-                <li><strong>Semester:</strong> Second Semester 2025-2026 </li>
-                <li><strong>Objective:</strong> To build a fully functional, well-structured static website utilizing HTML, CSS, and JavaScript.</li>
-            </ul>
-        </article>
+  <main id="main">
+
+    <!-- ============= ABOUT HERO ============= -->
+    <section class="about-hero">
+      <div class="container">
+        <span class="eyebrow" data-en="// ABOUT US" data-ar="// من نحن">// ABOUT US</span>
+        <h1>
+          <span data-en="We're builders who got tired of" data-ar="نحن مجمّعون سئمنا">We're builders who got tired of</span>
+          <span class="section-title" data-en="cryptic guides." data-ar="الأدلة المعقّدة.">cryptic guides.</span>
+        </h1>
+        <p data-en="Space-PC exists because every PC building tutorial we've ever read assumed we already knew the answer. We're fixing that — one component at a time."
+           data-ar="نشأ سبيس-بي سي لأنّ كل دليل لبناء الحاسوب قرأناه يفترض أننا نعرف الإجابة مسبقاً. نحن نُصلح ذلك — قطعة قطعة.">
+          Space-PC exists because every PC building tutorial we've ever read assumed we already knew the answer. We're fixing that — one component at a time.
+        </p>
+
+        <!-- Project image (one image per page requirement) -->
+        <img class="about-hero-image"
+             src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1200&q=70"
+             alt="Custom RGB PC build with glass side panel"
+             data-en-alt="Custom RGB PC build with glass side panel"
+             data-ar-alt="تجميعة حاسوب مخصصة بإضاءة RGB ولوحة جانبية زجاجية" />
+      </div>
     </section>
 
+    <!-- ============= OUR STORY ============= -->
+    <section class="section">
+      <div class="container">
+        <div class="story-grid">
+
+          <article class="story-card is-pink scroll-reveal">
+            <div class="num-badge">01</div>
+            <span class="eyebrow" data-en="// OUR STORY" data-ar="// قصتنا">// OUR STORY</span>
+            <h2 data-en="Started with one question." data-ar="بدأنا بسؤال واحد.">Started with one question.</h2>
+            <p data-en='"What does this part actually do?"'
+               data-ar='"ما الذي تفعله هذه القطعة فعلياً؟"'>
+              "What does this part actually do?"
+            </p>
+            <p data-en="That was the first question that nobody answered clearly when we tried to build our first PCs. Forums threw acronyms at us. YouTube channels assumed prior knowledge. Spec sheets read like alien documents."
+               data-ar="هذا كان أول سؤال لم يُجبه أحد بوضوح عندما حاولنا بناء أوّل تجميعاتنا. المنتديات أغرقتنا بالاختصارات. قنوات يوتيوب افترضت معرفة سابقة. أوراق المواصفات بدت كوثائق فضائية.">
+              That was the first question that nobody answered clearly when we tried to build our first PCs. Forums threw acronyms at us. YouTube channels assumed prior knowledge. Spec sheets read like alien documents.
+            </p>
+            <p data-en="So we decided to build the resource we wished existed — one that starts at zero and respects the reader."
+               data-ar="فقرّرنا أن نبني المصدر الذي تمنيّنا وجوده — مصدر يبدأ من الصفر ويحترم القارئ.">
+              So we decided to build the resource we wished existed — one that starts at zero and respects the reader.
+            </p>
+
+            <!-- Lists requirement: a structured list of values -->
+            <ul class="values-list">
+              <li data-en="Plain language always — even for technical truths."
+                  data-ar="لغة بسيطة دائماً — حتى للحقائق التقنية.">
+                Plain language always — even for technical truths.
+              </li>
+              <li data-en="Examples before specs. Specs make sense once you understand the use case."
+                  data-ar="أمثلة قبل المواصفات. المواصفات تُفهم بعد فهم الاستخدام.">
+                Examples before specs. Specs make sense once you understand the use case.
+              </li>
+              <li data-en="No paid placements. We don't take money from brands."
+                  data-ar="لا إعلانات مدفوعة. لا نأخذ أموالاً من العلامات التجارية.">
+                No paid placements. We don't take money from brands.
+              </li>
+            </ul>
+          </article>
+
+          <article class="story-card is-blue scroll-reveal reveal-delay-2">
+            <div class="num-badge">02</div>
+            <span class="eyebrow" data-en="// THE VISION" data-ar="// الرؤية">// THE VISION</span>
+            <h2 data-en="Eradicate hardware illiteracy."
+                data-ar="القضاء على الأمية في عالم الهاردوير.">
+              Eradicate hardware illiteracy.
+            </h2>
+            <p data-en="Personal computers shape how people work, study, create, and play — yet most users have no idea what's inside their machine. That gap costs money (overpaying for the wrong parts), wastes potential (under-using what they own), and breeds dependence on biased shop advice."
+               data-ar="الحواسيب الشخصية تُشكّل طريقة عمل الناس ودراستهم وإبداعهم ولعبهم — ومع ذلك معظم المستخدمين لا يعرفون ما بداخل أجهزتهم. هذه الفجوة تكلّفهم مالاً (يدفعون أكثر لقطع خاطئة)، وتُهدر الإمكانات (يستخدمون ما يملكون بنسبة أقل)، وتُولّد اعتماداً على نصائح المحلات المتحيّزة.">
+              Personal computers shape how people work, study, create, and play — yet most users have no idea what's inside their machine. That gap costs money (overpaying for the wrong parts), wastes potential (under-using what they own), and breeds dependence on biased shop advice.
+            </p>
+            <p data-en="Our vision is a future where someone in Jeddah, Cairo, Riyadh, or Dubai can confidently walk into a PC store, talk specs, and build their own machine — without ever having felt confused or condescended to."
+               data-ar="رؤيتنا هي مستقبل يستطيع فيه شخص في جدة أو القاهرة أو الرياض أو دبي أن يدخل محل حواسيب بثقة، ويتحدّث عن المواصفات، ويبني جهازه — دون أن يشعر يوماً بالتشويش أو التقليل من شأنه.">
+              Our vision is a future where someone in Jeddah, Cairo, Riyadh, or Dubai can confidently walk into a PC store, talk specs, and build their own machine — without ever having felt confused or condescended to.
+            </p>
+            <p data-en="That's why this site exists in both Arabic and English — and why every component name appears in both languages on every Arabic page. Knowing the local term and the global market term is power."
+               data-ar="لهذا السبب يوجد هذا الموقع بالعربية والإنجليزية معاً — ولهذا يظهر اسم كل قطعة باللغتين في كل صفحة عربية. معرفة المصطلح المحلي والمصطلح السوقي العالمي = قوة.">
+              That's why this site exists in both Arabic and English — and why every component name appears in both languages on every Arabic page. Knowing the local term and the global market term is power.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= PRINCIPLES STRIP ============= -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="principle-strip scroll-reveal">
+          <div class="item">
+            <h4 data-en="Free forever" data-ar="مجاني للأبد">Free forever</h4>
+            <p data-en="Education shouldn't be paywalled."
+               data-ar="التعليم لا يجب أن يكون خلف جدار دفع.">
+              Education shouldn't be paywalled.
+            </p>
+          </div>
+          <div class="item">
+            <h4 data-en="Beginner-first" data-ar="المبتدئ أولاً">Beginner-first</h4>
+            <p data-en="Every guide is reviewed by someone who's never built before."
+               data-ar="كل دليل يُراجَع من قبل شخص لم يجمّع حاسوباً من قبل.">
+              Every guide is reviewed by someone who's never built before.
+            </p>
+          </div>
+          <div class="item">
+            <h4 data-en="Bilingual" data-ar="ثنائي اللغة">Bilingual</h4>
+            <p data-en="Arabic and English, side by side, always."
+               data-ar="العربية والإنجليزية، جنباً إلى جنب، دائماً.">
+              Arabic and English, side by side, always.
+            </p>
+          </div>
+          <div class="item">
+            <h4 data-en="Brand-neutral" data-ar="محايد تجارياً">Brand-neutral</h4>
+            <p data-en="No paid placements. The recommendation is the recommendation."
+               data-ar="لا إعلانات مدفوعة. التوصية هي التوصية.">
+              No paid placements. The recommendation is the recommendation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= CTA STRIP ============= -->
+    <section class="section section--ink">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="color: var(--color-accent);"
+              data-en="// JOIN US" data-ar="// انضمّ إلينا">// JOIN US</span>
+        <h2 style="max-width: 22ch; margin-inline: auto;"
+            data-en="Want to learn the parts? Start with the brain."
+            data-ar="تريد تعلّم القطع؟ ابدأ بالعقل.">
+          Want to learn the parts? Start with the brain.
+        </h2>
+        <p style="max-width: 50ch; margin: var(--sp-4) auto var(--sp-6); opacity: 0.85;"
+           data-en="Our CPU guide is the perfect place to start your hardware education."
+           data-ar="دليل المعالج لدينا هو المكان المثالي لبدء تعلّم الهاردوير.">
+          Our CPU guide is the perfect place to start your hardware education.
+        </p>
+        <a href="cpu.html" class="btn btn--accent btn--lg"
+           data-en="Read the CPU guide →" data-ar="اقرأ دليل المعالج →">Read the CPU guide →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Master Page Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+          </div>
+          <p class="footer-tagline"
+             data-en="From zero to your first build — without the jargon."
+             data-ar="من الصفر إلى أوّل تجميعة — بلا مصطلحات معقّدة.">
+            From zero to your first build — without the jargon.
+          </p>
+        </div>
+        <div>
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home"     data-ar="الرئيسية">Home</a></li>
+            <li><a href="about.html" data-en="About Us" data-ar="من نحن">About Us</a></li>
+            <li><a href="cpu.html"   data-en="Components" data-ar="القطع">Components</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Account" data-ar="الحساب">Account</h4>
+          <ul>
+            <li><a href="login.html"  data-en="Login"   data-ar="تسجيل الدخول">Login</a></li>
+            <li><a href="signup.html" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+          <ul>
+            <li><a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+            <li><a href="#" data-en="Terms"   data-ar="الشروط">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year">2026</span> · Space-PC ·
+        <span data-en="A CPIS-358 student project" data-ar="مشروع طلاّبي لمقرر CPIS-358">A CPIS-358 student project</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    // Embedded script: small console branding
+    (function () {
+      'use strict';
+      console.log('%cSpace-PC ✦ About page loaded.', 'color:#16a34a; font-weight:700; font-family:monospace;');
+    })();
+  </script>
 </body>
 </html>
