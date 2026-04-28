@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Power Supply (PSU) explained — how much wattage you need, 80 PLUS ratings, modular cables, and how to choose the right heart for your PC." />
+  <title data-en="Power Supply | The Heart — Space-PC" data-ar="مزود الطاقة (PSU) | القلب — سبيس-بي سي">Power Supply | The Heart — Space-PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .breadcrumbs {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      padding-top: var(--sp-5);
+      margin-bottom: 0;
+    }
+    .breadcrumbs a { color: var(--color-muted); border-bottom: 1px dashed transparent; transition: all var(--t-fast); }
+    .breadcrumbs a:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .breadcrumbs .sep { margin: 0 var(--sp-2); color: var(--color-soft); }
+
+    .component-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      border-radius: var(--r-sm);
+      margin-bottom: var(--sp-4);
+      text-transform: uppercase;
+    }
+
+    .ram-illustration {
+      width: 100%;
+      height: 100%;
+      max-width: 360px;
+      max-height: 360px;
+    }
+
+    .quick-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      padding: var(--sp-5);
+      background: var(--color-surface);
+      border: var(--border-base);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--sp-7);
+    }
+    .quick-jump a {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--color-bg);
+      border: var(--border-thin);
+      border-radius: var(--r-sm);
+      transition: all var(--t-fast);
+    }
+    .quick-jump a:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      color: var(--color-ink);
+    }
+    .quick-jump strong {
+      align-self: center;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link" data-en="Skip to content" data-ar="تخطّي إلى المحتوى">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+          <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+          <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <a href="login.html"  class="btn btn--ghost"   data-en="Login"   data-ar="تسجيل الدخول">Login</a>
+        <a href="signup.html" class="btn btn--primary" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section>
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html"   data-en="Home"          data-ar="الرئيسية">Home</a>
+          <span class="sep">/</span>
+          <a href="index.html#components" data-en="Components" data-ar="القطع">Components</a>
+          <span class="sep">/</span>
+          <span data-en="Power Supply" data-ar="مزود الطاقة (PSU)">Power Supply</span>
+        </nav>
+
+        <div class="component-header">
+          <div class="reveal">
+            <span class="component-tag" data-en="// COMPONENT 05" data-ar="// القطعة 05">// COMPONENT 05</span>
+            <h1>
+              <span data-en="Power Supply." data-ar="مزود الطاقة.">Power Supply.</span><br />
+              <span class="section-title"
+                    data-en="The Heart."
+                    data-ar="القلب.">The Heart.</span>
+            </h1>
+            <p class="lead" style="color: var(--color-muted);"
+               data-en="It delivers life to every single component. A good one will run quietly for a decade. A bad one can take your entire PC to the grave."
+               data-ar="يضخ الحياة في كل قطعة داخل جهازك. مزود الطاقة الجيد سيعمل بهدوء لعقد من الزمان، أما السيئ فقد يأخذ جهازك بالكامل إلى القبر.">
+              It delivers life to every single component. A good one will run quietly for a decade. A bad one can take your entire PC to the grave.
+            </p>
+
+            <div class="definition reveal reveal-delay-1">
+              <strong data-en="In plain English:" data-ar="بكل بساطة:">In plain English:</strong>
+              <span data-en="The Power Supply Unit (PSU) pulls electricity from your wall outlet and safely distributes it to your motherboard, CPU, GPU, and drives. It is the most critical part for system stability."
+                    data-ar="مزود الطاقة (PSU) يسحب الكهرباء من مقبس الحائط ويوزعها بأمان على اللوحة الأم، المعالج، كرت الشاشة، والأقراص. هو القطعة الأهم لاستقرار النظام بأكمله.">
+                The Power Supply Unit (PSU) pulls electricity from your wall outlet and safely distributes it to your motherboard, CPU, GPU, and drives. It is the most critical part for system stability.
+              </span>
+            </div>
+          </div>
+
+          <div class="component-image reveal reveal-delay-2">
+            <svg class="ram-illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ram-svg-title">
+              <title id="ram-svg-title"
+                     data-en="Illustration of a PC Power Supply"
+                     data-ar="رسم توضيحي لمزود طاقة للكمبيوتر">Modern PSU illustration</title>
+
+              <rect x="70" y="80" width="260" height="240" rx="6" fill="#1f2937" stroke="#0a0a0a" stroke-width="4"/>
+
+              <circle cx="200" cy="200" r="90" fill="#111827" stroke="#0a0a0a" stroke-width="3"/>
+              
+              <g stroke="#374151" stroke-width="4" opacity="0.8">
+                <circle cx="200" cy="200" r="70" fill="none"/>
+                <circle cx="200" cy="200" r="50" fill="none"/>
+                <circle cx="200" cy="200" r="30" fill="none"/>
+                <line x1="200" y1="110" x2="200" y2="290"/>
+                <line x1="110" y1="200" x2="290" y2="200"/>
+                <line x1="136" y1="136" x2="264" y2="264"/>
+                <line x1="136" y1="264" x2="264" y2="136"/>
+              </g>
+
+              <circle cx="200" cy="200" r="15" fill="#eab308" stroke="#0a0a0a" stroke-width="2"/>
+
+              <rect x="90" y="100" width="20" height="30" rx="2" fill="#ef4444" stroke="#0a0a0a" stroke-width="2"/>
+              <line x1="95" y1="115" x2="105" y2="115" stroke="#fff" stroke-width="2"/>
+
+              <rect x="130" y="95" width="40" height="30" rx="3" fill="#0a0a0a"/>
+              <g fill="#fff">
+                <rect x="140" y="105" width="4" height="10" rx="1"/>
+                <rect x="156" y="105" width="4" height="10" rx="1"/>
+                <rect x="148" y="115" width="4" height="6" rx="1"/>
+              </g>
+
+              <g fill="#0a0a0a" stroke="#374151" stroke-width="1.5">
+                <rect x="90"  y="305" width="30" height="15" rx="1"/>
+                <rect x="130" y="305" width="30" height="15" rx="1"/>
+                <rect x="170" y="305" width="40" height="15" rx="1"/>
+                <rect x="220" y="305" width="30" height="15" rx="1"/>
+                <rect x="260" y="305" width="30" height="15" rx="1"/>
+              </g>
+
+              <rect x="250" y="100" width="60" height="30" rx="2" fill="#eab308" stroke="#0a0a0a" stroke-width="2"/>
+              <text x="280" y="119" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="700" fill="#0a0a0a">80+ GOLD</text>
+
+              <text x="200" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="700" fill="#0a0a0a">850W ATX PSU</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="quick-jump scroll-reveal" aria-label="Section quick links">
+          <strong data-en="Jump to:" data-ar="انتقل إلى:">Jump to:</strong>
+          <a href="#types"         data-en="Cable Types"    data-ar="أنواع الأسلاك">Cable Types</a>
+          <a href="#howmuch"       data-en="How Much?"      data-ar="كم تحتاج؟">How Much?</a>
+          <a href="#standards"     data-en="Standards"      data-ar="المعايير">Standards</a>
+          <a href="#buying"        data-en="Buying Guide"   data-ar="دليل الشراء">Buying Guide</a>
+          <a href="#compatibility" data-en="Compatibility"  data-ar="التوافق">Compatibility</a>
+          <a href="#tip"           data-en="Golden Tip"     data-ar="النصيحة الذهبية">Golden Tip</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="types" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE BIG CHOICE" data-ar="// الاختيار الكبير">// THE BIG CHOICE</span>
+        <h2>
+          <span data-en="Modular vs" data-ar="الأسلاك المنفصلة مقابل">Modular vs</span>
+          <span class="section-title" data-en="Non-Modular" data-ar="المتصلة">Non-Modular</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Power supplies come in different cable configurations. The choice you make here dictates how easy your PC will be to build and how clean it will look."
+           data-ar="تأتي مزودات الطاقة بتكوينات مختلفة للأسلاك. اختيارك هنا يحدد مدى سهولة تجميع جهازك ومدى نظافة ترتيب الأسلاك بداخله.">
+          Power supplies come in different cable configurations. The choice you make here dictates how easy your PC will be to build and how clean it will look.
+        </p>
+
+        <div class="brands-grid scroll-reveal">
+
+          <article class="brand-card">
+            <h3>Fully Modular</h3>
+            <p class="tagline" data-en="// THE MODERN STANDARD · CLEAN BUILD"
+                              data-ar="// المعيار الحديث · تجميعة نظيفة">// THE MODERN STANDARD · CLEAN BUILD</p>
+            <p data-en="Every single cable can be detached from the power supply. You only plug in the cables you actually need for your components. This eliminates clutter, improves airflow, and makes building much easier."
+               data-ar="يمكن فصل كل سلك بالكامل عن مزود الطاقة. أنت توصل فقط الأسلاك التي تحتاجها فعلياً لقطع جهازك. هذا يلغي الفوضى، يحسن تدفق الهواء، ويجعل التجميع أسهل بكثير.">
+              Every single cable can be detached from the power supply. You only plug in the cables you actually need for your components. This eliminates clutter, improves airflow, and makes building much easier.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Cable clutter" data-ar="فوضى الأسلاك">Cable clutter</strong> — <span data-en="Zero" data-ar="صفر">Zero</span></li>
+              <li><strong data-en="Ease of build" data-ar="سهولة التجميع">Ease of build</strong> — <span data-en="Excellent" data-ar="ممتازة">Excellent</span></li>
+              <li><strong data-en="Custom cables" data-ar="الأسلاك المخصصة">Custom cables</strong> — <span data-en="Supported" data-ar="مدعومة">Supported</span></li>
+              <li><strong data-en="Price" data-ar="السعر">Price</strong> — <span data-en="Slightly more expensive" data-ar="أغلى قليلاً">Slightly more expensive</span></li>
+            </ul>
+          </article>
+
+          <article class="brand-card is-amd">
+            <h3>Non-Modular</h3>
+            <p class="tagline" data-en="// OLDER BUDGET STYLE · ALL ATTACHED"
+                              data-ar="// النمط الاقتصادي القديم · جميعها متصلة">// OLDER BUDGET STYLE · ALL ATTACHED</p>
+            <p data-en="All cables are permanently attached to the PSU unit. Even if you don't need a specific cable, you still have to hide it somewhere in your case. Only recommended for strict budget builds."
+               data-ar="جميع الأسلاك متصلة بشكل دائم بمزود الطاقة. حتى لو لم تكن بحاجة لسلك معين، ستضطر لإخفائه في مكان ما داخل الكيس. يُنصح به فقط للتجميعات الاقتصادية الصارمة.">
+              All cables are permanently attached to the PSU unit. Even if you don't need a specific cable, you still have to hide it somewhere in your case. Only recommended for strict budget builds.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Cable clutter" data-ar="فوضى الأسلاك">Cable clutter</strong> — <span data-en="High" data-ar="عالية">High</span></li>
+              <li><strong data-en="Ease of build" data-ar="سهولة التجميع">Ease of build</strong> — <span data-en="Difficult" data-ar="صعبة">Difficult</span></li>
+              <li><strong data-en="Custom cables" data-ar="الأسلاك المخصصة">Custom cables</strong> — <span data-en="Not supported" data-ar="غير مدعومة">Not supported</span></li>
+              <li><strong data-en="Price" data-ar="السعر">Price</strong> — <span data-en="Cheaper" data-ar="أرخص">Cheaper</span></li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="howmuch" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE REAL QUESTION" data-ar="// السؤال الحقيقي">// THE REAL QUESTION</span>
+        <h2>
+          <span data-en="How much" data-ar="كم تحتاج">How much</span>
+          <span class="section-title" data-en="Wattage?" data-ar="من الواط (طاقة)؟">Wattage?</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Your PSU must provide enough power (Watts) to feed your CPU and GPU at maximum load, plus a 20% safety buffer. Here is a simple breakdown based on modern parts."
+           data-ar="يجب أن يوفر مزود الطاقة طاقة كافية (واط) لتغذية المعالج وكرت الشاشة تحت أقصى ضغط، مع هامش أمان 20%. إليك تفصيل بسيط بناءً على القطع الحديثة.">
+          Your PSU must provide enough power (Watts) to feed your CPU and GPU at maximum load, plus a 20% safety buffer. Here is a simple breakdown based on modern parts.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">🔋</div>
+            <h3 data-en="500W – 650W" data-ar="500W – 650W">500W – 650W</h3>
+            <p class="price" data-en="Entry-Level Builds" data-ar="تجميعات مبتدئة">Entry-Level Builds</p>
+            <p data-en="Perfect for budget systems with mid-range graphics cards (like RTX 4060 or RX 7600) and standard CPUs. Leaves enough headroom for safe operation."
+               data-ar="مثالي للأنظمة الاقتصادية بكروت شاشة متوسطة (مثل RTX 4060 أو RX 7600) ومعالجات قياسية. يترك هامشاً كافياً للتشغيل الآمن.">
+              Perfect for budget systems with mid-range graphics cards (like RTX 4060 or RX 7600) and standard CPUs. Leaves enough headroom for safe operation.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" 1080p Gaming, Office PCs" data-ar=" ألعاب 1080p، حواسيب مكتبية"> 1080p Gaming, Office PCs</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">⚡</div>
+            <h3 data-en="750W – 850W" data-ar="750W – 850W">750W – 850W</h3>
+            <p class="price" data-en="The Sweet Spot" data-ar="النقطة المثالية">The Sweet Spot</p>
+            <p data-en="The standard recommendation for most modern gaming builds. Provides plenty of juice for powerful GPUs (like RTX 4070 Ti or RX 7800 XT) and allows for future upgrades."
+               data-ar="التوصية القياسية لمعظم تجميعات الألعاب الحديثة. يوفر طاقة وفيرة لكروت الشاشة القوية (مثل RTX 4070 Ti أو RX 7800 XT) ويسمح بالترقيات المستقبلية.">
+              The standard recommendation for most modern gaming builds. Provides plenty of juice for powerful GPUs (like RTX 4070 Ti or RX 7800 XT) and allows for future upgrades.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" 1440p/4K Gaming, Core i7/Ryzen 7" data-ar=" ألعاب 1440p/4K، معالجات Core i7/Ryzen 7"> 1440p/4K Gaming, Core i7/Ryzen 7</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🚀</div>
+            <h3 data-en="1000W+" data-ar="1000W+">1000W+</h3>
+            <p class="price" data-en="Enthusiast / Pro" data-ar="احترافي / حماسي">Enthusiast / Pro</p>
+            <p data-en="Required for top-tier monster GPUs (like the RTX 4090) paired with power-hungry flagship CPUs (like Core i9). Complete peace of mind for the heaviest workloads."
+               data-ar="مطلوب لوحوش كروت الشاشة من الفئة العليا (مثل RTX 4090) المقترنة بمعالجات تستهلك طاقة عالية (مثل Core i9). راحة بال تامة لأثقل أحمال العمل.">
+              Required for top-tier monster GPUs (like the RTX 4090) paired with power-hungry flagship CPUs (like Core i9). Complete peace of mind for the heaviest workloads.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" RTX 4090, Extreme Overclocking" data-ar=" كرت RTX 4090، كسر سرعة عنيف"> RTX 4090, Extreme Overclocking</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="standards" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// 2026 SNAPSHOT" data-ar="// لقطة 2026">// 2026 SNAPSHOT</span>
+        <h2>
+          <span data-en="Modern" data-ar="المعايير">Modern</span>
+          <span class="section-title" data-en="standards" data-ar="الحديثة">standards</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The stickers and certifications you'll see on PSU boxes — and what they actually mean. Efficiency, form factors, and new cables: here's your decoder."
+           data-ar="الملصقات والشهادات التي ستراها على علب مزودات الطاقة — وما تعنيه فعلاً. الكفاءة، الأحجام، والأسلاك الجديدة: إليك مفكّ شيفرتك.">
+          The stickers and certifications you'll see on PSU boxes — and what they actually mean. Efficiency, form factors, and new cables: here's your decoder.
+        </p>
+
+        <table class="standards-table scroll-reveal">
+          <thead>
+            <tr>
+              <th data-en="Standard" data-ar="المعيار">Standard</th>
+              <th data-en="What it means" data-ar="ما يعنيه">What it means</th>
+              <th data-en="Status (2026)" data-ar="الحالة (2026)">Status (2026)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>80 PLUS Gold</strong></td>
+              <td data-en="The sweet spot for efficiency. Converts ~90% of wall power into PC power. Wastes very little as heat."
+                  data-ar="النقطة المثالية للكفاءة. يحول ~90% من طاقة الجدار إلى طاقة للجهاز. يهدر القليل جداً كحرارة.">
+                The sweet spot for efficiency. Converts ~90% of wall power into PC power. Wastes very little as heat.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>80 PLUS Bronze</strong></td>
+              <td data-en="Entry-level efficiency (~85%). Good for budget builds, but runs slightly hotter than Gold."
+                  data-ar="كفاءة للمبتدئين (~85%). جيد للتجميعات الاقتصادية، لكن حرارته أعلى بقليل من الذهبي.">
+                Entry-level efficiency (~85%). Good for budget builds, but runs slightly hotter than Gold.
+              </td>
+              <td><span class="status modern" data-en="BUDGET" data-ar="اقتصادي">BUDGET</span></td>
+            </tr>
+            <tr>
+              <td><strong>ATX 3.0 / PCIe 5.0</strong></td>
+              <td data-en="A new standard designed to handle massive power spikes from modern GPUs. Includes the new 12VHPWR cable."
+                  data-ar="معيار جديد مصمم للتعامل مع ارتفاعات الطاقة المفاجئة لكروت الشاشة الحديثة. يتضمن سلك 12VHPWR الجديد.">
+                A new standard designed to handle massive power spikes from modern GPUs. Includes the new 12VHPWR cable.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>12VHPWR Cable</strong></td>
+              <td data-en="The new 16-pin cable required for RTX 4000 series GPUs. Delivers up to 600W through a single cord."
+                  data-ar="السلك الجديد ذو 16 دبوس المطلوب لكروت RTX سلسلة 4000. ينقل حتى 600 واط عبر سلك واحد.">
+                The new 16-pin cable required for RTX 4000 series GPUs. Delivers up to 600W through a single cord.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>Form Factor: ATX</strong></td>
+              <td data-en="The standard physical size for most power supplies. Fits in almost any mid-tower or full-tower case."
+                  data-ar="الحجم الفيزيائي القياسي لمعظم مزودات الطاقة. يتسع في أي كيس من نوع Mid-Tower أو Full-Tower.">
+                The standard physical size for most power supplies. Fits in almost any mid-tower or full-tower case.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>Form Factor: SFX</strong></td>
+              <td data-en="A highly compacted power supply designed exclusively for tiny Mini-ITX PC cases."
+                  data-ar="مزود طاقة مضغوط للغاية مصمم حصرياً لكيسات Mini-ITX الصغيرة جداً.">
+                A highly compacted power supply designed exclusively for tiny Mini-ITX PC cases.
+              </td>
+              <td><span class="status modern" data-en="SFF ONLY" data-ar="للأجهزة الصغيرة">SFF ONLY</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="buying" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// PICK YOUR PSU" data-ar="// اختر مزودك">// PICK YOUR PSU</span>
+        <h2>
+          <span data-en="Buying" data-ar="دليل">Buying</span>
+          <span class="section-title" data-en="guide" data-ar="الشراء">guide</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Never buy a no-name power supply. Sticking to reputable brands (Corsair, Seasonic, EVGA) with at least an 80+ rating is the only rule you cannot break."
+           data-ar="لا تشتري أبداً مزود طاقة من شركة مجهولة. الالتزام بالعلامات التجارية الموثوقة بتصنيف 80+ على الأقل هي القاعدة الوحيدة التي لا يمكنك كسرها.">
+          Never buy a no-name power supply. Sticking to reputable brands (Corsair, Seasonic, EVGA) with at least an 80+ rating is the only rule you cannot break.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">🏷️</div>
+            <h3 data-en="Budget Build" data-ar="تجميعة اقتصادية">Budget Build</h3>
+            <p class="price">~ $60 – $80</p>
+            <p data-en="A 650W 80 PLUS Bronze (Non or Semi-Modular). It provides safe, reliable power for an entry-level GPU without breaking the bank."
+               data-ar="مزود 650 واط بتصنيف 80 PLUS Bronze. يوفر طاقة آمنة وموثوقة لكرت شاشة اقتصادي دون إفراغ محفظتك.">
+              A 650W 80 PLUS Bronze (Non or Semi-Modular). It provides safe, reliable power for an entry-level GPU without breaking the bank.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 650W 80+ Bronze" data-ar=" 650W 80+ Bronze"> 650W 80+ Bronze</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">⚡</div>
+            <h3 data-en="Gaming Build" data-ar="تجميعة ألعاب">Gaming Build</h3>
+            <p class="price">~ $110 – $140</p>
+            <p data-en="An 850W 80 PLUS Gold (Fully Modular) with ATX 3.0 support. The absolute sweet spot. It runs quiet, keeps cables clean, and supports modern graphics cards natively."
+               data-ar="مزود 850 واط بتصنيف 80 PLUS Gold (أسلاك منفصلة) مع دعم ATX 3.0. النقطة المثالية المطلقة. يعمل بهدوء، يحافظ على نظافة الأسلاك، ويدعم الكروت الحديثة.">
+              An 850W 80 PLUS Gold (Fully Modular) with ATX 3.0 support. The absolute sweet spot. It runs quiet, keeps cables clean, and supports modern graphics cards natively.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 850W 80+ Gold (ATX 3.0)" data-ar=" 850W 80+ Gold (ATX 3.0)"> 850W 80+ Gold (ATX 3.0)</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🖥️</div>
+            <h3 data-en="Creator / Pro" data-ar="صانع محتوى / محترف">Creator / Pro</h3>
+            <p class="price">~ $200 – $300+</p>
+            <p data-en="A 1000W+ 80 PLUS Gold or Platinum. When you are pushing an RTX 4090 and an i9 processor to their limits for 3D rendering, you need raw, stable wattage."
+               data-ar="مزود 1000 واط+ بتصنيف 80 PLUS Gold أو Platinum. عندما تدفع كرت RTX 4090 ومعالج i9 لأقصى حدودهما في التصيير ثلاثي الأبعاد، فأنت بحاجة لطاقة خام ومستقرة.">
+              A 1000W+ 80 PLUS Gold or Platinum. When you are pushing an RTX 4090 and an i9 processor to their limits for 3D rendering, you need raw, stable wattage.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3 border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 1000W+ 80+ Gold/Platinum" data-ar=" 1000W+ 80+ Gold/Platinum"> 1000W+ 80+ Gold/Platinum</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="compatibility" class="section section--soft">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: var(--sp-6);">
+          <span class="eyebrow" data-en="// THE WIRING DIAGRAM" data-ar="// مخطط التوصيلات">// THE WIRING DIAGRAM</span>
+          <h2>
+            <span data-en="Compatibility &amp;" data-ar="التوافق">Compatibility &amp;</span>
+            <span class="section-title" data-en="dependencies" data-ar="والمتطلّبات">dependencies</span><span data-en="." data-ar=".">.</span>
+          </h2>
+          <p class="lead" style="max-width: 62ch; margin: 0 auto;"
+             data-en="The PSU is the center of the spiderweb. It must physically fit in your case and have the correct cables to power your specific motherboard, CPU, and Graphics Card."
+             data-ar="مزود الطاقة هو مركز شبكة العنكبوت. يجب أن يتسع فيزيائياً داخل الكيس، وأن يمتلك الأسلاك الصحيحة لتشغيل اللوحة الأم، المعالج، وكرت الشاشة الخاص بك.">
+            The PSU is the center of the spiderweb. It must physically fit in your case and have the correct cables to power your specific motherboard, CPU, and Graphics Card.
+          </p>
+        </div>
+
+        <div class="dep-diagram scroll-reveal" role="img"
+             aria-label="PSU dependencies diagram">
+
+          <div class="dep-node dep-node--top">
+            <strong data-en="CPU" data-ar="المعالج (CPU)">CPU</strong>
+            <span class="role" data-en="8-pin EPS Cable" data-ar="سلك 8-pin EPS">8-pin EPS Cable</span>
+          </div>
+
+          <div class="dep-node dep-node--left">
+            <strong data-en="GPU" data-ar="كرت الشاشة (GPU)">GPU</strong>
+            <span class="role" data-en="PCIe / 12VHPWR" data-ar="PCIe / 12VHPWR">PCIe / 12VHPWR</span>
+          </div>
+
+          <div class="dep-node dep-node--center">
+            <strong data-en="PSU" data-ar="مزود الطاقة (PSU)">PSU</strong>
+            <span class="role" data-en="You are here" data-ar="أنت هنا">You are here</span>
+          </div>
+
+          <div class="dep-node dep-node--right">
+            <strong data-en="MOTHERBOARD" data-ar="اللوحة الأم">MOTHERBOARD</strong>
+            <span class="role" data-en="24-pin ATX Cable" data-ar="سلك 24-pin ATX">24-pin ATX Cable</span>
+          </div>
+
+          <div class="dep-node dep-node--bottom">
+            <strong data-en="CASE" data-ar="الكيس (CASE)">CASE</strong>
+            <span class="role" data-en="Dictates Size (ATX/SFX)" data-ar="يحدد الحجم (ATX/SFX)">Dictates Size (ATX/SFX)</span>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--sp-7);">
+          <h3 data-en="What parts dictate your PSU" data-ar="القطع التي تحدد نوع مزودك">
+            What parts dictate your PSU
+          </h3>
+          <p style="color: var(--color-muted); max-width: 50ch; margin: 0 auto;"
+             data-en="Match your GPU and Case to the correct power requirements below."
+             data-ar="طابق كرت الشاشة والكيس الخاص بك مع متطلبات الطاقة الصحيحة أدناه.">
+            Match your GPU and Case to the correct power requirements below.
+          </p>
+        </div>
+
+        <div class="compat-grid scroll-reveal">
+
+          <article class="compat-card tier-high">
+            <h4 data-en="Modern High-End GPUs" data-ar="كروت الشاشة الحديثة الفاخرة">Modern High-End GPUs</h4>
+            <p class="compat-example"
+               data-en="e.g. RTX 4070, 4080, 4090"
+               data-ar="مثل: RTX 4070, 4080, 4090">e.g. RTX 4070, 4080, 4090</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Cable Needed" data-ar="السلك المطلوب">Cable Needed</span>
+                <span class="compat-value" data-en="12VHPWR (ATX 3.0 Standard)" data-ar="12VHPWR (معيار ATX 3.0)">12VHPWR (ATX 3.0 Standard)</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">W</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Wattage" data-ar="الطاقة">Wattage</span>
+                <span class="compat-value" data-en="750W minimum, 850W+ recommended." data-ar="750 واط كحد أدنى، 850 واط+ موصى به.">750W minimum, 850W+ recommended.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="compat-card tier-mid">
+            <h4 data-en="High-End CPUs" data-ar="المعالجات الفاخرة">High-End CPUs</h4>
+            <p class="compat-example"
+               data-en="e.g. Core i9, Ryzen 9"
+               data-ar="مثل: Core i9, Ryzen 9">e.g. Core i9, Ryzen 9</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Cable Needed" data-ar="السلك المطلوب">Cable Needed</span>
+                <span class="compat-value" data-en="Two 8-pin EPS cables for motherboard." data-ar="سلكي 8-pin EPS للوحة الأم.">Two 8-pin EPS cables for motherboard.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">W</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Warning" data-ar="تحذير">Warning</span>
+                <span class="compat-value" data-en="Budget PSUs only come with one 8-pin CPU cable." data-ar="مزودات الطاقة الاقتصادية تأتي بسلك 8-pin واحد فقط.">Budget PSUs only come with one 8-pin CPU cable.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="compat-card tier-entry">
+            <h4 data-en="Mini-ITX Cases" data-ar="كيسات Mini-ITX">Mini-ITX Cases</h4>
+            <p class="compat-example"
+               data-en="e.g. Small form factor builds"
+               data-ar="مثل: التجميعات ذات الحجم الصغير جداً">e.g. Small form factor builds</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Form Factor" data-ar="الحجم">Form Factor</span>
+                <span class="compat-value" data-en="Requires an SFX or SFX-L power supply." data-ar="يتطلب مزود طاقة من نوع SFX أو SFX-L.">Requires an SFX or SFX-L power supply.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">W</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Warning" data-ar="تحذير">Warning</span>
+                <span class="compat-value" data-en="A standard ATX PSU will physically not fit inside." data-ar="مزود طاقة ATX القياسي لن يتسع فيزيائياً بداخلها.">A standard ATX PSU will physically not fit inside.</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="warning-cards scroll-reveal">
+
+          <article class="warning-card is-critical">
+            <div class="warn-icon" aria-hidden="true">⚠️</div>
+            <div>
+              <h4 data-en="Never mix modular cables from different brands"
+                  data-ar="لا تخلط أسلاك مزود الطاقة بين الشركات أبداً">
+                Never mix modular cables from different brands
+              </h4>
+              <p data-en="If you are upgrading your modular PSU, DO NOT leave the old cables in your PC and plug them into the new unit. Even between models of the same brand, the pin layouts on the PSU side are often different. Mixing cables will instantly fry your motherboard, storage drives, and GPU when you press the power button. Always use the cables that came in the box with your new PSU."
+                 data-ar="إذا كنت ترقي مزود الطاقة الخاص بك، لا تترك الأسلاك القديمة في الجهاز وتوصلها بالمزود الجديد. حتى بين موديلات نفس الشركة، ترتيب الدبابيس من جهة المزود يختلف غالباً. خلط الأسلاك سيؤدي لاحتراق اللوحة الأم، الأقراص، وكرت الشاشة فور ضغطك لزر التشغيل. استخدم دائماً الأسلاك التي جاءت في علبة المزود الجديد.">
+                If you are upgrading your modular PSU, DO NOT leave the old cables in your PC and plug them into the new unit. Even between models of the same brand, the pin layouts on the PSU side are often different. Mixing cables will instantly fry your motherboard, storage drives, and GPU when you press the power button. Always use the cables that came in the box with your new PSU.
+              </p>
+            </div>
+          </article>
+
+          <article class="warning-card is-warn">
+            <div class="warn-icon" aria-hidden="true">💣</div>
+            <div>
+              <h4 data-en="Don't cheap out on the PSU"
+                  data-ar="لا تسترخص في مزود الطاقة">
+                Don't cheap out on the PSU
+              </h4>
+              <p data-en="It is the only component in your PC connected to 110V/220V wall power. A cheap, unrated, $30 power supply from an unknown brand lacks the critical safety protections (OVP, OCP, SCP). If there is a power surge, a good PSU will sacrifice itself to save your PC. A bad PSU will explode and take your $1000 GPU and CPU to the grave with it."
+                 data-ar="إنه القطعة الوحيدة في جهازك المتصلة بكهرباء الحائط 110V/220V. مزود طاقة رخيص بـ 30 دولاراً من شركة مجهولة يفتقر لحمايات السلامة الحرجة. في حال حدوث تماس كهربائي، مزود الطاقة الجيد سيضحي بنفسه لإنقاذ جهازك. أما المزود السيئ سينفجر ويأخذ كرت الشاشة والمعالج الباهظين إلى القبر معه.">
+                It is the only component in your PC connected to 110V/220V wall power. A cheap, unrated, $30 power supply from an unknown brand lacks the critical safety protections (OVP, OCP, SCP). If there is a power surge, a good PSU will sacrifice itself to save your PC. A bad PSU will explode and take your $1000 GPU and CPU to the grave with it.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="tip" class="section">
+      <div class="container">
+        <div class="golden-tip scroll-reveal">
+          <div class="tip-icon">⚡</div>
+          <div>
+            <span class="eyebrow" style="color: var(--color-accent);"
+                  data-en="// SPACE-PC GOLDEN TIP" data-ar="// النصيحة الذهبية من سبيس-بي سي">// SPACE-PC GOLDEN TIP</span>
+            <h3 data-en="The 20% Headroom Rule." data-ar="قاعدة هامش الـ 20%.">The 20% Headroom Rule.</h3>
+            <p data-en="Use a site like PCPartPicker to calculate the total estimated wattage of your build. Take that number, add 20-30%, and buy a power supply of that size. For example, if your system draws 500W, buy a 650W PSU. Power supplies are most efficient and quietest when running at 50-70% of their total capacity. Pushing a PSU to 100% capacity constantly will make the fan spin like a jet engine and shorten its lifespan."
+               data-ar="استخدم موقعاً مثل PCPartPicker لحساب إجمالي الواط المقدر لتجميعتك. خذ هذا الرقم، أضف عليه 20-30%، واشترِ مزود طاقة بهذا الحجم. على سبيل المثال، إذا كان نظامك يستهلك 500 واط، اشترِ مزود 650 واط. تكون مزودات الطاقة أكثر كفاءة وهدوءاً عندما تعمل بين 50-70% من سعتها. دفع المزود لـ 100% من طاقته باستمرار سيجعل المروحة تدور كالمحرك النفاث ويقصر من عمره الافتراضي.">
+              Use a site like PCPartPicker to calculate the total estimated wattage of your build. Take that number, add 20-30%, and buy a power supply of that size. For example, if your system draws 500W, buy a 650W PSU. Power supplies are most efficient and quietest when running at 50-70% of their total capacity. Pushing a PSU to 100% capacity constantly will make the fan spin like a jet engine and shorten its lifespan.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ink">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="color: var(--color-accent);"
+              data-en="// UP NEXT" data-ar="// التالي">// UP NEXT</span>
+        <h2 data-en="Now give it a home." data-ar="الآن، امنحها منزلاً.">Now give it a home.</h2>
+        <p style="max-width: 50ch; margin: var(--sp-4) auto var(--sp-6); opacity: 0.85;"
+           data-en="You have the brain, the memory, the storage, and the power. Now you need a metal box to hold it all together."
+           data-ar="لديك العقل، الذاكرة، التخزين، والطاقة. الآن تحتاج إلى صندوق معدني ليحفظها جميعاً معاً.">
+          You have the brain, the memory, the storage, and the power. Now you need a metal box to hold it all together.
+        </p>
+        <a href="index.html#components" class="btn btn--accent btn--lg"
+           data-en="Browse all components" data-ar="استعرض كل القطع">Browse all components</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+          </div>
+          <p class="footer-tagline"
+             data-en="From zero to your first build — without the jargon."
+             data-ar="من الصفر إلى أوّل تجميعة — بلا مصطلحات معقّدة.">
+            From zero to your first build — without the jargon.
+          </p>
+        </div>
+        <div>
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+            <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+            <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Account" data-ar="الحساب">Account</h4>
+          <ul>
+            <li><a href="login.html"  data-en="Login"   data-ar="تسجيل الدخول">Login</a></li>
+            <li><a href="signup.html" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+          <ul>
+            <li><a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+            <li><a href="#" data-en="Terms"   data-ar="الشروط">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year">2026</span> · Space-PC ·
+        <span data-en="A CPIS-358 student project" data-ar="مشروع طلاّبي لمقرر CPIS-358">A CPIS-358 student project</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+      console.log('%cSpace-PC ✦ Power Supply page loaded — the heart of every build.',
+                  'color:#eab308; font-weight:700; font-family:monospace;');
+    })();
+  </script>
+</body>
+</html>

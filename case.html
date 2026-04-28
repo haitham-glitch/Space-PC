@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="PC Case (Chassis) explained — form factors, airflow, cooling support, and how to choose the right home for your components." />
+  <title data-en="Case | The Skeleton — Space-PC" data-ar="الكيس (Case) | الهيكل — سبيس-بي سي">Case | The Skeleton — Space-PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .breadcrumbs {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      padding-top: var(--sp-5);
+      margin-bottom: 0;
+    }
+    .breadcrumbs a { color: var(--color-muted); border-bottom: 1px dashed transparent; transition: all var(--t-fast); }
+    .breadcrumbs a:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .breadcrumbs .sep { margin: 0 var(--sp-2); color: var(--color-soft); }
+
+    .component-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      border-radius: var(--r-sm);
+      margin-bottom: var(--sp-4);
+      text-transform: uppercase;
+    }
+
+    .ram-illustration {
+      width: 100%;
+      height: 100%;
+      max-width: 360px;
+      max-height: 360px;
+    }
+
+    .quick-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      padding: var(--sp-5);
+      background: var(--color-surface);
+      border: var(--border-base);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--sp-7);
+    }
+    .quick-jump a {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--color-bg);
+      border: var(--border-thin);
+      border-radius: var(--r-sm);
+      transition: all var(--t-fast);
+    }
+    .quick-jump a:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      color: var(--color-ink);
+    }
+    .quick-jump strong {
+      align-self: center;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link" data-en="Skip to content" data-ar="تخطّي إلى المحتوى">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+          <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+          <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <a href="login.html"  class="btn btn--ghost"   data-en="Login"   data-ar="تسجيل الدخول">Login</a>
+        <a href="signup.html" class="btn btn--primary" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section>
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html"   data-en="Home"          data-ar="الرئيسية">Home</a>
+          <span class="sep">/</span>
+          <a href="index.html#components" data-en="Components" data-ar="القطع">Components</a>
+          <span class="sep">/</span>
+          <span data-en="Case" data-ar="الكيس (Case)">Case</span>
+        </nav>
+
+        <div class="component-header">
+          <div class="reveal">
+            <span class="component-tag" style="background: #3b82f6;" data-en="// COMPONENT 06" data-ar="// القطعة 06">// COMPONENT 06</span>
+            <h1>
+              <span data-en="PC Case." data-ar="الكيس (Chassis).">PC Case.</span><br />
+              <span class="section-title"
+                    data-en="The Skeleton."
+                    data-ar="الهيكل.">The Skeleton.</span>
+            </h1>
+            <p class="lead" style="color: var(--color-muted);"
+               data-en="It holds everything together, dictates your cooling performance, and is the physical face of your entire setup."
+               data-ar="يجمع كل القطع معاً، ويحدد أداء التبريد الخاص بك، وهو الوجه الفعلي والجمالي لتجميعتك بالكامل.">
+              It holds everything together, dictates your cooling performance, and is the physical face of your entire setup.
+            </p>
+
+            <div class="definition reveal reveal-delay-1">
+              <strong data-en="In plain English:" data-ar="بكل بساطة:">In plain English:</strong>
+              <span data-en="The case (or chassis) is the metal and glass box that protects your parts. A good case makes building easy, provides space to hide cables, and keeps your components cool by allowing air to flow freely."
+                    data-ar="الكيس (الهيكل) هو الصندوق المعدني والزجاجي الذي يحمي قطعك. الكيس الجيد يسهّل عملية التجميع، يوفر مساحة لإخفاء الأسلاك، ويحافظ على برودة القطع عبر السماح للهواء بالتدفق بحرية.">
+                The case (or chassis) is the metal and glass box that protects your parts. A good case makes building easy, provides space to hide cables, and keeps your components cool by allowing air to flow freely.
+              </span>
+            </div>
+          </div>
+
+          <div class="component-image reveal reveal-delay-2">
+            <svg class="ram-illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ram-svg-title">
+              <title id="ram-svg-title"
+                     data-en="Illustration of a modern PC Case"
+                     data-ar="رسم توضيحي لكيس كمبيوتر حديث">Modern PC Case illustration</title>
+
+              <rect x="70" y="50" width="220" height="260" rx="6" fill="#1f2937" stroke="#0a0a0a" stroke-width="4"/>
+              
+              <rect x="270" y="52" width="20" height="256" fill="#111827"/>
+              <circle cx="280" cy="100" r="20" fill="#3b82f6" opacity="0.8"/>
+              <circle cx="280" cy="150" r="20" fill="#ec4899" opacity="0.8"/>
+              <circle cx="280" cy="200" r="20" fill="#10b981" opacity="0.8"/>
+              <circle cx="280" cy="250" r="20" fill="#eab308" opacity="0.8"/>
+              <rect x="290" y="50" width="10" height="260" fill="#0a0a0a"/> <rect x="80" y="60" width="180" height="190" fill="#374151" stroke="#0a0a0a" stroke-width="2" opacity="0.6"/>
+              
+              <rect x="90" y="70" width="100" height="110" fill="#111827" stroke="#0a0a0a" stroke-width="1"/> <rect x="90" y="140" width="150" height="20" fill="#ef4444" stroke="#0a0a0a" stroke-width="1"/> <circle cx="140" cy="100" r="15" fill="#3b82f6" opacity="0.7"/> <rect x="72" y="260" width="198" height="48" fill="#111827" stroke="#0a0a0a" stroke-width="2"/>
+              <text x="110" y="290" font-family="monospace" font-size="12" fill="#4b5563" font-weight="bold">PSU SHROUD</text>
+
+              <rect x="90" y="310" width="20" height="10" fill="#0a0a0a"/>
+              <rect x="230" y="310" width="20" height="10" fill="#0a0a0a"/>
+
+              <line x1="85" y1="65" x2="255" y2="245" stroke="#fff" stroke-width="2" opacity="0.2"/>
+
+              <text x="200" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="700" fill="#0a0a0a">MID-TOWER CHASSIS</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="quick-jump scroll-reveal" aria-label="Section quick links">
+          <strong data-en="Jump to:" data-ar="انتقل إلى:">Jump to:</strong>
+          <a href="#types"         data-en="Airflow vs Glass" data-ar="التدفق مقابل الزجاج">Airflow vs Glass</a>
+          <a href="#howmuch"       data-en="Sizes"            data-ar="الأحجام">Sizes</a>
+          <a href="#standards"     data-en="Standards"        data-ar="المعايير">Standards</a>
+          <a href="#buying"        data-en="Buying Guide"     data-ar="دليل الشراء">Buying Guide</a>
+          <a href="#compatibility" data-en="Compatibility"    data-ar="التوافق">Compatibility</a>
+          <a href="#tip"           data-en="Golden Tip"       data-ar="النصيحة الذهبية">Golden Tip</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="types" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE BIG CHOICE" data-ar="// الاختيار الكبير">// THE BIG CHOICE</span>
+        <h2>
+          <span data-en="Airflow vs" data-ar="تدفق الهواء مقابل">Airflow vs</span>
+          <span class="section-title" data-en="Showcase" data-ar="الاستعراض">Showcase</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The front panel of your case is the most important part of its design. It determines how your PC breathes. You must choose between maximum performance and maximum aesthetics."
+           data-ar="اللوحة الأمامية للكيس هي الجزء الأهم في تصميمه. هي تحدد كيف يتنفس جهازك. يجب أن تختار بين الأداء الأقصى أو المظهر الجمالي الأقصى.">
+          The front panel of your case is the most important part of its design. It determines how your PC breathes. You must choose between maximum performance and maximum aesthetics.
+        </p>
+
+        <div class="brands-grid scroll-reveal">
+
+          <article class="brand-card">
+            <h3>Mesh Front (Airflow)</h3>
+            <p class="tagline" data-en="// HIGH PERFORMANCE · COOLER TEMPS"
+                              data-ar="// أداء عالي · حرارة أقل">// HIGH PERFORMANCE · COOLER TEMPS</p>
+            <p data-en="The front panel is a breathable mesh grid. Fans can easily pull fresh, cool air straight into the case to feed the GPU and CPU. Highly recommended for 90% of gaming builds."
+               data-ar="اللوحة الأمامية عبارة عن شبك مسامي. تستطيع المراوح سحب الهواء النقي والبارد بسهولة لداخل الكيس لتغذية كرت الشاشة والمعالج. يوصى به بشدة لـ 90% من تجميعات الألعاب.">
+              The front panel is a breathable mesh grid. Fans can easily pull fresh, cool air straight into the case to feed the GPU and CPU. Highly recommended for 90% of gaming builds.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Thermals" data-ar="الحرارة">Thermals</strong> — <span data-en="Excellent" data-ar="ممتازة">Excellent</span></li>
+              <li><strong data-en="Dust" data-ar="الغبار">Dust</strong> — <span data-en="Trapped by mesh filter" data-ar="يعلق في فلتر الشبك">Trapped by mesh filter</span></li>
+              <li><strong data-en="Noise" data-ar="الإزعاج">Noise</strong> — <span data-en="Slightly audible" data-ar="مسموع قليلاً">Slightly audible</span></li>
+              <li><strong data-en="Looks" data-ar="المظهر">Looks</strong> — <span data-en="Aggressive / Functional" data-ar="هجومي / عملي">Aggressive / Functional</span></li>
+            </ul>
+          </article>
+
+          <article class="brand-card is-amd">
+            <h3>Solid / Glass Front</h3>
+            <p class="tagline" data-en="// PREMIUM LOOKS · RESTRICTED AIR"
+                              data-ar="// مظهر فاخر · هواء مقيد">// PREMIUM LOOKS · RESTRICTED AIR</p>
+            <p data-en="The front panel is solid glass or metal. It looks incredibly sleek, but fans have to struggle to pull air through tiny side vents. Components will run hotter, and fans will spin louder to compensate."
+               data-ar="اللوحة الأمامية زجاجية أو معدنية صلبة. مظهرها أنيق جداً، لكن المراوح تعاني لسحب الهواء عبر فتحات جانبية صغيرة. سترتفع حرارة القطع، وستدور المراوح بصوت أعلى لتعويض النقص.">
+              The front panel is solid glass or metal. It looks incredibly sleek, but fans have to struggle to pull air through tiny side vents. Components will run hotter, and fans will spin louder to compensate.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Thermals" data-ar="الحرارة">Thermals</strong> — <span data-en="Poor to Average" data-ar="ضعيفة إلى متوسطة">Poor to Average</span></li>
+              <li><strong data-en="Dust" data-ar="الغبار">Dust</strong> — <span data-en="Builds up in side vents" data-ar="يتراكم في الفتحات الجانبية">Builds up in side vents</span></li>
+              <li><strong data-en="Noise" data-ar="الإزعاج">Noise</strong> — <span data-en="Louder (fans run at max)" data-ar="أعلى (المراوح تعمل بأقصى طاقة)">Louder (fans run at max)</span></li>
+              <li><strong data-en="Looks" data-ar="المظهر">Looks</strong> — <span data-en="Minimalist / Elegant" data-ar="بسيط / أنيق">Minimalist / Elegant</span></li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="howmuch" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE FORM FACTOR" data-ar="// عامل الشكل (الحجم)">// THE FORM FACTOR</span>
+        <h2>
+          <span data-en="What size" data-ar="أي حجم">What size</span>
+          <span class="section-title" data-en="do you need?" data-ar="تحتاج؟">do you need?</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Cases come in three main sizes. The size dictates what motherboards fit, how large your GPU can be, and how much space it takes up on your desk."
+           data-ar="تأتي الكيسات بثلاثة أحجام رئيسية. الحجم يحدد نوع اللوحات الأم التي تتسع، وكبر كرت الشاشة، ومساحة المكتب التي سيشغلها الكيس.">
+          Cases come in three main sizes. The size dictates what motherboards fit, how large your GPU can be, and how much space it takes up on your desk.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">🎒</div>
+            <h3 data-en="Mini-ITX (SFF)" data-ar="Mini-ITX (SFF)">Mini-ITX (SFF)</h3>
+            <p class="price" data-en="Small Form Factor" data-ar="الحجم الصغير جداً">Small Form Factor</p>
+            <p data-en="Tiny, portable, and console-like. Looks amazing on a desk, but they are notoriously difficult to build in, require expensive miniature parts (SFX PSUs), and run hotter."
+               data-ar="صغير جداً، قابل للتنقل، ويشبه أجهزة الكونسول. يبدو رائعاً على المكتب، لكن التجميع بداخله صعب جداً، ويتطلب قطعاً مصغرة غالية الثمن، وحرارته أعلى.">
+              Tiny, portable, and console-like. Looks amazing on a desk, but they are notoriously difficult to build in, require expensive miniature parts (SFX PSUs), and run hotter.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Portability, Minimalist desk" data-ar=" التنقل، مكاتب بسيطة المساحة"> Portability, Minimalist desk</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">🏢</div>
+            <h3 data-en="Mid-Tower" data-ar="Mid-Tower">Mid-Tower</h3>
+            <p class="price" data-en="The Standard" data-ar="المعيار القياسي">The Standard</p>
+            <p data-en="The sweet spot for 95% of PC builders. Fits standard ATX motherboards, supports massive graphics cards, and offers plenty of room for airflow and cable management."
+               data-ar="النقطة المثالية لـ 95% من مجمعي الحواسيب. يتسع للوحات ATX القياسية، يدعم كروت شاشة ضخمة، ويوفر مساحة وفيرة لتدفق الهواء وترتيب الأسلاك.">
+              The sweet spot for 95% of PC builders. Fits standard ATX motherboards, supports massive graphics cards, and offers plenty of room for airflow and cable management.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Standard gaming, First-time builders" data-ar=" ألعاب قياسية، أول تجميعة"> Standard gaming, First-time builders</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🏗️</div>
+            <h3 data-en="Full-Tower" data-ar="Full-Tower">Full-Tower</h3>
+            <p class="price" data-en="The Behemoth" data-ar="الوحش الضخم">The Behemoth</p>
+            <p data-en="Massive cases meant to sit on the floor. Only necessary if you are running custom liquid cooling loops, multiple GPUs, or E-ATX workstation motherboards. Overkill for regular users."
+               data-ar="كيسات ضخمة جداً مخصصة للوضع على الأرض. ضرورية فقط إذا كنت تستخدم تبريداً مائياً مفتوحاً، كروت شاشة متعددة، أو لوحات E-ATX. مبالغ فيه للمستخدم العادي.">
+              Massive cases meant to sit on the floor. Only necessary if you are running custom liquid cooling loops, multiple GPUs, or E-ATX workstation motherboards. Overkill for regular users.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Custom loops, Workstations" data-ar=" تبريد مائي مخصص، محطات عمل"> Custom loops, Workstations</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="standards" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// 2026 SNAPSHOT" data-ar="// لقطة 2026">// 2026 SNAPSHOT</span>
+        <h2>
+          <span data-en="Modern" data-ar="المعايير">Modern</span>
+          <span class="section-title" data-en="standards" data-ar="الحديثة">standards</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The specs you'll see on every PC Case product page — and what they actually mean. Clearances, form factors, and I/O."
+           data-ar="المواصفات التي تراها في كل صفحة منتج كيس — وما تعنيه فعلاً. مساحات الخلوص، الأحجام، والمنافذ.">
+          The specs you'll see on every PC Case product page — and what they actually mean. Clearances, form factors, and I/O.
+        </p>
+
+        <table class="standards-table scroll-reveal">
+          <thead>
+            <tr>
+              <th data-en="Standard" data-ar="المعيار">Standard</th>
+              <th data-en="What it means" data-ar="ما يعنيه">What it means</th>
+              <th data-en="Status (2026)" data-ar="الحالة (2026)">Status (2026)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>GPU Clearance</strong></td>
+              <td data-en="The maximum length of a Graphics Card that will fit. Crucial spec, as modern GPUs (like RTX 4080) are massive."
+                  data-ar="أقصى طول لكرت الشاشة يمكن أن يتسع. مواصفة حرجة جداً، لأن الكروت الحديثة (مثل RTX 4080) ضخمة جداً.">
+                The maximum length of a Graphics Card that will fit. Crucial spec, as modern GPUs (like RTX 4080) are massive.
+              </td>
+              <td><span class="status modern" data-en="CRITICAL" data-ar="حرج جداً">CRITICAL</span></td>
+            </tr>
+            <tr>
+              <td><strong>Radiator Support</strong></td>
+              <td data-en="Indicates if the case can fit a 240mm, 280mm, or 360mm AIO liquid cooler at the top or front."
+                  data-ar="يشير إلى ما إذا كان الكيس يتسع لمبرد مائي (AIO) بحجم 240ملم، 280ملم، أو 360ملم في الأعلى أو الأمام.">
+                Indicates if the case can fit a 240mm, 280mm, or 360mm AIO liquid cooler at the top or front.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>Front I/O: Type-C</strong></td>
+              <td data-en="Having a USB-C port on the top/front of the case. A must-have feature for cases in 2026."
+                  data-ar="وجود منفذ USB-C في أعلى/مقدمة الكيس. ميزة لا بد منها في كيسات 2026.">
+                Having a USB-C port on the top/front of the case. A must-have feature for cases in 2026.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>Dual Chamber</strong></td>
+              <td data-en="Cases that look like aquariums (glass on front and side), hiding the power supply behind the motherboard tray."
+                  data-ar="الكيسات التي تشبه حوض السمك (زجاج من الأمام والجانب)، وتخفي مزود الطاقة خلف مسار اللوحة الأم.">
+                Cases that look like aquariums (glass on front and side), hiding the power supply behind the motherboard tray.
+              </td>
+              <td><span class="status modern" data-en="TRENDING" data-ar="شائع حالياً">TRENDING</span></td>
+            </tr>
+            <tr>
+              <td><strong>Cable Routing Space</strong></td>
+              <td data-en="The gap behind the motherboard. Look for at least 20mm of space, otherwise the back panel won't close."
+                  data-ar="الفراغ خلف اللوحة الأم. ابحث عن مساحة 20ملم على الأقل، وإلا فلن يغلق الباب الخلفي.">
+                The gap behind the motherboard. Look for at least 20mm of space, otherwise the back panel won't close.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="buying" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// PICK YOUR SHELL" data-ar="// اختر الغلاف">// PICK YOUR SHELL</span>
+        <h2>
+          <span data-en="Buying" data-ar="دليل">Buying</span>
+          <span class="section-title" data-en="guide" data-ar="الشراء">guide</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="A case doesn't directly give you FPS, but it dictates how easy your PC is to build and maintain. Spend the extra $30 for good airflow and included fans."
+           data-ar="الكيس لا يمنحك إطارات (FPS) مباشرة، لكنه يحدد سهولة التجميع والصيانة. ادفع 30 دولاراً إضافية للحصول على تدفق هواء جيد ومراوح مرفقة.">
+          A case doesn't directly give you FPS, but it dictates how easy your PC is to build and maintain. Spend the extra $30 for good airflow and included fans.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">🏷️</div>
+            <h3 data-en="Value Airflow" data-ar="تدفق الهواء الاقتصادي">Value Airflow</h3>
+            <p class="price">~ $60 – $90</p>
+            <p data-en="A standard Mid-Tower with a mesh front panel and 2-3 pre-installed fans. Prioritizes function over form. Gets the job done perfectly for budget and mid-range systems."
+               data-ar="كيس Mid-Tower قياسي بواجهة شبكية ومروحتين إلى ثلاث مثبتة مسبقاً. يفضل الوظيفة على الشكل. ينجز المهمة بامتياز للأنظمة الاقتصادية والمتوسطة.">
+              A standard Mid-Tower with a mesh front panel and 2-3 pre-installed fans. Prioritizes function over form. Gets the job done perfectly for budget and mid-range systems.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Look for:" data-ar="ابحث عن:">Look for:</strong>
+              <span data-en=" Included fans, Mesh front" data-ar=" مراوح مرفقة، واجهة شبك"> Included fans, Mesh front</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">⚡</div>
+            <h3 data-en="Premium Mid-Tower" data-ar="Mid-Tower فاخر">Premium Mid-Tower</h3>
+            <p class="price">~ $100 – $150</p>
+            <p data-en="The sweet spot. Better build quality, easier cable management channels, USB-C on the front panel, and quieter, high-quality fans included out of the box."
+               data-ar="النقطة المثالية. جودة بناء أفضل، مسارات أسهل لترتيب الأسلاك، منفذ USB-C أمامي، ومراوح أهدأ وأعلى جودة مرفقة في العلبة.">
+              The sweet spot. Better build quality, easier cable management channels, USB-C on the front panel, and quieter, high-quality fans included out of the box.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Look for:" data-ar="ابحث عن:">Look for:</strong>
+              <span data-en=" Type-C, Velcro straps" data-ar=" منفذ Type-C، أربطة فيلكرو"> Type-C, Velcro straps</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">✨</div>
+            <h3 data-en="Showcase / Dual Chamber" data-ar="حوض السمك (استعراضي)">Showcase / Dual Chamber</h3>
+            <p class="price">~ $160 – $250+</p>
+            <p data-en="Aquarium-style cases that put your parts on display. They require you to buy 6-10 separate RGB fans to look right and perform well. Purely for high-end aesthetics."
+               data-ar="كيسات بنمط حوض السمك تعرض قطعك بفخر. تتطلب منك شراء 6-10 مراوح RGB منفصلة لتبدو جيدة وتؤدي جيداً. مخصصة للمظهر الجمالي الفاخر فقط.">
+              Aquarium-style cases that put your parts on display. They require you to buy 6-10 separate RGB fans to look right and perform well. Purely for high-end aesthetics.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Look for:" data-ar="ابحث عن:">Look for:</strong>
+              <span data-en=" GPU clearance, Fan capacity" data-ar=" مساحة كرت الشاشة، سعة المراوح"> GPU clearance, Fan capacity</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="compatibility" class="section section--soft">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: var(--sp-6);">
+          <span class="eyebrow" data-en="// THE WIRING DIAGRAM" data-ar="// مخطط التوصيلات">// THE WIRING DIAGRAM</span>
+          <h2>
+            <span data-en="Compatibility &amp;" data-ar="التوافق">Compatibility &amp;</span>
+            <span class="section-title" data-en="dependencies" data-ar="والمتطلّبات">dependencies</span><span data-en="." data-ar=".">.</span>
+          </h2>
+          <p class="lead" style="max-width: 62ch; margin: 0 auto;"
+             data-en="The case is a physical boundary. Every component you buy must mathematically fit inside its dimensions. If you don't check clearances, your side panel won't close."
+             data-ar="الكيس هو حد فيزيائي. كل قطعة تشتريها يجب أن تتسع رياضياً داخل أبعاده. إذا لم تتحقق من مساحات الخلوص، فلن يُغلق باب الكيس الجانبي.">
+            The case is a physical boundary. Every component you buy must mathematically fit inside its dimensions. If you don't check clearances, your side panel won't close.
+          </p>
+        </div>
+
+        <div class="dep-diagram scroll-reveal" role="img"
+             aria-label="Case dependencies diagram">
+
+          <div class="dep-node dep-node--top">
+            <strong data-en="GPU" data-ar="كرت الشاشة (GPU)">GPU</strong>
+            <span class="role" data-en="Needs Length Clearance" data-ar="يحتاج مساحة طولية">Needs Length Clearance</span>
+          </div>
+
+          <div class="dep-node dep-node--left">
+            <strong data-en="MOTHERBOARD" data-ar="اللوحة الأم">MOTHERBOARD</strong>
+            <span class="role" data-en="Dictates Form Factor" data-ar="تحدد حجم الكيس (ATX/mATX)">Dictates Form Factor</span>
+          </div>
+
+          <div class="dep-node dep-node--center">
+            <strong data-en="CASE" data-ar="الكيس (CASE)">CASE</strong>
+            <span class="role" data-en="You are here" data-ar="أنت هنا">You are here</span>
+          </div>
+
+          <div class="dep-node dep-node--right">
+            <strong data-en="CPU COOLER" data-ar="مبرد المعالج">CPU COOLER</strong>
+            <span class="role" data-en="Needs Height/Rad Clearance" data-ar="يحتاج مساحة للارتفاع">Needs Height/Rad Clearance</span>
+          </div>
+
+          <div class="dep-node dep-node--bottom">
+            <strong data-en="PSU" data-ar="مزود الطاقة (PSU)">PSU</strong>
+            <span class="role" data-en="Needs Shroud Length" data-ar="يحتاج مساحة سفلية">Needs Shroud Length</span>
+          </div>
+        </div>
+
+        <div class="warning-cards scroll-reveal" style="margin-top: var(--sp-7);">
+
+          <article class="warning-card is-critical">
+            <div class="warn-icon" aria-hidden="true">⚠️</div>
+            <div>
+              <h4 data-en="Always check GPU length vs Case clearance"
+                  data-ar="تحقق دائماً من طول الكرت مقابل مساحة الكيس">
+                Always check GPU length vs Case clearance
+              </h4>
+              <p data-en="Modern graphics cards like the RTX 4080 are extremely long (often exceeding 330mm). Many older or compact Mid-Towers only support up to 315mm. If your GPU is longer than the case's 'Max GPU Clearance' spec, it physically will not fit. You will have to cut the metal or buy a new case. Check the spec sheets for both products before buying."
+                 data-ar="كروت الشاشة الحديثة مثل RTX 4080 طويلة جداً (تتجاوز غالباً 330 ملم). العديد من كيسات Mid-Tower الأقدم أو المدمجة تدعم حتى 315 ملم فقط. إذا كان الكرت أطول من 'أقصى مساحة لكرت الشاشة' المذكورة للكيس، فلن يدخل فيزيائياً. ستضطر لقص المعدن أو شراء كيس جديد. تحقق من أوراق المواصفات للمنتجين قبل الشراء.">
+                Modern graphics cards like the RTX 4080 are extremely long (often exceeding 330mm). Many older or compact Mid-Towers only support up to 315mm. If your GPU is longer than the case's 'Max GPU Clearance' spec, it physically will not fit. You will have to cut the metal or buy a new case. Check the spec sheets for both products before buying.
+              </p>
+            </div>
+          </article>
+
+          <article class="warning-card is-warn">
+            <div class="warn-icon" aria-hidden="true">🔧</div>
+            <div>
+              <h4 data-en="Air cooler height matters"
+                  data-ar="ارتفاع المبرد الهوائي مهم">
+                Air cooler height matters
+              </h4>
+              <p data-en="If you are buying a massive Air Tower cooler (like the Noctua NH-D15), it sticks out very far from the motherboard. If your case is too narrow, the glass side panel will hit the cooler and won't close. Check the 'Max CPU Cooler Height' spec on the case and ensure your cooler is shorter than that number."
+                 data-ar="إذا كنت تشتري مبرداً هوائياً برجياً ضخماً (مثل Noctua NH-D15)، فإنه يبرز بعيداً جداً عن اللوحة الأم. إذا كان الكيس ضيقاً، سيصطدم الباب الزجاجي بالمبرد ولن ينغلق. تحقق من مواصفة 'أقصى ارتفاع لمبرد المعالج' في الكيس وتأكد أن مبردك أقصر من هذا الرقم.">
+                If you are buying a massive Air Tower cooler (like the Noctua NH-D15), it sticks out very far from the motherboard. If your case is too narrow, the glass side panel will hit the cooler and won't close. Check the 'Max CPU Cooler Height' spec on the case and ensure your cooler is shorter than that number.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="tip" class="section">
+      <div class="container">
+        <div class="golden-tip scroll-reveal">
+          <div class="tip-icon">⚡</div>
+          <div>
+            <span class="eyebrow" style="color: var(--color-accent);"
+                  data-en="// SPACE-PC GOLDEN TIP" data-ar="// النصيحة الذهبية من سبيس-بي سي">// SPACE-PC GOLDEN TIP</span>
+            <h3 data-en="Cable management starts with the case." data-ar="ترتيب الأسلاك يبدأ من الكيس.">Cable management starts with the case.</h3>
+            <p data-en="Building a PC is 30% plugging things in and 70% hiding the cables. A cheap $40 case has zero room behind the motherboard, making cable management a nightmare. A good $90 case includes velcro straps, rubber grommets, and a wide back channel that makes your build look like a professional did it. Save yourself the headache and don't cheap out on the chassis."
+               data-ar="تجميع الكمبيوتر هو 30% تركيب قطع و 70% إخفاء للأسلاك. كيس رخيص بـ 40 دولاراً لا يملك أي مساحة خلف اللوحة الأم، مما يجعل ترتيب الأسلاك كابوساً. كيس جيد بـ 90 دولاراً يتضمن أربطة فيلكرو، فتحات مطاطية، ومساراً خلفياً واسعاً يجعل تجميعتك تبدو وكأن محترفاً قام بها. وفر على نفسك الصداع ولا تسترخص في الهيكل.">
+              Building a PC is 30% plugging things in and 70% hiding the cables. A cheap $40 case has zero room behind the motherboard, making cable management a nightmare. A good $90 case includes velcro straps, rubber grommets, and a wide back channel that makes your build look like a professional did it. Save yourself the headache and don't cheap out on the chassis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ink">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="color: var(--color-accent);"
+              data-en="// YOU'RE READY" data-ar="// أنت جاهز">// YOU'RE READY</span>
+        <h2 data-en="The Build is Complete." data-ar="التجميعة اكتملت.">The Build is Complete.</h2>
+        <p style="max-width: 50ch; margin: var(--sp-4) auto var(--sp-6); opacity: 0.85;"
+           data-en="You now understand the Brain, the Memory, the Storage, the Heart, and the Skeleton. You're ready to build."
+           data-ar="لقد فهمت الآن العقل، الذاكرة، التخزين، القلب، والهيكل. أنت الآن مستعد للتجميع.">
+          You now understand the Brain, the Memory, the Storage, the Heart, and the Skeleton. You're ready to build.
+        </p>
+        <a href="index.html#components" class="btn btn--accent btn--lg"
+           data-en="Back to Components" data-ar="العودة للقطع">Back to Components</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+          </div>
+          <p class="footer-tagline"
+             data-en="From zero to your first build — without the jargon."
+             data-ar="من الصفر إلى أوّل تجميعة — بلا مصطلحات معقّدة.">
+            From zero to your first build — without the jargon.
+          </p>
+        </div>
+        <div>
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+            <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+            <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Account" data-ar="الحساب">Account</h4>
+          <ul>
+            <li><a href="login.html"  data-en="Login"   data-ar="تسجيل الدخول">Login</a></li>
+            <li><a href="signup.html" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+          <ul>
+            <li><a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+            <li><a href="#" data-en="Terms"   data-ar="الشروط">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year">2026</span> · Space-PC ·
+        <span data-en="A CPIS-358 student project" data-ar="مشروع طلاّبي لمقرر CPIS-358">A CPIS-358 student project</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+      console.log('%cSpace-PC ✦ Case page loaded — the skeleton of every build.',
+                  'color:#3b82f6; font-weight:700; font-family:monospace;');
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RAM explained — what memory does, DDR4 vs DDR5, how much you need, and how to choose the right kit for your build." />
+  <title data-en="RAM | The Workspace — Space-PC" data-ar="الذاكرة العشوائية (RAM) | مساحة العمل — سبيس-بي سي">RAM | The Workspace — Space-PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .breadcrumbs {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      padding-top: var(--sp-5);
+      margin-bottom: 0;
+    }
+    .breadcrumbs a { color: var(--color-muted); border-bottom: 1px dashed transparent; transition: all var(--t-fast); }
+    .breadcrumbs a:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .breadcrumbs .sep { margin: 0 var(--sp-2); color: var(--color-soft); }
+
+    .component-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      border-radius: var(--r-sm);
+      margin-bottom: var(--sp-4);
+      text-transform: uppercase;
+    }
+
+    .ram-illustration {
+      width: 100%;
+      height: 100%;
+      max-width: 360px;
+      max-height: 360px;
+    }
+
+    .quick-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      padding: var(--sp-5);
+      background: var(--color-surface);
+      border: var(--border-base);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--sp-7);
+    }
+    .quick-jump a {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--color-bg);
+      border: var(--border-thin);
+      border-radius: var(--r-sm);
+      transition: all var(--t-fast);
+    }
+    .quick-jump a:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      color: var(--color-ink);
+    }
+    .quick-jump strong {
+      align-self: center;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link" data-en="Skip to content" data-ar="تخطّي إلى المحتوى">Skip to content</a>
+
+  <!-- Master Page Header -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+          <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+          <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <a href="login.html"  class="btn btn--ghost"   data-en="Login"   data-ar="تسجيل الدخول">Login</a>
+        <a href="signup.html" class="btn btn--primary" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ============= COMPONENT HEADER ============= -->
+    <section>
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html"   data-en="Home"          data-ar="الرئيسية">Home</a>
+          <span class="sep">/</span>
+          <a href="index.html#components" data-en="Components" data-ar="القطع">Components</a>
+          <span class="sep">/</span>
+          <span data-en="RAM" data-ar="الذاكرة العشوائية (RAM)">RAM</span>
+        </nav>
+
+        <div class="component-header">
+          <div class="reveal">
+            <span class="component-tag" data-en="// COMPONENT 03" data-ar="// القطعة 03">// COMPONENT 03</span>
+            <h1>
+              <span data-en="RAM." data-ar="الذاكرة العشوائية (RAM).">RAM.</span><br />
+              <span class="section-title"
+                    data-en="The Workspace."
+                    data-ar="مساحة العمل.">The Workspace.</span>
+            </h1>
+            <p class="lead" style="color: var(--color-muted);"
+               data-en="Every open tab. Every running game. Every app you're juggling. It all lives in RAM — and when it runs out, everything slows to a crawl."
+               data-ar="كل تبويب مفتوح. كل لعبة تعمل. كل تطبيق تتنقّل بينه. كلها تعيش في الذاكرة العشوائية (RAM) — وحين تنفد، كل شيء يتباطأ بشكل ملحوظ.">
+              Every open tab. Every running game. Every app you're juggling. It all lives in RAM — and when it runs out, everything slows to a crawl.
+            </p>
+
+            <div class="definition reveal reveal-delay-1">
+              <strong data-en="In plain English:" data-ar="بكل بساطة:">In plain English:</strong>
+              <span data-en="RAM (Random Access Memory) is your computer's short-term memory. It holds everything your CPU is actively working on right now — programs, files, browser tabs. More RAM means more things can stay open and ready at once."
+                    data-ar="الذاكرة العشوائية (RAM) هي الذاكرة قصيرة المدى لجهازك. تحتفظ بكل ما يعمل عليه المعالج (CPU) الآن — برامج، ملفات، تبويبات المتصفح. ذاكرة أكثر تعني إمكانية إبقاء أشياء أكثر مفتوحة وجاهزة في آنٍ واحد.">
+                RAM (Random Access Memory) is your computer's short-term memory. It holds everything your CPU is actively working on right now — programs, files, browser tabs. More RAM means more things can stay open and ready at once.
+              </span>
+            </div>
+          </div>
+
+          <!-- RAM SVG Illustration -->
+          <div class="component-image reveal reveal-delay-2">
+            <svg class="ram-illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ram-svg-title">
+              <title id="ram-svg-title"
+                     data-en="Illustration of a RAM memory stick"
+                     data-ar="رسم توضيحي لعصا ذاكرة RAM">Modern RAM stick illustration</title>
+
+              <!-- PCB Board body -->
+              <rect x="60" y="130" width="280" height="100" rx="4" fill="#1a3a2a" stroke="#0a0a0a" stroke-width="3"/>
+
+              <!-- Gold contacts at bottom -->
+              <g fill="#fde047" stroke="#0a0a0a" stroke-width="1.5">
+                <rect x="75"  y="210" width="12" height="30" rx="2"/>
+                <rect x="95"  y="210" width="12" height="30" rx="2"/>
+                <rect x="115" y="210" width="12" height="30" rx="2"/>
+                <rect x="135" y="210" width="12" height="30" rx="2"/>
+                <rect x="155" y="210" width="12" height="30" rx="2"/>
+                <rect x="175" y="210" width="12" height="30" rx="2"/>
+                <rect x="195" y="210" width="12" height="30" rx="2"/>
+                <rect x="215" y="210" width="12" height="30" rx="2"/>
+                <rect x="235" y="210" width="12" height="30" rx="2"/>
+                <rect x="255" y="210" width="12" height="30" rx="2"/>
+                <rect x="275" y="210" width="12" height="30" rx="2"/>
+                <rect x="295" y="210" width="12" height="30" rx="2"/>
+              </g>
+
+              <!-- Notch in contacts (keying notch) -->
+              <rect x="218" y="208" width="14" height="36" rx="2" fill="#1a3a2a" stroke="#0a0a0a" stroke-width="1.5"/>
+
+              <!-- Memory chips on top surface -->
+              <g fill="#ec4899" stroke="#0a0a0a" stroke-width="2">
+                <rect x="80"  y="145" width="38" height="30" rx="3"/>
+                <rect x="130" y="145" width="38" height="30" rx="3"/>
+                <rect x="180" y="145" width="38" height="30" rx="3"/>
+                <rect x="230" y="145" width="38" height="30" rx="3"/>
+                <rect x="280" y="145" width="38" height="30" rx="3"/>
+              </g>
+
+              <!-- Circuit traces on PCB -->
+              <g stroke="#2a5a3a" stroke-width="1.5" fill="none">
+                <line x1="99"  y1="175" x2="99"  y2="210"/>
+                <line x1="149" y1="175" x2="149" y2="210"/>
+                <line x1="199" y1="175" x2="199" y2="210"/>
+                <line x1="249" y1="175" x2="249" y2="210"/>
+                <line x1="299" y1="175" x2="299" y2="210"/>
+                <line x1="80"  y1="185" x2="320" y2="185"/>
+              </g>
+
+              <!-- Small dots on chips -->
+              <g fill="#fff" opacity="0.6">
+                <circle cx="92"  cy="158" r="2"/>
+                <circle cx="142" cy="158" r="2"/>
+                <circle cx="192" cy="158" r="2"/>
+                <circle cx="242" cy="158" r="2"/>
+                <circle cx="292" cy="158" r="2"/>
+              </g>
+
+              <!-- Heat spreader / top bar -->
+              <rect x="55" y="120" width="290" height="18" rx="4" fill="#c0c0c0" stroke="#0a0a0a" stroke-width="2.5"/>
+              <!-- Metallic shine line -->
+              <line x1="60" y1="126" x2="340" y2="126" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+
+              <!-- Label on heat spreader -->
+              <text x="200" y="133" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" font-weight="700" fill="#0a0a0a">DDR5 · 32GB · 6000MHz</text>
+
+              <!-- Label below -->
+              <text x="200" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="700" fill="#0a0a0a">RAM</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Quick jump -->
+        <div class="quick-jump scroll-reveal" aria-label="Section quick links">
+          <strong data-en="Jump to:" data-ar="انتقل إلى:">Jump to:</strong>
+          <a href="#types"         data-en="DDR4 vs DDR5"   data-ar="DDR4 مقابل DDR5">DDR4 vs DDR5</a>
+          <a href="#howmuch"       data-en="How Much?"      data-ar="كم تحتاج؟">How Much?</a>
+          <a href="#standards"     data-en="Standards"      data-ar="المعايير">Standards</a>
+          <a href="#buying"        data-en="Buying Guide"   data-ar="دليل الشراء">Buying Guide</a>
+          <a href="#compatibility" data-en="Compatibility"  data-ar="التوافق">Compatibility</a>
+          <a href="#tip"           data-en="Golden Tip"     data-ar="النصيحة الذهبية">Golden Tip</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= DDR4 vs DDR5 ============= -->
+    <section id="types" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE BIG CHOICE" data-ar="// الاختيار الكبير">// THE BIG CHOICE</span>
+        <h2>
+          <span data-en="DDR4 vs" data-ar="DDR4 مقابل">DDR4 vs</span>
+          <span class="section-title" data-en="DDR5" data-ar="DDR5">DDR5</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The generation of RAM you buy is locked to your motherboard and CPU. You can't mix them. Here's what separates them — and which one you should be buying in 2026."
+           data-ar="جيل الذاكرة (RAM) الذي تشتريه مرتبط بلوحتك الأم ومعالجك. لا يمكن خلطهما. إليك ما يفصلهما — وأيّهما يجب أن تشتري في 2026.">
+          The generation of RAM you buy is locked to your motherboard and CPU. You can't mix them. Here's what separates them — and which one you should be buying in 2026.
+        </p>
+
+        <div class="brands-grid scroll-reveal">
+
+          <!-- DDR4 card -->
+          <article class="brand-card">
+            <h3>DDR4</h3>
+            <p class="tagline" data-en="// RELEASED 2014 · STILL WIDELY USED"
+                              data-ar="// إصدار 2014 · لا يزال مستخدماً بشكل واسع">// RELEASED 2014 · STILL WIDELY USED</p>
+            <p data-en="The previous generation — and still a solid choice for budget builds or systems upgrading from an existing DDR4 platform. Slightly slower than DDR5 but more affordable and widely available."
+               data-ar="الجيل السابق — ولا يزال خياراً جيداً للتجميعات الاقتصادية أو الأنظمة التي تُرقَّى من منصة DDR4 موجودة. أبطأ قليلاً من DDR5 لكنه أرخص وأوسع انتشاراً.">
+              The previous generation — and still a solid choice for budget builds or systems upgrading from an existing DDR4 platform. Slightly slower than DDR5 but more affordable and widely available.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Speed range" data-ar="نطاق السرعة">Speed range</strong> — <span data-en="2133 – 4800 MHz" data-ar="2133 – 4800 ميجاهرتز">2133 – 4800 MHz</span></li>
+              <li><strong data-en="Voltage" data-ar="الجهد">Voltage</strong> — <span data-en="1.2V standard" data-ar="1.2 فولت معياري">1.2V standard</span></li>
+              <li><strong data-en="Max per stick" data-ar="أقصى حجم للقطعة">Max per stick</strong> — <span data-en="32 GB" data-ar="32 جيجابايت">32 GB</span></li>
+              <li><strong data-en="Platform" data-ar="المنصة">Platform</strong> — <span data-en="Intel LGA 1700 (some) · AMD AM4" data-ar="Intel LGA 1700 (بعضها) · AMD AM4">Intel LGA 1700 (some) · AMD AM4</span></li>
+            </ul>
+          </article>
+
+          <!-- DDR5 card -->
+          <article class="brand-card is-amd">
+            <h3>DDR5</h3>
+            <p class="tagline" data-en="// RELEASED 2021 · THE CURRENT STANDARD"
+                              data-ar="// إصدار 2021 · المعيار الحالي">// RELEASED 2021 · THE CURRENT STANDARD</p>
+            <p data-en="The current generation and the right choice for any new build in 2026. Faster bandwidth, higher capacities, and it's the only option for AMD's AM5 platform. Prices have dropped significantly and are now very close to DDR4."
+               data-ar="الجيل الحالي والخيار الصحيح لأي تجميعة جديدة في 2026. عرض نطاق أسرع، سعات أعلى، وهو الخيار الوحيد لمنصة AMD AM5. انخفضت أسعاره بشكل ملحوظ وأصبحت قريبة جداً من DDR4.">
+              The current generation and the right choice for any new build in 2026. Faster bandwidth, higher capacities, and it's the only option for AMD's AM5 platform. Prices have dropped significantly and are now very close to DDR4.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Speed range" data-ar="نطاق السرعة">Speed range</strong> — <span data-en="4800 – 8000+ MHz" data-ar="4800 – 8000+ ميجاهرتز">4800 – 8000+ MHz</span></li>
+              <li><strong data-en="Voltage" data-ar="الجهد">Voltage</strong> — <span data-en="1.1V standard" data-ar="1.1 فولت معياري">1.1V standard</span></li>
+              <li><strong data-en="Max per stick" data-ar="أقصى حجم للقطعة">Max per stick</strong> — <span data-en="64 GB" data-ar="64 جيجابايت">64 GB</span></li>
+              <li><strong data-en="Platform" data-ar="المنصة">Platform</strong> — <span data-en="Intel LGA 1700/1851 · AMD AM5" data-ar="Intel LGA 1700/1851 · AMD AM5">Intel LGA 1700/1851 · AMD AM5</span></li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= HOW MUCH RAM? ============= -->
+    <section id="howmuch" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE REAL QUESTION" data-ar="// السؤال الحقيقي">// THE REAL QUESTION</span>
+        <h2>
+          <span data-en="How much" data-ar="كم تحتاج">How much</span>
+          <span class="section-title" data-en="do you need?" data-ar="من الذاكرة؟">do you need?</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="More RAM doesn't always mean more performance. The sweet spot depends entirely on what you're doing. Here's a straightforward breakdown."
+           data-ar="الذاكرة الأكثر لا تعني دائماً أداءً أفضل. النقطة المثلى تعتمد كلياً على ما تفعله. إليك تفصيل مباشر.">
+          More RAM doesn't always mean more performance. The sweet spot depends entirely on what you're doing. Here's a straightforward breakdown.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <!-- 8 GB -->
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">💾</div>
+            <h3 data-en="8 GB" data-ar="8 جيجابايت">8 GB</h3>
+            <p class="price" data-en="The bare minimum" data-ar="الحد الأدنى">The bare minimum</p>
+            <p data-en="Enough for basic office work and web browsing — if you keep tabs under control. In 2026, 8 GB will feel tight on modern operating systems alone. Avoid for new builds."
+               data-ar="كافٍ للأعمال المكتبية الأساسية وتصفّح الإنترنت — إن أبقيت التبويبات تحت السيطرة. في 2026، 8 جيجابايت ستبدو ضيّقة على أنظمة التشغيل الحديثة وحدها. تجنّبها في التجميعات الجديدة.">
+              Enough for basic office work and web browsing — if you keep tabs under control. In 2026, 8 GB will feel tight on modern operating systems alone. Avoid for new builds.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Budget office PC only" data-ar=" حواسيب مكتبية اقتصادية فقط"> Budget office PC only</span>
+            </p>
+          </article>
+
+          <!-- 16 GB -->
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">🎮</div>
+            <h3 data-en="16 GB" data-ar="16 جيجابايت">16 GB</h3>
+            <p class="price" data-en="The sweet spot" data-ar="النقطة المثالية">The sweet spot</p>
+            <p data-en="The standard for gaming and everyday computing in 2026. Handles most modern games, multitasking, and light creative work without breaking a sweat. Recommended for most users."
+               data-ar="المعيار للألعاب والحوسبة اليومية في 2026. يتعامل مع معظم الألعاب الحديثة، تعدّد المهام، والأعمال الإبداعية الخفيفة بسهولة. موصى به لمعظم المستخدمين.">
+              The standard for gaming and everyday computing in 2026. Handles most modern games, multitasking, and light creative work without breaking a sweat. Recommended for most users.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Gaming, daily use" data-ar=" ألعاب، الاستخدام اليومي"> Gaming, daily use</span>
+            </p>
+          </article>
+
+          <!-- 32 GB -->
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🎬</div>
+            <h3 data-en="32 GB" data-ar="32 جيجابايت">32 GB</h3>
+            <p class="price" data-en="The creator's choice" data-ar="خيار صانع المحتوى">The creator's choice</p>
+            <p data-en="Ideal for video editing, 3D rendering, heavy multitasking, and future-proofing your build. If you stream while gaming or run virtual machines, this is your target. Increasingly the new sweet spot."
+               data-ar="مثالي لتحرير الفيديو، التصيير ثلاثي الأبعاد، تعدّد المهام المكثّف، وتأمين مستقبل تجميعتك. إن كنت تبثّ أثناء اللعب أو تشغّل أجهزة افتراضية، فهذا هدفك. يصبح بشكل متزايد النقطة المثالية الجديدة.">
+              Ideal for video editing, 3D rendering, heavy multitasking, and future-proofing your build. If you stream while gaming or run virtual machines, this is your target. Increasingly the new sweet spot.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Content creation, streaming" data-ar=" صناعة محتوى، البث"> Content creation, streaming</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= MODERN STANDARDS (TABLE) ============= -->
+    <section id="standards" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// 2026 SNAPSHOT" data-ar="// لقطة 2026">// 2026 SNAPSHOT</span>
+        <h2>
+          <span data-en="Modern" data-ar="المعايير">Modern</span>
+          <span class="section-title" data-en="standards" data-ar="الحديثة">standards</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The specs you'll see on every RAM product page — and what they actually mean. Speed, latency, capacity: here's your decoder."
+           data-ar="المواصفات التي تراها في كل صفحة منتج RAM — وما تعنيه فعلاً. السرعة، الكمون، السعة: إليك مفكّ شيفرتك.">
+          The specs you'll see on every RAM product page — and what they actually mean. Speed, latency, capacity: here's your decoder.
+        </p>
+
+        <table class="standards-table scroll-reveal">
+          <thead>
+            <tr>
+              <th data-en="Standard" data-ar="المعيار">Standard</th>
+              <th data-en="What it means" data-ar="ما يعنيه">What it means</th>
+              <th data-en="Status (2026)" data-ar="الحالة (2026)">Status (2026)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>DDR5-6000</strong></td>
+              <td data-en="The gaming sweet spot for DDR5. Best balance of speed and latency."
+                  data-ar="النقطة المثالية للألعاب مع DDR5. أفضل توازن بين السرعة والكمون.">
+                The gaming sweet spot for DDR5. Best balance of speed and latency.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>DDR5-4800</strong></td>
+              <td data-en="JEDEC baseline for DDR5. Stable and compatible — good budget DDR5 starting point."
+                  data-ar="خط الأساس JEDEC لـ DDR5. مستقر ومتوافق — نقطة انطلاق جيدة للـ DDR5 الاقتصادي.">
+                JEDEC baseline for DDR5. Stable and compatible — good budget DDR5 starting point.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>DDR4-3200</strong></td>
+              <td data-en="The DDR4 sweet spot. Widely compatible, affordable, and still performs well."
+                  data-ar="النقطة المثالية لـ DDR4. متوافقة على نطاق واسع، بأسعار معقولة، ولا تزال تؤدّي جيداً.">
+                The DDR4 sweet spot. Widely compatible, affordable, and still performs well.
+              </td>
+              <td><span class="status aging" data-en="AGING" data-ar="يتقادم">AGING</span></td>
+            </tr>
+            <tr>
+              <td><strong>XMP / EXPO</strong></td>
+              <td data-en="Intel's XMP and AMD's EXPO are one-click overclocking profiles. Enable in BIOS to reach advertised speeds."
+                  data-ar="XMP من Intel و EXPO من AMD هما ملفات رفع تردد بنقرة واحدة. فعّلهما في BIOS للوصول إلى السرعات المُعلنة.">
+                Intel's XMP and AMD's EXPO are one-click overclocking profiles. Enable in BIOS to reach advertised speeds.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>CL (CAS Latency)</strong></td>
+              <td data-en="Lower CL = faster response. CL30 is excellent for DDR5. Matters less than speed tier for gaming."
+                  data-ar="CL أقل = استجابة أسرع. CL30 ممتاز لـ DDR5. أهميته أقل من فئة السرعة للألعاب.">
+                Lower CL = faster response. CL30 is excellent for DDR5. Matters less than speed tier for gaming.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>Dual Channel</strong></td>
+              <td data-en="Two sticks instead of one. Doubles memory bandwidth — always run two matched sticks."
+                  data-ar="عصّتان بدل واحدة. يضاعف عرض نطاق الذاكرة — شغّل دائماً عصّتين متطابقتين.">
+                Two sticks instead of one. Doubles memory bandwidth — always run two matched sticks.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>ECC RAM</strong></td>
+              <td data-en="Error-correcting memory for servers and workstations. Not needed for consumer gaming builds."
+                  data-ar="ذاكرة تصحيح الأخطاء للخوادم ومحطات العمل. غير مطلوبة لتجميعات الألعاب الاستهلاكية.">
+                Error-correcting memory for servers and workstations. Not needed for consumer gaming builds.
+              </td>
+              <td><span class="status legacy" data-en="WORKSTATION" data-ar="محطة عمل">WORKSTATION</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============= BUYING GUIDE ============= -->
+    <section id="buying" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// PICK YOUR KIT" data-ar="// اختر طقمك">// PICK YOUR KIT</span>
+        <h2>
+          <span data-en="Buying" data-ar="دليل">Buying</span>
+          <span class="section-title" data-en="guide" data-ar="الشراء">guide</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Capacity matters more than speed for most people. Get the right amount first, then worry about frequency. A 32 GB DDR5-4800 kit beats a 16 GB DDR5-6000 kit for productivity every time."
+           data-ar="السعة تهمّ أكثر من السرعة لمعظم الناس. احصل أولاً على الكمية الصحيحة، ثم اهتمّ بالتردد. طقم 32 جيجابايت DDR5-4800 يتفوّق على طقم 16 جيجابايت DDR5-6000 في الإنتاجية في كل مرة.">
+          Capacity matters more than speed for most people. Get the right amount first, then worry about frequency. A 32 GB DDR5-4800 kit beats a 16 GB DDR5-6000 kit for productivity every time.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <!-- Budget -->
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">🏷️</div>
+            <h3 data-en="Budget Build" data-ar="تجميعة اقتصادية">Budget Build</h3>
+            <p class="price">~ $40 – $70</p>
+            <p data-en="16 GB DDR4-3200 (2×8 GB) for an AM4 or older Intel platform. Gets the job done. If you're on a new AM5 board, go 16 GB DDR5-4800 at the same price point."
+               data-ar="16 جيجابايت DDR4-3200 (2×8 جيجابايت) لمنصة AM4 أو Intel أقدم. ينجز المهمة. إن كنت على لوحة AM5 جديدة، خذ 16 جيجابايت DDR5-4800 بنفس السعر.">
+              16 GB DDR4-3200 (2×8 GB) for an AM4 or older Intel platform. Gets the job done. If you're on a new AM5 board, go 16 GB DDR5-4800 at the same price point.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 16 GB DDR4-3200 or DDR5-4800" data-ar=" 16 جيجابايت DDR4-3200 أو DDR5-4800"> 16 GB DDR4-3200 or DDR5-4800</span>
+            </p>
+          </article>
+
+          <!-- Gaming -->
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">⚡</div>
+            <h3 data-en="Gaming Build" data-ar="تجميعة ألعاب">Gaming Build</h3>
+            <p class="price">~ $80 – $140</p>
+            <p data-en="16 GB DDR5-6000 (2×8 GB) is the gamer's sweet spot in 2026. Hits the ideal speed for AMD's AM5 Infinity Fabric and Intel's memory controller. Enable XMP/EXPO in BIOS."
+               data-ar="16 جيجابايت DDR5-6000 (2×8 جيجابايت) هي النقطة المثالية للاعب في 2026. تضرب السرعة المثالية لـ Infinity Fabric من AMD ومتحكّم ذاكرة Intel. فعّل XMP/EXPO في BIOS.">
+              16 GB DDR5-6000 (2×8 GB) is the gamer's sweet spot in 2026. Hits the ideal speed for AMD's AM5 Infinity Fabric and Intel's memory controller. Enable XMP/EXPO in BIOS.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 16 GB DDR5-6000 (2×8 GB)" data-ar=" 16 جيجابايت DDR5-6000 (2×8 جيجابايت)"> 16 GB DDR5-6000 (2×8 GB)</span>
+            </p>
+          </article>
+
+          <!-- Creator / Pro -->
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🖥️</div>
+            <h3 data-en="Creator / Pro" data-ar="صانع محتوى / محترف">Creator / Pro</h3>
+            <p class="price">~ $150 – $280</p>
+            <p data-en="32 GB DDR5-6000 (2×16 GB) for video editing, 3D, streaming, and heavy multitasking. Future-proofed for the next 3–4 years. Don't overpay for DDR5-7200+ — the gains are minimal for non-synthetic workloads."
+               data-ar="32 جيجابايت DDR5-6000 (2×16 جيجابايت) لتحرير الفيديو، ثلاثي الأبعاد، البث، وتعدّد المهام المكثّف. مؤمَّن للمستقبل لـ 3-4 سنوات القادمة. لا تدفع زيادة مقابل DDR5-7200+ — الفوارق ضئيلة للأعمال الحقيقية.">
+              32 GB DDR5-6000 (2×16 GB) for video editing, 3D, streaming, and heavy multitasking. Future-proofed for the next 3–4 years. Don't overpay for DDR5-7200+ — the gains are minimal for non-synthetic workloads.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 32 GB DDR5-6000 (2×16 GB)" data-ar=" 32 جيجابايت DDR5-6000 (2×16 جيجابايت)"> 32 GB DDR5-6000 (2×16 GB)</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= COMPATIBILITY ============= -->
+    <section id="compatibility" class="section section--soft">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: var(--sp-6);">
+          <span class="eyebrow" data-en="// THE WIRING DIAGRAM" data-ar="// مخطط التوصيلات">// THE WIRING DIAGRAM</span>
+          <h2>
+            <span data-en="Compatibility &amp;" data-ar="التوافق">Compatibility &amp;</span>
+            <span class="section-title" data-en="dependencies" data-ar="والمتطلّبات">dependencies</span><span data-en="." data-ar=".">.</span>
+          </h2>
+          <p class="lead" style="max-width: 62ch; margin: 0 auto;"
+             data-en="RAM doesn't work in isolation. Your motherboard dictates which generation fits, the CPU's memory controller sets the speed ceiling, and the slot count determines if you're running dual channel. Get any of these wrong and your kit won't POST — or won't run at its advertised speed."
+             data-ar="الذاكرة العشوائية (RAM) لا تعمل بمعزل. لوحتك الأم تحدّد أيّ جيل يتناسب معها، متحكّم ذاكرة المعالج (CPU) يضع سقف السرعة، وعدد الفتحات يحدّد إن كنت تشغّل قناتين. أخطئ في أيٍّ من هذه وطقمك لن يعمل — أو لن يعمل بسرعته المُعلنة.">
+            RAM doesn't work in isolation. Your motherboard dictates which generation fits, the CPU's memory controller sets the speed ceiling, and the slot count determines if you're running dual channel. Get any of these wrong and your kit won't POST — or won't run at its advertised speed.
+          </p>
+        </div>
+
+        <!-- HUB-AND-SPOKE RELATIONSHIP DIAGRAM -->
+        <div class="dep-diagram scroll-reveal" role="img"
+             aria-label="RAM dependencies diagram">
+
+          <div class="dep-node dep-node--top">
+            <strong data-en="CPU" data-ar="المعالج (CPU)">CPU</strong>
+            <span class="role" data-en="Sets speed ceiling" data-ar="يحدّد سقف السرعة">Sets speed ceiling</span>
+          </div>
+
+          <div class="dep-node dep-node--left">
+            <strong data-en="MOTHERBOARD" data-ar="اللوحة الأم">MOTHERBOARD</strong>
+            <span class="role" data-en="Slot type host" data-ar="حاضنة الفتحة">Slot type host</span>
+          </div>
+
+          <div class="dep-node dep-node--center">
+            <strong data-en="RAM" data-ar="الذاكرة (RAM)">RAM</strong>
+            <span class="role" data-en="You are here" data-ar="أنت هنا">You are here</span>
+          </div>
+
+          <div class="dep-node dep-node--right">
+            <strong data-en="PSU" data-ar="مزود الطاقة (PSU)">PSU</strong>
+            <span class="role" data-en="Supplies power" data-ar="يزوّد الطاقة">Supplies power</span>
+          </div>
+
+          <div class="dep-node dep-node--bottom">
+            <strong data-en="BIOS" data-ar="البايوس (BIOS)">BIOS</strong>
+            <span class="role" data-en="Enables XMP/EXPO" data-ar="يفعّل XMP/EXPO">Enables XMP/EXPO</span>
+          </div>
+        </div>
+
+        <!-- TIER-BASED REQUIREMENTS -->
+        <div style="text-align: center; margin-top: var(--sp-7);">
+          <h3 data-en="What each platform needs" data-ar="ما تحتاجه كل منصة">
+            What each platform needs
+          </h3>
+          <p style="color: var(--color-muted); max-width: 50ch; margin: 0 auto;"
+             data-en="Match your CPU and motherboard platform to the correct RAM type and speed below."
+             data-ar="طابق منصة معالجك ولوحتك الأم مع نوع وسرعة الذاكرة الصحيحة أدناه.">
+            Match your CPU and motherboard platform to the correct RAM type and speed below.
+          </p>
+        </div>
+
+        <div class="compat-grid scroll-reveal">
+
+          <!-- AMD AM5 -->
+          <article class="compat-card tier-entry">
+            <h4 data-en="AMD AM5 Platform" data-ar="منصة AMD AM5">AMD AM5 Platform</h4>
+            <p class="compat-example"
+               data-en="e.g. Ryzen 7000 · 8000 · 9000 series"
+               data-ar="مثل: سلسلة Ryzen 7000 · 8000 · 9000">e.g. Ryzen 7000 · 8000 · 9000 series</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">T</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="RAM type" data-ar="نوع الذاكرة">RAM type</span>
+                <span class="compat-value" data-en="DDR5 ONLY. DDR4 is physically incompatible." data-ar="DDR5 فقط. DDR4 غير متوافق فيزيائياً.">DDR5 ONLY. DDR4 is physically incompatible.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Sweet spot speed" data-ar="سرعة النقطة المثالية">Sweet spot speed</span>
+                <span class="compat-value" data-en="DDR5-6000 — matches the Infinity Fabric ratio." data-ar="DDR5-6000 — يطابق نسبة Infinity Fabric.">DDR5-6000 — matches the Infinity Fabric ratio.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Profile" data-ar="الملف الشخصي">Profile</span>
+                <span class="compat-value" data-en="Enable EXPO in BIOS to hit advertised speeds." data-ar="فعّل EXPO في BIOS للوصول إلى السرعات المُعلنة.">Enable EXPO in BIOS to hit advertised speeds.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Channels" data-ar="القنوات">Channels</span>
+                <span class="compat-value" data-en="2 sticks minimum for dual-channel — install in slots A2 + B2." data-ar="عصّتان على الأقل للقناتين — ركّبهما في الفتحتين A2 + B2.">2 sticks minimum for dual-channel — install in slots A2 + B2.</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- AMD AM4 -->
+          <article class="compat-card tier-mid">
+            <h4 data-en="AMD AM4 Platform" data-ar="منصة AMD AM4">AMD AM4 Platform</h4>
+            <p class="compat-example"
+               data-en="e.g. Ryzen 3000 · 5000 series"
+               data-ar="مثل: سلسلة Ryzen 3000 · 5000">e.g. Ryzen 3000 · 5000 series</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">T</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="RAM type" data-ar="نوع الذاكرة">RAM type</span>
+                <span class="compat-value" data-en="DDR4 ONLY. DDR5 is not supported on AM4." data-ar="DDR4 فقط. DDR5 غير مدعوم على AM4.">DDR4 ONLY. DDR5 is not supported on AM4.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Sweet spot speed" data-ar="سرعة النقطة المثالية">Sweet spot speed</span>
+                <span class="compat-value" data-en="DDR4-3600 — optimal Infinity Fabric speed for Ryzen 5000." data-ar="DDR4-3600 — السرعة المثالية لـ Infinity Fabric مع Ryzen 5000.">DDR4-3600 — optimal Infinity Fabric speed for Ryzen 5000.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Profile" data-ar="الملف الشخصي">Profile</span>
+                <span class="compat-value" data-en="Enable XMP in BIOS. Some boards cap at DDR4-3200." data-ar="فعّل XMP في BIOS. بعض اللوحات تحدّ عند DDR4-3200.">Enable XMP in BIOS. Some boards cap at DDR4-3200.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Channels" data-ar="القنوات">Channels</span>
+                <span class="compat-value" data-en="Dual channel strongly recommended — 2×8 GB or 2×16 GB." data-ar="القناتان يُنصح بهما بشدّة — 2×8 جيجابايت أو 2×16 جيجابايت.">Dual channel strongly recommended — 2×8 GB or 2×16 GB.</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Intel LGA 1700/1851 -->
+          <article class="compat-card tier-high">
+            <h4 data-en="Intel LGA 1700/1851" data-ar="Intel LGA 1700/1851">Intel LGA 1700/1851</h4>
+            <p class="compat-example"
+               data-en="e.g. Core i5/i7/i9 12th–15th Gen"
+               data-ar="مثل: Core i5/i7/i9 الجيل 12–15">e.g. Core i5/i7/i9 12th–15th Gen</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">T</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="RAM type" data-ar="نوع الذاكرة">RAM type</span>
+                <span class="compat-value" data-en="DDR4 or DDR5 — depends on which motherboard you pick." data-ar="DDR4 أو DDR5 — يعتمد على اللوحة الأم التي تختارها.">DDR4 or DDR5 — depends on which motherboard you pick.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Sweet spot speed" data-ar="سرعة النقطة المثالية">Sweet spot speed</span>
+                <span class="compat-value" data-en="DDR5-6400 for 13th/14th Gen · DDR5-6000 for 12th Gen." data-ar="DDR5-6400 للجيل 13/14 · DDR5-6000 للجيل 12.">DDR5-6400 for 13th/14th Gen · DDR5-6000 for 12th Gen.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Profile" data-ar="الملف الشخصي">Profile</span>
+                <span class="compat-value" data-en="Enable XMP 3.0 in BIOS for Intel boards." data-ar="فعّل XMP 3.0 في BIOS للوحات Intel.">Enable XMP 3.0 in BIOS for Intel boards.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Channels" data-ar="القنوات">Channels</span>
+                <span class="compat-value" data-en="2 sticks for dual channel — check manual for correct slot order." data-ar="عصّتان للقناتين — راجع الدليل لترتيب الفتحات الصحيح.">2 sticks for dual channel — check manual for correct slot order.</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- WARNING CALLOUTS -->
+        <div class="warning-cards scroll-reveal">
+
+          <article class="warning-card is-critical">
+            <div class="warn-icon" aria-hidden="true">⚠️</div>
+            <div>
+              <h4 data-en="Your RAM might not run at its advertised speed out of the box"
+                  data-ar="ذاكرتك قد لا تعمل بسرعتها المُعلنة من أوّل تشغيل">
+                Your RAM might not run at its advertised speed out of the box
+              </h4>
+              <p data-en="By default, most motherboards boot RAM at the JEDEC baseline speed — DDR5-4800 or DDR4-2133 — regardless of what the kit is rated for. You must go into the BIOS and enable XMP (Intel) or EXPO (AMD) to unlock the advertised speed. This is not overclocking — it's activating a tested and certified profile burned into the RAM stick itself. Skipping this step means you're leaving significant performance on the table without knowing it."
+                 data-ar="افتراضياً، معظم اللوحات الأم تشغّل الذاكرة بسرعة JEDEC الأساسية — DDR5-4800 أو DDR4-2133 — بغض النظر عن التقييم المُعلن للطقم. يجب عليك الدخول إلى BIOS وتفعيل XMP (Intel) أو EXPO (AMD) لفتح السرعة المُعلنة. هذا ليس رفع تردد — إنه تفعيل ملف معتمد ومُختبر محفور في عصّة الذاكرة نفسها. تجاهل هذه الخطوة يعني تركك أداءً كبيراً على الطاولة دون أن تعرف.">
+                By default, most motherboards boot RAM at the JEDEC baseline speed — DDR5-4800 or DDR4-2133 — regardless of what the kit is rated for. You must go into the BIOS and enable XMP (Intel) or EXPO (AMD) to unlock the advertised speed. This is not overclocking — it's activating a tested and certified profile burned into the RAM stick itself. Skipping this step means you're leaving significant performance on the table without knowing it.
+              </p>
+            </div>
+          </article>
+
+          <article class="warning-card is-warn">
+            <div class="warn-icon" aria-hidden="true">🔧</div>
+            <div>
+              <h4 data-en="Single stick = half the bandwidth"
+                  data-ar="عصّة واحدة = نصف عرض النطاق">
+                Single stick = half the bandwidth
+              </h4>
+              <p data-en="Many people build with a single 16 GB stick thinking they can 'add another later.' While true, running in single-channel mode cuts your memory bandwidth in half compared to dual-channel — and bandwidth is what feeds your CPU and integrated GPU. In gaming, this can cost you 10–20% framerate depending on the title and resolution. Always buy in matched pairs: 2×8 GB instead of 1×16 GB, 2×16 GB instead of 1×32 GB. The pair costs the same and performs dramatically better."
+                 data-ar="كثير من الناس يبنون بعصّة واحدة 16 جيجابايت معتقدين أنهم يستطيعون 'إضافة أخرى لاحقاً'. صحيح ذلك، لكن التشغيل بقناة واحدة يخفّض عرض نطاق الذاكرة إلى النصف مقارنة بالقناتين — وعرض النطاق هو ما يُغذّي معالجك وكرت الشاشة المدمج. في الألعاب، هذا قد يكلّفك 10-20% من معدّل الإطارات حسب اللعبة والدقة. اشتر دائماً بأزواج متطابقة: 2×8 جيجابايت بدل 1×16 جيجابايت، 2×16 جيجابايت بدل 1×32 جيجابايت. الزوج بنفس السعر ويؤدّي أداءً أفضل بشكل ملحوظ.">
+                Many people build with a single 16 GB stick thinking they can 'add another later.' While true, running in single-channel mode cuts your memory bandwidth in half compared to dual-channel — and bandwidth is what feeds your CPU and integrated GPU. In gaming, this can cost you 10–20% framerate depending on the title and resolution. Always buy in matched pairs: 2×8 GB instead of 1×16 GB, 2×16 GB instead of 1×32 GB. The pair costs the same and performs dramatically better.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= GOLDEN TIP ============= -->
+    <section id="tip" class="section">
+      <div class="container">
+        <div class="golden-tip scroll-reveal">
+          <div class="tip-icon">⚡</div>
+          <div>
+            <span class="eyebrow" style="color: var(--color-accent);"
+                  data-en="// SPACE-PC GOLDEN TIP" data-ar="// النصيحة الذهبية من سبيس-بي سي">// SPACE-PC GOLDEN TIP</span>
+            <h3 data-en="More capacity beats more speed — every time." data-ar="السعة الأكبر تتفوّق على السرعة الأكبر — في كل مرة.">More capacity beats more speed — every time.</h3>
+            <p data-en="The biggest RAM mistake is buying fast, low-capacity RAM when your real bottleneck is running out of memory. DDR5-7200 sounds impressive, but if you're down to 2 GB free while gaming, your OS starts using your SSD as overflow memory (paging) — and that tanks performance by 10× more than any speed upgrade could fix. Rule of thumb: max out your capacity budget first (16 GB minimum, 32 GB if you can), then pick the fastest speed you can afford within that capacity."
+               data-ar="أكبر خطأ في الذاكرة هو شراء رام سريعة بسعة منخفضة بينما اختناقك الحقيقي هو نفاد الذاكرة. DDR5-7200 يبدو مثيراً للإعجاب، لكن إن نزلت إلى 2 جيجابايت حرة أثناء اللعب، يبدأ نظام التشغيل باستخدام SSD كذاكرة فائضة (Paging) — وهذا يدمّر الأداء بمقدار 10 أضعاف أكثر مما أيّ ترقية سرعة يمكنها إصلاحه. القاعدة الذهبية: أقصِ ميزانيتك للسعة أولاً (16 جيجابايت كحدٍّ أدنى، 32 جيجابايت إن استطعت)، ثم اختر أسرع سرعة تتحملها ضمن تلك السعة.">
+              The biggest RAM mistake is buying fast, low-capacity RAM when your real bottleneck is running out of memory. DDR5-7200 sounds impressive, but if you're down to 2 GB free while gaming, your OS starts using your SSD as overflow memory (paging) — and that tanks performance by 10× more than any speed upgrade could fix. Rule of thumb: max out your capacity budget first (16 GB minimum, 32 GB if you can), then pick the fastest speed you can afford within that capacity.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= NEXT COMPONENT TEASER ============= -->
+    <section class="section section--ink">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="color: var(--color-accent);"
+              data-en="// UP NEXT" data-ar="// التالي">// UP NEXT</span>
+        <h2 data-en="Now meet the artist." data-ar="والآن، تعرّف على الفنان.">Now meet the artist.</h2>
+        <p style="max-width: 50ch; margin: var(--sp-4) auto var(--sp-6); opacity: 0.85;"
+           data-en="The RAM feeds the CPU. The GPU paints the picture. Every frame you see started as data moving through this chain."
+           data-ar="الذاكرة (RAM) تُغذّي المعالج (CPU). كرت الشاشة (GPU) يرسم الصورة. كل إطار تراه بدأ كبيانات تتحرك عبر هذه السلسلة.">
+          The RAM feeds the CPU. The GPU paints the picture. Every frame you see started as data moving through this chain.
+        </p>
+        <a href="index.html#components" class="btn btn--accent btn--lg"
+           data-en="Browse all components" data-ar="استعرض كل القطع">Browse all components</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Master Page Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+          </div>
+          <p class="footer-tagline"
+             data-en="From zero to your first build — without the jargon."
+             data-ar="من الصفر إلى أوّل تجميعة — بلا مصطلحات معقّدة.">
+            From zero to your first build — without the jargon.
+          </p>
+        </div>
+        <div>
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+            <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+            <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Account" data-ar="الحساب">Account</h4>
+          <ul>
+            <li><a href="login.html"  data-en="Login"   data-ar="تسجيل الدخول">Login</a></li>
+            <li><a href="signup.html" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+          <ul>
+            <li><a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+            <li><a href="#" data-en="Terms"   data-ar="الشروط">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year">2026</span> · Space-PC ·
+        <span data-en="A CPIS-358 student project" data-ar="مشروع طلاّبي لمقرر CPIS-358">A CPIS-358 student project</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+      console.log('%cSpace-PC ✦ RAM page loaded — the workspace of every build.',
+                  'color:#ec4899; font-weight:700; font-family:monospace;');
+    })();
+  </script>
+</body>
+</html>

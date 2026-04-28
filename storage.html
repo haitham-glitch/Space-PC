@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Storage explained — NVMe vs SATA, SSD vs HDD, how much capacity you need, and how to choose the right drive for your build." />
+  <title data-en="Storage | The Digital Vault — Space-PC" data-ar="التخزين | الخزنة الرقمية — سبيس-بي سي">Storage | The Digital Vault — Space-PC</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" />
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .breadcrumbs {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      padding-top: var(--sp-5);
+      margin-bottom: 0;
+    }
+    .breadcrumbs a { color: var(--color-muted); border-bottom: 1px dashed transparent; transition: all var(--t-fast); }
+    .breadcrumbs a:hover { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .breadcrumbs .sep { margin: 0 var(--sp-2); color: var(--color-soft); }
+
+    .component-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--color-primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      border-radius: var(--r-sm);
+      margin-bottom: var(--sp-4);
+      text-transform: uppercase;
+    }
+
+    .ram-illustration {
+      width: 100%;
+      height: 100%;
+      max-width: 360px;
+      max-height: 360px;
+    }
+
+    .quick-jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-3);
+      padding: var(--sp-5);
+      background: var(--color-surface);
+      border: var(--border-base);
+      border-radius: var(--r-md);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: var(--sp-7);
+    }
+    .quick-jump a {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: var(--sp-2) var(--sp-3);
+      background: var(--color-bg);
+      border: var(--border-thin);
+      border-radius: var(--r-sm);
+      transition: all var(--t-fast);
+    }
+    .quick-jump a:hover {
+      background: var(--color-accent);
+      transform: translateY(-2px);
+      color: var(--color-ink);
+    }
+    .quick-jump strong {
+      align-self: center;
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+  </style>
+</head>
+
+<body>
+  <a href="#main" class="skip-link" data-en="Skip to content" data-ar="تخطّي إلى المحتوى">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">S</span>
+        <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+      </a>
+      <nav aria-label="Primary">
+        <ul class="nav-links" id="primary-nav">
+          <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+          <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+          <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="lang-toggle" role="group" aria-label="Language switch">
+          <button type="button" data-lang="en" class="is-active">EN</button>
+          <button type="button" data-lang="ar">عربي</button>
+        </div>
+        <a href="login.html"  class="btn btn--ghost"   data-en="Login"   data-ar="تسجيل الدخول">Login</a>
+        <a href="signup.html" class="btn btn--primary" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section>
+      <div class="container">
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+          <a href="index.html"   data-en="Home"          data-ar="الرئيسية">Home</a>
+          <span class="sep">/</span>
+          <a href="index.html#components" data-en="Components" data-ar="القطع">Components</a>
+          <span class="sep">/</span>
+          <span data-en="Storage" data-ar="وحدات التخزين (Storage)">Storage</span>
+        </nav>
+
+        <div class="component-header">
+          <div class="reveal">
+            <span class="component-tag" data-en="// COMPONENT 04" data-ar="// القطعة 04">// COMPONENT 04</span>
+            <h1>
+              <span data-en="Storage." data-ar="وحدات التخزين.">Storage.</span><br />
+              <span class="section-title"
+                    data-en="The Digital Vault."
+                    data-ar="الخزنة الرقمية.">The Digital Vault.</span>
+            </h1>
+            <p class="lead" style="color: var(--color-muted);"
+               data-en="Every installed game. Every photo. Your operating system. It all lives in your Storage — ready to be called up whenever you need it."
+               data-ar="كل لعبة مثبتة. كل صورة. نظام التشغيل الخاص بك. كلها تعيش في وحدة التخزين — جاهزة للاستدعاء متى ما احتجتها.">
+              Every installed game. Every photo. Your operating system. It all lives in your Storage — ready to be called up whenever you need it.
+            </p>
+
+            <div class="definition reveal reveal-delay-1">
+              <strong data-en="In plain English:" data-ar="بكل بساطة:">In plain English:</strong>
+              <span data-en="Storage is your computer's filing cabinet. Unlike RAM, which forgets everything when the PC turns off, your storage drive keeps your files safe permanently. Faster storage means faster loading screens and a snappier PC."
+                    data-ar="وحدة التخزين هي خزانة ملفات جهازك. على عكس الرام التي تنسى كل شيء عند إطفاء الجهاز، وحدة التخزين تحتفظ بملفاتك بأمان وبشكل دائم. تخزين أسرع يعني شاشات تحميل أسرع وجهازاً أكثر استجابة.">
+                Storage is your computer's filing cabinet. Unlike RAM, which forgets everything when the PC turns off, your storage drive keeps your files safe permanently. Faster storage means faster loading screens and a snappier PC.
+              </span>
+            </div>
+          </div>
+
+          <div class="component-image reveal reveal-delay-2">
+            <svg class="ram-illustration" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-labelledby="ram-svg-title">
+              <title id="ram-svg-title"
+                     data-en="Illustration of an M.2 NVMe SSD"
+                     data-ar="رسم توضيحي لقرص M.2 NVMe SSD">Modern M.2 SSD illustration</title>
+
+              <rect x="70" y="160" width="260" height="80" rx="2" fill="#111827" stroke="#0a0a0a" stroke-width="3"/>
+
+              <g fill="#fde047" stroke="#0a0a0a" stroke-width="1.5">
+                <rect x="55"  y="170" width="15" height="6" rx="1"/>
+                <rect x="55"  y="180" width="15" height="6" rx="1"/>
+                <rect x="55"  y="190" width="15" height="6" rx="1"/>
+                <rect x="55"  y="200" width="15" height="6" rx="1"/>
+                <rect x="55"  y="210" width="15" height="6" rx="1"/>
+                <rect x="55"  y="220" width="15" height="6" rx="1"/>
+              </g>
+
+              <rect x="50" y="198" width="25" height="8" fill="#111827" stroke="#0a0a0a" stroke-width="1.5"/>
+
+              <circle cx="330" cy="200" r="10" fill="#f5f1e8" stroke="#0a0a0a" stroke-width="3"/>
+              <rect x="330" y="190" width="15" height="20" fill="#f5f1e8"/>
+
+              <g fill="#374151" stroke="#0a0a0a" stroke-width="2">
+                <rect x="90"  y="170" width="30" height="60" rx="2"/>
+                <rect x="130" y="170" width="20" height="60" rx="2"/>
+                <rect x="165" y="170" width="60" height="60" rx="2"/>
+                <rect x="235" y="170" width="60" height="60" rx="2"/>
+              </g>
+
+              <rect x="80" y="165" width="225" height="70" rx="2" fill="#c0c0c0" stroke="#0a0a0a" stroke-width="1.5" opacity="0.9"/>
+              <line x1="85" y1="175" x2="300" y2="175" stroke="#fff" stroke-width="1.5" opacity="0.5"/>
+
+              <text x="190" y="205" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="700" fill="#0a0a0a">M.2 NVMe SSD 2TB</text>
+
+              <text x="200" y="375" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="14" font-weight="700" fill="#0a0a0a">STORAGE</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="quick-jump scroll-reveal" aria-label="Section quick links">
+          <strong data-en="Jump to:" data-ar="انتقل إلى:">Jump to:</strong>
+          <a href="#types"         data-en="NVMe vs SATA"   data-ar="NVMe مقابل SATA">NVMe vs SATA</a>
+          <a href="#howmuch"       data-en="How Much?"      data-ar="كم تحتاج؟">How Much?</a>
+          <a href="#standards"     data-en="Standards"      data-ar="المعايير">Standards</a>
+          <a href="#buying"        data-en="Buying Guide"   data-ar="دليل الشراء">Buying Guide</a>
+          <a href="#compatibility" data-en="Compatibility"  data-ar="التوافق">Compatibility</a>
+          <a href="#tip"           data-en="Golden Tip"     data-ar="النصيحة الذهبية">Golden Tip</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="types" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE BIG CHOICE" data-ar="// الاختيار الكبير">// THE BIG CHOICE</span>
+        <h2>
+          <span data-en="NVMe vs" data-ar="NVMe مقابل">NVMe vs</span>
+          <span class="section-title" data-en="SATA SSDs" data-ar="SATA SSDs">SATA SSDs</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Hard drives (HDDs) are dead for modern gaming. Today, the choice is between the ultra-fast NVMe format and the older SATA SSD format. Here is what separates them."
+           data-ar="الأقراص الصلبة الميكانيكية (HDDs) انتهى زمنها في الألعاب الحديثة. اليوم، الخيار محصور بين صيغة NVMe فائقة السرعة وصيغة SATA SSD الأقدم. إليك ما يفصلهما.">
+          Hard drives (HDDs) are dead for modern gaming. Today, the choice is between the ultra-fast NVMe format and the older SATA SSD format. Here is what separates them.
+        </p>
+
+        <div class="brands-grid scroll-reveal">
+
+          <article class="brand-card">
+            <h3>NVMe M.2</h3>
+            <p class="tagline" data-en="// THE CURRENT STANDARD · PLUGS INTO MOTHERBOARD"
+                              data-ar="// المعيار الحالي · يركب في اللوحة الأم مباشرة">// THE CURRENT STANDARD · PLUGS INTO MOTHERBOARD</p>
+            <p data-en="The modern standard for all PCs. These tiny drives look like a stick of gum and plug directly into your motherboard. They are incredibly fast, eliminating cables and saving space."
+               data-ar="المعيار الحديث لكل الحواسيب. تبدو هذه الأقراص الصغيرة مثل قطعة العلكة وتركب مباشرة في اللوحة الأم. سريعة بشكل مذهل، تلغي الحاجة للأسلاك وتوفر المساحة.">
+              The modern standard for all PCs. These tiny drives look like a stick of gum and plug directly into your motherboard. They are incredibly fast, eliminating cables and saving space.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Speed range" data-ar="نطاق السرعة">Speed range</strong> — <span data-en="3000 – 14000 MB/s" data-ar="3000 – 14000 ميجابايت/ث">3000 – 14000 MB/s</span></li>
+              <li><strong data-en="Connection" data-ar="التوصيل">Connection</strong> — <span data-en="PCIe lanes (Direct to CPU)" data-ar="مسارات PCIe (مباشرة للمعالج)">PCIe lanes (Direct to CPU)</span></li>
+              <li><strong data-en="Cables needed" data-ar="الأسلاك المطلوبة">Cables needed</strong> — <span data-en="None" data-ar="لا يوجد">None</span></li>
+              <li><strong data-en="Form factor" data-ar="الحجم">Form factor</strong> — <span data-en="M.2 2280" data-ar="M.2 2280">M.2 2280</span></li>
+            </ul>
+          </article>
+
+          <article class="brand-card is-amd">
+            <h3>SATA SSD</h3>
+            <p class="tagline" data-en="// OLDER TECH · USES CABLES"
+                              data-ar="// تقنية أقدم · تستخدم أسلاك">// OLDER TECH · USES CABLES</p>
+            <p data-en="The older standard. While still 5x faster than a mechanical hard drive, they are limited by the SATA cable interface. Good for adding cheap secondary storage, but not ideal for a primary boot drive today."
+               data-ar="المعيار الأقدم. رغم أنها أسرع بـ 5 مرات من القرص الميكانيكي، إلا أنها مقيدة بسرعة سلك SATA. جيدة لإضافة مساحة تخزين ثانوية رخيصة، لكنها ليست مثالية كقرص أساسي لنظام التشغيل اليوم.">
+              The older standard. While still 5x faster than a mechanical hard drive, they are limited by the SATA cable interface. Good for adding cheap secondary storage, but not ideal for a primary boot drive today.
+            </p>
+            <h4 style="margin-top: var(--sp-5); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted);"
+                data-en="Key specs" data-ar="المواصفات الرئيسية">Key specs</h4>
+            <ul>
+              <li><strong data-en="Speed range" data-ar="نطاق السرعة">Speed range</strong> — <span data-en="500 – 550 MB/s" data-ar="500 – 550 ميجابايت/ث">500 – 550 MB/s</span></li>
+              <li><strong data-en="Connection" data-ar="التوصيل">Connection</strong> — <span data-en="SATA Controller" data-ar="متحكم SATA">SATA Controller</span></li>
+              <li><strong data-en="Cables needed" data-ar="الأسلاك المطلوبة">Cables needed</strong> — <span data-en="Data Cable + Power Cable" data-ar="سلك بيانات + سلك طاقة">Data Cable + Power Cable</span></li>
+              <li><strong data-en="Form factor" data-ar="الحجم">Form factor</strong> — <span data-en="2.5 Inch Block" data-ar="بلوك بحجم 2.5 بوصة">2.5 Inch Block</span></li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="howmuch" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// THE REAL QUESTION" data-ar="// السؤال الحقيقي">// THE REAL QUESTION</span>
+        <h2>
+          <span data-en="How much" data-ar="كم تحتاج">How much</span>
+          <span class="section-title" data-en="capacity?" data-ar="من المساحة؟">capacity?</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Modern games are massive, with some titles taking over 150GB alone. Buying too little storage now means deleting games constantly later."
+           data-ar="الألعاب الحديثة ضخمة جداً، حيث تأخذ بعض الألعاب أكثر من 150 جيجابايت لوحدها. شراء مساحة قليلة الآن يعني الاضطرار لحذف الألعاب باستمرار لاحقاً.">
+          Modern games are massive, with some titles taking over 150GB alone. Buying too little storage now means deleting games constantly later.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">💾</div>
+            <h3 data-en="512 GB" data-ar="512 جيجابايت">512 GB</h3>
+            <p class="price" data-en="The bare minimum" data-ar="الحد الأدنى">The bare minimum</p>
+            <p data-en="Enough for Windows, basic apps, and maybe 2-3 large modern games. You will run out of space very quickly. Only recommended for extreme budget office builds."
+               data-ar="كافٍ للويندوز، التطبيقات الأساسية، ولعبتين أو ثلاث ألعاب حديثة كبيرة. ستنفد المساحة بسرعة كبيرة. يُنصح به فقط لتجميعات المكاتب الاقتصادية جداً.">
+              Enough for Windows, basic apps, and maybe 2-3 large modern games. You will run out of space very quickly. Only recommended for extreme budget office builds.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Budget office PC only" data-ar=" حواسيب مكتبية اقتصادية فقط"> Budget office PC only</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">🎮</div>
+            <h3 data-en="1 TB" data-ar="1 تيرابايت">1 TB</h3>
+            <p class="price" data-en="The starting point" data-ar="نقطة البداية">The starting point</p>
+            <p data-en="The absolute minimum for a modern gaming PC. Holds your OS, essential software, and a respectable library of games. A solid starting point for most users."
+               data-ar="الحد الأدنى المطلق لحاسوب ألعاب حديث. يتسع لنظام التشغيل، البرامج الأساسية، ومكتبة محترمة من الألعاب. نقطة بداية صلبة لمعظم المستخدمين.">
+              The absolute minimum for a modern gaming PC. Holds your OS, essential software, and a respectable library of games. A solid starting point for most users.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Entry gaming, daily use" data-ar=" ألعاب مبتدئة، الاستخدام اليومي"> Entry gaming, daily use</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🎬</div>
+            <h3 data-en="2 TB+" data-ar="2 تيرابايت+">2 TB+</h3>
+            <p class="price" data-en="The sweet spot" data-ar="النقطة المثالية">The sweet spot</p>
+            <p data-en="The ideal capacity in 2026. Plenty of room for a large game library, high-res video files, and system backups without constantly worrying about your storage bar turning red."
+               data-ar="السعة المثالية في 2026. مساحة وفيرة لمكتبة ألعاب كبيرة، ملفات فيديو عالية الدقة، والنسخ الاحتياطية دون القلق المستمر من تحول شريط التخزين للون الأحمر.">
+              The ideal capacity in 2026. Plenty of room for a large game library, high-res video files, and system backups without constantly worrying about your storage bar turning red.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Use case:" data-ar="للاستخدام:">Use case:</strong>
+              <span data-en=" Heavy gaming, Content creation" data-ar=" ألعاب مكثفة، صناعة محتوى"> Heavy gaming, Content creation</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="standards" class="section section--soft">
+      <div class="container">
+        <span class="eyebrow" data-en="// 2026 SNAPSHOT" data-ar="// لقطة 2026">// 2026 SNAPSHOT</span>
+        <h2>
+          <span data-en="Modern" data-ar="المعايير">Modern</span>
+          <span class="section-title" data-en="standards" data-ar="الحديثة">standards</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="The specs you'll see on every Storage product page — and what they actually mean. Gens, form factors, protocols: here's your decoder."
+           data-ar="المواصفات التي تراها في كل صفحة منتج تخزين — وما تعنيه فعلاً. الأجيال، الأحجام، والبروتوكولات: إليك مفكّ شيفرتك.">
+          The specs you'll see on every Storage product page — and what they actually mean. Gens, form factors, protocols: here's your decoder.
+        </p>
+
+        <table class="standards-table scroll-reveal">
+          <thead>
+            <tr>
+              <th data-en="Standard" data-ar="المعيار">Standard</th>
+              <th data-en="What it means" data-ar="ما يعنيه">What it means</th>
+              <th data-en="Status (2026)" data-ar="الحالة (2026)">Status (2026)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>PCIe Gen 5 NVMe</strong></td>
+              <td data-en="The cutting edge. Speeds up to 14,000 MB/s. Runs very hot and requires a large heatsink. Overkill for gaming."
+                  data-ar="أحدث التقنيات. سرعات تصل لـ 14,000 ميجابايت/ث. ترتفع حرارته جداً ويتطلب مبرد كبير. مبالغ فيه للألعاب.">
+                The cutting edge. Speeds up to 14,000 MB/s. Runs very hot and requires a large heatsink. Overkill for gaming.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>PCIe Gen 4 NVMe</strong></td>
+              <td data-en="The sweet spot. Speeds up to 7,500 MB/s. Perfect for PS5 and modern high-end PCs."
+                  data-ar="النقطة المثالية. سرعات تصل لـ 7,500 ميجابايت/ث. ممتاز لـ PS5 وحواسيب الألعاب الحديثة القوية.">
+                The sweet spot. Speeds up to 7,500 MB/s. Perfect for PS5 and modern high-end PCs.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>PCIe Gen 3 NVMe</strong></td>
+              <td data-en="Older NVMe generation. Speeds up to 3,500 MB/s. Still incredibly fast and great for budget builds."
+                  data-ar="جيل أقدم من NVMe. سرعات تصل لـ 3,500 ميجابايت/ث. لا يزال سريعاً جداً وممتازاً للتجميعات الاقتصادية.">
+                Older NVMe generation. Speeds up to 3,500 MB/s. Still incredibly fast and great for budget builds.
+              </td>
+              <td><span class="status aging" data-en="AGING" data-ar="يتقادم">AGING</span></td>
+            </tr>
+            <tr>
+              <td><strong>SATA III SSD</strong></td>
+              <td data-en="Maxes out around 550 MB/s. Uses cables. Good for secondary mass storage."
+                  data-ar="أقصى سرعة حوالي 550 ميجابايت/ث. يستخدم أسلاك. جيد لتخزين الملفات الثانوي.">
+                Maxes out around 550 MB/s. Uses cables. Good for secondary mass storage.
+              </td>
+              <td><span class="status aging" data-en="AGING" data-ar="يتقادم">AGING</span></td>
+            </tr>
+            <tr>
+              <td><strong>HDD (7200 RPM)</strong></td>
+              <td data-en="Mechanical drive. Slowest option (~150 MB/s). Only useful for archiving photos/videos/backups."
+                  data-ar="قرص ميكانيكي. الخيار الأبطأ (~150 ميجابايت/ث). مفيد فقط لأرشفة الصور/الفيديو/النسخ الاحتياطي.">
+                Mechanical drive. Slowest option (~150 MB/s). Only useful for archiving photos/videos/backups.
+              </td>
+              <td><span class="status legacy" data-en="ARCHIVE ONLY" data-ar="أرشيف فقط">ARCHIVE ONLY</span></td>
+            </tr>
+            <tr>
+              <td><strong>M.2 2280</strong></td>
+              <td data-en="The physical size of most NVMe drives (22mm wide, 80mm long)."
+                  data-ar="الحجم الفيزيائي لمعظم أقراص NVMe (عرض 22 ملم، طول 80 ملم).">
+                The physical size of most NVMe drives (22mm wide, 80mm long).
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+            <tr>
+              <td><strong>DirectStorage</strong></td>
+              <td data-en="A new API that lets the GPU load game assets directly from an NVMe SSD, reducing load times."
+                  data-ar="تقنية جديدة تسمح لكرت الشاشة بتحميل عناصر اللعبة مباشرة من قرص NVMe، مما يقلل أوقات التحميل.">
+                A new API that lets the GPU load game assets directly from an NVMe SSD, reducing load times.
+              </td>
+              <td><span class="status modern" data-en="MODERN" data-ar="حديث">MODERN</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="buying" class="section">
+      <div class="container">
+        <span class="eyebrow" data-en="// PICK YOUR DRIVE" data-ar="// اختر قرصك">// PICK YOUR DRIVE</span>
+        <h2>
+          <span data-en="Buying" data-ar="دليل">Buying</span>
+          <span class="section-title" data-en="guide" data-ar="الشراء">guide</span><span data-en="." data-ar=".">.</span>
+        </h2>
+        <p class="lead" style="max-width: 60ch;"
+           data-en="Don't overpay for speeds you won't notice. The difference between a Gen 3 and Gen 5 SSD in game loading screens is often less than 1 second."
+           data-ar="لا تدفع أموالاً طائلة لسرعات لن تلاحظها. الفرق بين قرص Gen 3 و Gen 5 في شاشات تحميل الألعاب غالباً أقل من ثانية واحدة.">
+          Don't overpay for speeds you won't notice. The difference between a Gen 3 and Gen 5 SSD in game loading screens is often less than 1 second.
+        </p>
+
+        <div class="usecase-grid scroll-reveal">
+
+          <article class="usecase-card tier-budget">
+            <div class="usecase-icon">🏷️</div>
+            <h3 data-en="Budget Build" data-ar="تجميعة اقتصادية">Budget Build</h3>
+            <p class="price">~ $50 – $70</p>
+            <p data-en="A 1 TB PCIe Gen 3 NVMe. It's affordable, eliminates cables, and provides a snappy Windows experience. Don't bother with SATA SSDs unless your motherboard lacks M.2 slots."
+               data-ar="قرص 1 تيرابايت PCIe Gen 3 NVMe. سعره معقول، يلغي الأسلاك، ويوفر تجربة ويندوز سريعة. لا تتعب نفسك بـ SATA SSD إلا إذا كانت لوحتك تخلو من فتحات M.2.">
+              A 1 TB PCIe Gen 3 NVMe. It's affordable, eliminates cables, and provides a snappy Windows experience. Don't bother with SATA SSDs unless your motherboard lacks M.2 slots.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 1 TB PCIe Gen 3 NVMe" data-ar=" 1 تيرابايت PCIe Gen 3 NVMe"> 1 TB PCIe Gen 3 NVMe</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-gaming">
+            <div class="usecase-icon">⚡</div>
+            <h3 data-en="Gaming Build" data-ar="تجميعة ألعاب">Gaming Build</h3>
+            <p class="price">~ $120 – $150</p>
+            <p data-en="A 2 TB PCIe Gen 4 NVMe. This is the sweet spot. It offers blistering speeds, takes advantage of DirectStorage for future games, and 2TB gives you breathing room for massive game libraries."
+               data-ar="قرص 2 تيرابايت PCIe Gen 4 NVMe. هذه هي النقطة المثالية. يوفر سرعات خارقة، يستفيد من DirectStorage لألعاب المستقبل، ومساحة 2TB تعطيك راحة لمكتبة ألعاب ضخمة.">
+              A 2 TB PCIe Gen 4 NVMe. This is the sweet spot. It offers blistering speeds, takes advantage of DirectStorage for future games, and 2TB gives you breathing room for massive game libraries.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 2 TB PCIe Gen 4 NVMe" data-ar=" 2 تيرابايت PCIe Gen 4 NVMe"> 2 TB PCIe Gen 4 NVMe</span>
+            </p>
+          </article>
+
+          <article class="usecase-card tier-creator">
+            <div class="usecase-icon">🖥️</div>
+            <h3 data-en="Creator / Pro" data-ar="صانع محتوى / محترف">Creator / Pro</h3>
+            <p class="price">~ $250 – $350</p>
+            <p data-en="A 4 TB PCIe Gen 4 (or Gen 5 if doing heavy 8K video editing). Creators move massive files constantly, making the high sequential speeds of top-tier NVMe drives actually worth the premium."
+               data-ar="قرص 4 تيرابايت PCIe Gen 4 (أو Gen 5 إذا كنت تحرر فيديو 8K ثقيل). صناع المحتوى ينقلون ملفات ضخمة باستمرار، مما يجعل السرعات العالية لأقراص NVMe الفاخرة تستحق قيمتها فعلاً.">
+              A 4 TB PCIe Gen 4 (or Gen 5 if doing heavy 8K video editing). Creators move massive files constantly, making the high sequential speeds of top-tier NVMe drives actually worth the premium.
+            </p>
+            <p style="margin-top: var(--sp-3); padding-top: var(--sp-3); border-top: 1px solid var(--color-soft); font-size: 0.9rem;">
+              <strong data-en="Pick:" data-ar="اختر:">Pick:</strong>
+              <span data-en=" 4 TB PCIe Gen 4 NVMe" data-ar=" 4 تيرابايت PCIe Gen 4 NVMe"> 4 TB PCIe Gen 4 NVMe</span>
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="compatibility" class="section section--soft">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: var(--sp-6);">
+          <span class="eyebrow" data-en="// THE WIRING DIAGRAM" data-ar="// مخطط التوصيلات">// THE WIRING DIAGRAM</span>
+          <h2>
+            <span data-en="Compatibility &amp;" data-ar="التوافق">Compatibility &amp;</span>
+            <span class="section-title" data-en="dependencies" data-ar="والمتطلّبات">dependencies</span><span data-en="." data-ar=".">.</span>
+          </h2>
+          <p class="lead" style="max-width: 62ch; margin: 0 auto;"
+             data-en="Storage connects your data to the rest of the system. The CPU provides the data lanes, the motherboard provides the physical slots, and the OS formats it so you can actually use it."
+             data-ar="وحدة التخزين تربط بياناتك ببقية النظام. المعالج يوفر مسارات البيانات، اللوحة الأم توفر الفتحات الفيزيائية، ونظام التشغيل يجهزه لتتمكن من استخدامه فعلياً.">
+            Storage connects your data to the rest of the system. The CPU provides the data lanes, the motherboard provides the physical slots, and the OS formats it so you can actually use it.
+          </p>
+        </div>
+
+        <div class="dep-diagram scroll-reveal" role="img"
+             aria-label="Storage dependencies diagram">
+
+          <div class="dep-node dep-node--top">
+            <strong data-en="CPU" data-ar="المعالج (CPU)">CPU</strong>
+            <span class="role" data-en="Provides PCIe Lanes" data-ar="يوفر مسارات PCIe">Provides PCIe Lanes</span>
+          </div>
+
+          <div class="dep-node dep-node--left">
+            <strong data-en="MOTHERBOARD" data-ar="اللوحة الأم">MOTHERBOARD</strong>
+            <span class="role" data-en="Hosts M.2/SATA slots" data-ar="يستضيف فتحات M.2/SATA">Hosts M.2/SATA slots</span>
+          </div>
+
+          <div class="dep-node dep-node--center">
+            <strong data-en="STORAGE" data-ar="التخزين (STORAGE)">STORAGE</strong>
+            <span class="role" data-en="You are here" data-ar="أنت هنا">You are here</span>
+          </div>
+
+          <div class="dep-node dep-node--right">
+            <strong data-en="PSU" data-ar="مزود الطاقة (PSU)">PSU</strong>
+            <span class="role" data-en="Powers SATA drives" data-ar="يمد أقراص SATA بالطاقة">Powers SATA drives</span>
+          </div>
+
+          <div class="dep-node dep-node--bottom">
+            <strong data-en="OS" data-ar="نظام التشغيل (OS)">OS</strong>
+            <span class="role" data-en="Formats the drive" data-ar="يهيئ القرص للعمل">Formats the drive</span>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: var(--sp-7);">
+          <h3 data-en="What each motherboard supports" data-ar="ما تدعمه كل لوحة أم">
+            What each motherboard supports
+          </h3>
+          <p style="color: var(--color-muted); max-width: 50ch; margin: 0 auto;"
+             data-en="Match your motherboard generation to the correct NVMe speed below."
+             data-ar="طابق جيل لوحتك الأم مع سرعة NVMe الصحيحة أدناه.">
+            Match your motherboard generation to the correct NVMe speed below.
+          </p>
+        </div>
+
+        <div class="compat-grid scroll-reveal">
+
+          <article class="compat-card tier-entry">
+            <h4 data-en="High-End Modern Boards" data-ar="لوحات حديثة راقية">High-End Modern Boards</h4>
+            <p class="compat-example"
+               data-en="e.g. X670E, Z790"
+               data-ar="مثل: X670E, Z790">e.g. X670E, Z790</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">T</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Max Speed" data-ar="السرعة القصوى">Max Speed</span>
+                <span class="compat-value" data-en="PCIe Gen 5." data-ar="جيل خامس PCIe Gen 5.">PCIe Gen 5.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Heatsink" data-ar="المشتت الحراري">Heatsink</span>
+                <span class="compat-value" data-en="Mandatory for Gen 5 drives, usually included on the board." data-ar="إلزامي لأقراص Gen 5، يأتي مدمجاً في اللوحة عادةً.">Mandatory for Gen 5 drives, usually included on the board.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Backwards Compat" data-ar="التوافق العكسي">Backwards Compat</span>
+                <span class="compat-value" data-en="Yes, works perfectly with Gen 4 and Gen 3 drives." data-ar="نعم، يعمل بامتياز مع أقراص Gen 4 و Gen 3.">Yes, works perfectly with Gen 4 and Gen 3 drives.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Slot sharing" data-ar="مشاركة المنافذ">Slot sharing</span>
+                <span class="compat-value" data-en="Using Gen 5 M.2 might cut GPU PCIe lanes in half on some boards." data-ar="استخدام Gen 5 M.2 قد يقسم مسارات كرت الشاشة للنصف في بعض اللوحات.">Using Gen 5 M.2 might cut GPU PCIe lanes in half on some boards.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="compat-card tier-mid">
+            <h4 data-en="Standard Modern Boards" data-ar="لوحات حديثة قياسية">Standard Modern Boards</h4>
+            <p class="compat-example"
+               data-en="e.g. B650, B760"
+               data-ar="مثل: B650, B760">e.g. B650, B760</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">T</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Max Speed" data-ar="السرعة القصوى">Max Speed</span>
+                <span class="compat-value" data-en="PCIe Gen 4." data-ar="جيل رابع PCIe Gen 4.">PCIe Gen 4.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Heatsink" data-ar="المشتت الحراري">Heatsink</span>
+                <span class="compat-value" data-en="Recommended for Gen 4 drives, often included on the board." data-ar="مُوصى به لأقراص Gen 4، متوفر في اللوحة غالباً.">Recommended for Gen 4 drives, often included on the board.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Backwards Compat" data-ar="التوافق العكسي">Backwards Compat</span>
+                <span class="compat-value" data-en="Yes, works perfectly with Gen 3 drives." data-ar="نعم، يعمل بامتياز مع أقراص Gen 3.">Yes, works perfectly with Gen 3 drives.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Gen 5 Support" data-ar="دعم Gen 5">Gen 5 Support</span>
+                <span class="compat-value" data-en="Gen 5 drives will work, but will be limited to Gen 4 speeds." data-ar="أقراص Gen 5 ستعمل، ولكن سيتم تقييدها بسرعة Gen 4.">Gen 5 drives will work, but will be limited to Gen 4 speeds.</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="compat-card tier-high">
+            <h4 data-en="Older / Budget Boards" data-ar="لوحات أقدم / اقتصادية">Older / Budget Boards</h4>
+            <p class="compat-example"
+               data-en="e.g. B450, H610"
+               data-ar="مثل: B450, H610">e.g. B450, H610</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">T</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Max Speed" data-ar="السرعة القصوى">Max Speed</span>
+                <span class="compat-value" data-en="PCIe Gen 3." data-ar="جيل ثالث PCIe Gen 3.">PCIe Gen 3.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Heatsink" data-ar="المشتت الحراري">Heatsink</span>
+                <span class="compat-value" data-en="Optional. Gen 3 drives don't run very hot." data-ar="اختياري. أقراص Gen 3 لا ترتفع حرارتها كثيراً.">Optional. Gen 3 drives don't run very hot.</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Gen 4 Support" data-ar="دعم Gen 4">Gen 4 Support</span>
+                <span class="compat-value" data-en="Gen 4 drives work, but are limited to Gen 3 speeds (3500 MB/s)." data-ar="أقراص Gen 4 ستعمل، ولكن مقيدة بسرعة Gen 3 (3500 م/ث).">Gen 4 drives work, but are limited to Gen 3 speeds (3500 MB/s).</span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="SATA ports" data-ar="منافذ SATA">SATA ports</span>
+                <span class="compat-value" data-en="Using an M.2 slot sometimes disables 2 SATA ports on older boards." data-ar="استخدام فتحة M.2 يعطل أحياناً منفذي SATA في اللوحات القديمة.">Using an M.2 slot sometimes disables 2 SATA ports on older boards.</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="warning-cards scroll-reveal">
+
+          <article class="warning-card is-critical">
+            <div class="warn-icon" aria-hidden="true">⚠️</div>
+            <div>
+              <h4 data-en="Never use an HDD as your boot drive"
+                  data-ar="لا تستخدم قرص HDD لتشغيل النظام أبداً">
+                Never use an HDD as your boot drive
+              </h4>
+              <p data-en="Installing Windows on a mechanical hard drive (HDD) in 2026 is the single worst mistake you can make. It will make even a $3000 PC feel like a broken laptop from 2010. Boot times will take minutes instead of seconds, and the system will constantly stutter. Your primary C: drive MUST be an SSD (preferably NVMe)."
+                 data-ar="تثبيت الويندوز على قرص ميكانيكي (HDD) في عام 2026 هو أسوأ خطأ يمكنك ارتكابه على الإطلاق. سيجعل جهازاً بقيمة 3000 دولار يبدو وكأنه لابتوب معطل من عام 2010. أوقات التشغيل ستستغرق دقائق بدلاً من ثوانٍ، وسيعاني النظام من التقطيع المستمر. قرص الـ C: الأساسي الخاص بك يجب أن يكون SSD (ويفضل NVMe).">
+                Installing Windows on a mechanical hard drive (HDD) in 2026 is the single worst mistake you can make. It will make even a $3000 PC feel like a broken laptop from 2010. Boot times will take minutes instead of seconds, and the system will constantly stutter. Your primary C: drive MUST be an SSD (preferably NVMe).
+              </p>
+            </div>
+          </article>
+
+          <article class="warning-card is-warn">
+            <div class="warn-icon" aria-hidden="true">🔧</div>
+            <div>
+              <h4 data-en="Don't lose the tiny M.2 screw"
+                  data-ar="لا تضيّع برغي M.2 الصغير">
+                Don't lose the tiny M.2 screw
+              </h4>
+              <p data-en="NVMe M.2 drives don't use cables, but they do require a tiny standoff and screw to hold them flat against the motherboard. These screws are included in your MOTHERBOARD box, not the SSD box. Do not screw the M.2 drive down at an angle without the standoff beneath it, or you will snap the drive in half."
+                 data-ar="أقراص NVMe M.2 لا تستخدم أسلاكاً، لكنها تتطلب قاعدة (Standoff) وبرغي صغير جداً لتثبيتها بشكل مسطح على اللوحة الأم. هذه البراغي تأتي في كرتون اللوحة الأم، وليس كرتون الـ SSD. لا تقم بتثبيت القرص بشكل مائل بدون القاعدة تحته، وإلا ستكسر القرص لنصفين.">
+                NVMe M.2 drives don't use cables, but they do require a tiny standoff and screw to hold them flat against the motherboard. These screws are included in your MOTHERBOARD box, not the SSD box. Do not screw the M.2 drive down at an angle without the standoff beneath it, or you will snap the drive in half.
+              </p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="tip" class="section">
+      <div class="container">
+        <div class="golden-tip scroll-reveal">
+          <div class="tip-icon">⚡</div>
+          <div>
+            <span class="eyebrow" style="color: var(--color-accent);"
+                  data-en="// SPACE-PC GOLDEN TIP" data-ar="// النصيحة الذهبية من سبيس-بي سي">// SPACE-PC GOLDEN TIP</span>
+            <h3 data-en="For gaming, Gen 4 is all you need." data-ar="للألعاب، Gen 4 هو كل ما تحتاجه.">For gaming, Gen 4 is all you need.</h3>
+            <p data-en="Don't let marketing fool you. While Gen 5 SSDs boast 14,000 MB/s speeds, games do not load large enough single files to benefit from it. In real-world gaming tests, a top-tier Gen 5 drive loads games maybe 0.5 seconds faster than a solid Gen 4 drive, but costs twice as much and requires a massive cooler. Save your money and put it toward a better GPU instead."
+               data-ar="لا تدع التسويق يخدعك. بينما تتباهى أقراص Gen 5 بسرعات 14,000 ميجابايت/ث، الألعاب لا تحمل ملفات فردية كبيرة بما يكفي للاستفادة منها. في اختبارات الألعاب الواقعية، قرص Gen 5 الفاخر يحمل الألعاب أسرع بـ 0.5 ثانية فقط من قرص Gen 4 جيد، لكنه يكلف الضعف ويتطلب مبرد ضخم. وفر أموالك وضعها في كرت شاشة أفضل بدلاً من ذلك.">
+              Don't let marketing fool you. While Gen 5 SSDs boast 14,000 MB/s speeds, games do not load large enough single files to benefit from it. In real-world gaming tests, a top-tier Gen 5 drive loads games maybe 0.5 seconds faster than a solid Gen 4 drive, but costs twice as much and requires a massive cooler. Save your money and put it toward a better GPU instead.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--ink">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="color: var(--color-accent);"
+              data-en="// UP NEXT" data-ar="// التالي">// UP NEXT</span>
+        <h2 data-en="Now meet the artist." data-ar="والآن، تعرّف على الفنان.">Now meet the artist.</h2>
+        <p style="max-width: 50ch; margin: var(--sp-4) auto var(--sp-6); opacity: 0.85;"
+           data-en="Storage holds the game data. The RAM feeds it to the CPU. The GPU paints the picture. Every frame you see started as data moving from your SSD."
+           data-ar="وحدة التخزين تحتفظ ببيانات اللعبة. الرام تغذيها للمعالج. كرت الشاشة يرسم الصورة. كل إطار تراه بدأ كبيانات تتحرك من قرص التخزين الخاص بك.">
+          Storage holds the game data. The RAM feeds it to the CPU. The GPU paints the picture. Every frame you see started as data moving from your SSD.
+        </p>
+        <a href="index.html#components" class="btn btn--accent btn--lg"
+           data-en="Browse all components" data-ar="استعرض كل القطع">Browse all components</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <span class="brand-mark">S</span>
+            <span data-en="Space-PC" data-ar="سبيس-بي سي">Space-PC</span>
+          </div>
+          <p class="footer-tagline"
+             data-en="From zero to your first build — without the jargon."
+             data-ar="من الصفر إلى أوّل تجميعة — بلا مصطلحات معقّدة.">
+            From zero to your first build — without the jargon.
+          </p>
+        </div>
+        <div>
+          <h4 data-en="Explore" data-ar="استكشف">Explore</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home"       data-ar="الرئيسية">Home</a></li>
+            <li><a href="about.html" data-en="About Us"   data-ar="من نحن">About Us</a></li>
+            <li><a href="index.html#components"data-en="Components" data-ar="القطع">Components</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Account" data-ar="الحساب">Account</h4>
+          <ul>
+            <li><a href="login.html"  data-en="Login"   data-ar="تسجيل الدخول">Login</a></li>
+            <li><a href="signup.html" data-en="Sign up" data-ar="إنشاء حساب">Sign up</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 data-en="Legal" data-ar="قانوني">Legal</h4>
+          <ul>
+            <li><a href="#" data-en="Privacy" data-ar="الخصوصية">Privacy</a></li>
+            <li><a href="#" data-en="Terms"   data-ar="الشروط">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        © <span id="footer-year">2026</span> · Space-PC ·
+        <span data-en="A CPIS-358 student project" data-ar="مشروع طلاّبي لمقرر CPIS-358">A CPIS-358 student project</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+
+  <script>
+    (function () {
+      'use strict';
+      console.log('%cSpace-PC ✦ Storage page loaded — the digital vault of every build.',
+                  'color:#10b981; font-weight:700; font-family:monospace;');
+    })();
+  </script>
+</body>
+</html>
