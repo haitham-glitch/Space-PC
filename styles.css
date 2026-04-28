@@ -925,6 +925,15 @@ html[lang="ar"] .select { font-family: var(--font-arabic); }
 .brand-card.is-intel  { border-top: 8px solid var(--color-secondary); }
 .brand-card.is-amd    { border-top: 8px solid var(--color-danger); }
 .brand-card.is-nvidia { border-top: 8px solid var(--color-success); }
+.brand-card.is-samsung  { border-top: 8px solid var(--color-secondary); } 
+.brand-card.is-crucial  { border-top: 8px solid var(--color-primary); }   
+.brand-card.is-hynix    { border-top: 8px solid var(--color-danger); }    
+.brand-card.is-corsair  { border-top: 8px solid var(--color-accent); }    
+.brand-card.is-seasonic { border-top: 8px solid var(--color-success); }   
+.brand-card.is-evga     { border-top: 8px solid var(--color-muted); }     
+.brand-card.is-fractal  { border-top: 8px solid var(--color-secondary); } 
+.brand-card.is-nzxt     { border-top: 8px solid var(--color-primary); }
+.brand-card.is-wd       { border-top: 8px solid var(--color-success); }
 .brand-card h3 { margin-bottom: var(--sp-2); }
 .brand-card .tagline {
   font-family: var(--font-display);
