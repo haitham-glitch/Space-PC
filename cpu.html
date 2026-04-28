@@ -214,11 +214,12 @@
         <!-- Quick jump (internal page links) -->
         <div class="quick-jump scroll-reveal" aria-label="Section quick links">
           <strong data-en="Jump to:" data-ar="انتقل إلى:">Jump to:</strong>
-          <a href="#market"    data-en="Market"    data-ar="السوق">Market</a>
-          <a href="#standards" data-en="Standards" data-ar="المعايير">Standards</a>
-          <a href="#buying"    data-en="Buying Guide" data-ar="دليل الشراء">Buying Guide</a>
-          <a href="#history"   data-en="History"   data-ar="التاريخ">History</a>
-          <a href="#tip"       data-en="Golden Tip" data-ar="النصيحة الذهبية">Golden Tip</a>
+          <a href="#market"        data-en="Market"        data-ar="السوق">Market</a>
+          <a href="#standards"     data-en="Standards"     data-ar="المعايير">Standards</a>
+          <a href="#buying"        data-en="Buying Guide"  data-ar="دليل الشراء">Buying Guide</a>
+          <a href="#compatibility" data-en="Compatibility" data-ar="التوافق">Compatibility</a>
+          <a href="#history"       data-en="History"       data-ar="التاريخ">History</a>
+          <a href="#tip"           data-en="Golden Tip"    data-ar="النصيحة الذهبية">Golden Tip</a>
         </div>
       </div>
     </section>
@@ -426,6 +427,271 @@
               <span data-en=" Intel Core i7/i9 or AMD Ryzen 7/9"
                     data-ar=" Intel Core i7/i9 أو AMD Ryzen 7/9">Intel Core i7/i9 or AMD Ryzen 7/9</span>
             </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============= COMPATIBILITY & DEPENDENCIES ============= -->
+    <section id="compatibility" class="section">
+      <div class="container">
+        <div style="text-align: center; margin-bottom: var(--sp-6);">
+          <span class="eyebrow" data-en="// THE WIRING DIAGRAM" data-ar="// مخطط التوصيلات">// THE WIRING DIAGRAM</span>
+          <h2>
+            <span data-en="Compatibility &amp;" data-ar="التوافق">Compatibility &amp;</span>
+            <span class="section-title" data-en="dependencies" data-ar="والمتطلّبات">dependencies</span><span data-en="." data-ar=".">.</span>
+          </h2>
+          <p class="lead" style="max-width: 62ch; margin: 0 auto;"
+             data-en="A CPU never works alone. The wrong cooler, an undersized PSU, the wrong RAM type, or an incompatible motherboard turns a perfect chip into an expensive paperweight. Here's what your CPU actually depends on."
+             data-ar="المعالج (CPU) لا يعمل وحده أبداً. مبرّد خاطئ، أو مزود طاقة (PSU) غير كافٍ، أو نوع رام غير متوافق، أو لوحة أم خاطئة — كلها تحوّل المعالج المثالي إلى ثقّالة ورق غالية الثمن. إليك ما يعتمد عليه المعالج (CPU) فعلاً.">
+            A CPU never works alone. The wrong cooler, an undersized PSU, the wrong RAM type, or an incompatible motherboard turns a perfect chip into an expensive paperweight. Here's what your CPU actually depends on.
+          </p>
+        </div>
+
+        <!-- HUB-AND-SPOKE RELATIONSHIP DIAGRAM -->
+        <div class="dep-diagram scroll-reveal" role="img"
+             aria-label="CPU dependencies diagram showing the four parts a CPU connects to">
+
+          <div class="dep-node dep-node--top">
+            <strong data-en="COOLER" data-ar="المبرّد (Cooler)">COOLER</strong>
+            <span class="role" data-en="Removes heat" data-ar="يطرد الحرارة">Removes heat</span>
+          </div>
+
+          <div class="dep-node dep-node--left">
+            <strong data-en="PSU" data-ar="مزود الطاقة (PSU)">PSU</strong>
+            <span class="role" data-en="Supplies power" data-ar="يزوّد الطاقة">Supplies power</span>
+          </div>
+
+          <div class="dep-node dep-node--center">
+            <strong data-en="CPU" data-ar="المعالج (CPU)">CPU</strong>
+            <span class="role" data-en="You are here" data-ar="أنت هنا">You are here</span>
+          </div>
+
+          <div class="dep-node dep-node--right">
+            <strong data-en="MOTHERBOARD" data-ar="اللوحة الأم (Motherboard)">MOTHERBOARD</strong>
+            <span class="role" data-en="Socket host" data-ar="حاضنة المنفذ">Socket host</span>
+          </div>
+
+          <div class="dep-node dep-node--bottom">
+            <strong data-en="RAM" data-ar="الذاكرة (RAM)">RAM</strong>
+            <span class="role" data-en="Feeds data" data-ar="تزوّد البيانات">Feeds data</span>
+          </div>
+        </div>
+
+        <!-- TIER-BASED REQUIREMENTS -->
+        <div style="text-align: center; margin-top: var(--sp-7);">
+          <h3 data-en="What each tier actually needs" data-ar="ما تحتاجه كل فئة فعلاً">
+            What each tier actually needs
+          </h3>
+          <p style="color: var(--color-muted); max-width: 50ch; margin: 0 auto;"
+             data-en="Match the tier you picked in the Buying Guide above to the cooling, power, RAM, and socket requirements below."
+             data-ar="طابق الفئة التي اخترتها من دليل الشراء أعلاه مع متطلّبات التبريد والطاقة والرام والمنفذ أدناه.">
+            Match the tier you picked in the Buying Guide above to the cooling, power, RAM, and socket requirements below.
+          </p>
+        </div>
+
+        <div class="compat-grid scroll-reveal">
+
+          <!-- Entry-level -->
+          <article class="compat-card tier-entry">
+            <h4 data-en="Entry-level" data-ar="مبتدئ">Entry-level</h4>
+            <p class="compat-example"
+               data-en="e.g. Intel Core i3 · AMD Ryzen 3"
+               data-ar="مثل: Intel Core i3 · AMD Ryzen 3">e.g. Intel Core i3 · AMD Ryzen 3</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Cooling" data-ar="التبريد">Cooling</span>
+                <span class="compat-value"
+                      data-en="Stock cooler is enough — heat output is low."
+                      data-ar="المبرّد الأصلي يكفي — إنتاج الحرارة منخفض.">
+                  Stock cooler is enough — heat output is low.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="PSU wattage" data-ar="قدرة مزود الطاقة">PSU wattage</span>
+                <span class="compat-value"
+                      data-en="450W is plenty for a full system."
+                      data-ar="450 واط كافية لجهاز كامل.">
+                  450W is plenty for a full system.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">R</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="RAM type" data-ar="نوع الذاكرة">RAM type</span>
+                <span class="compat-value"
+                      data-en="DDR4 or DDR5 — both available on this tier."
+                      data-ar="DDR4 أو DDR5 — كلاهما متاح في هذه الفئة.">
+                  DDR4 or DDR5 — both available on this tier.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Socket" data-ar="المنفذ">Socket</span>
+                <span class="compat-value"
+                      data-en="LGA 1700 (Intel) · AM4 or AM5 (AMD)"
+                      data-ar="LGA 1700 (Intel) · AM4 أو AM5 (AMD)">
+                  LGA 1700 (Intel) · AM4 or AM5 (AMD)
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Mid-range -->
+          <article class="compat-card tier-mid">
+            <h4 data-en="Mid-range" data-ar="متوسط">Mid-range</h4>
+            <p class="compat-example"
+               data-en="e.g. Intel Core i5/i7 · AMD Ryzen 5/7"
+               data-ar="مثل: Intel Core i5/i7 · AMD Ryzen 5/7">e.g. Intel Core i5/i7 · AMD Ryzen 5/7</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Cooling" data-ar="التبريد">Cooling</span>
+                <span class="compat-value"
+                      data-en="Aftermarket air tower cooler strongly recommended."
+                      data-ar="مبرّد هوائي إضافي من النوع البرجي يُنصح به بشدّة.">
+                  Aftermarket air tower cooler strongly recommended.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="PSU wattage" data-ar="قدرة مزود الطاقة">PSU wattage</span>
+                <span class="compat-value"
+                      data-en="650W minimum — leave headroom for the GPU."
+                      data-ar="650 واط على الأقل — اترك هامشاً لكرت الشاشة (GPU).">
+                  650W minimum — leave headroom for the GPU.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">R</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="RAM type" data-ar="نوع الذاكرة">RAM type</span>
+                <span class="compat-value"
+                      data-en="DDR5 strongly recommended for new builds."
+                      data-ar="DDR5 يُنصح به بشدّة للتجميعات الجديدة.">
+                  DDR5 strongly recommended for new builds.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Socket" data-ar="المنفذ">Socket</span>
+                <span class="compat-value"
+                      data-en="LGA 1700 (Intel) · AM5 (AMD)"
+                      data-ar="LGA 1700 (Intel) · AM5 (AMD)">
+                  LGA 1700 (Intel) · AM5 (AMD)
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- High-end -->
+          <article class="compat-card tier-high">
+            <h4 data-en="High-end" data-ar="راقٍ">High-end</h4>
+            <p class="compat-example"
+               data-en="e.g. Intel Core i9 · AMD Ryzen 9"
+               data-ar="مثل: Intel Core i9 · AMD Ryzen 9">e.g. Intel Core i9 · AMD Ryzen 9</p>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">C</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Cooling" data-ar="التبريد">Cooling</span>
+                <span class="compat-value"
+                      data-en="280mm AIO liquid cooler or premium air tower required."
+                      data-ar="مبرّد مائي مُغلق 280 ملم أو برج هوائي راقٍ مطلوب.">
+                  280mm AIO liquid cooler or premium air tower required.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">P</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="PSU wattage" data-ar="قدرة مزود الطاقة">PSU wattage</span>
+                <span class="compat-value"
+                      data-en="850W+ required for stability under full load."
+                      data-ar="850 واط فأكثر مطلوب للاستقرار تحت الحمل الكامل.">
+                  850W+ required for stability under full load.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">R</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="RAM type" data-ar="نوع الذاكرة">RAM type</span>
+                <span class="compat-value"
+                      data-en="DDR5 only — modern AMD AM5 doesn't accept DDR4."
+                      data-ar="DDR5 فقط — منصة AMD AM5 الحديثة لا تقبل DDR4.">
+                  DDR5 only — modern AMD AM5 doesn't accept DDR4.
+                </span>
+              </div>
+            </div>
+
+            <div class="compat-row">
+              <div class="compat-icon" aria-hidden="true">S</div>
+              <div class="compat-detail">
+                <span class="compat-label" data-en="Socket" data-ar="المنفذ">Socket</span>
+                <span class="compat-value"
+                      data-en="LGA 1700 / 1851 (Intel) · AM5 (AMD)"
+                      data-ar="LGA 1700 / 1851 (Intel) · AM5 (AMD)">
+                  LGA 1700 / 1851 (Intel) · AM5 (AMD)
+                </span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- WARNING CALLOUTS — the gotchas -->
+        <div class="warning-cards scroll-reveal">
+
+          <article class="warning-card is-critical">
+            <div class="warn-icon" aria-hidden="true">⚠️</div>
+            <div>
+              <h4 data-en="Modern AMD = DDR5 only"
+                  data-ar="AMD الحديث = DDR5 فقط">
+                Modern AMD = DDR5 only
+              </h4>
+              <p data-en="Any AMD CPU on the AM5 socket (Ryzen 7000, 8000, 9000 series) is strictly DDR5. DDR4 modules will not fit — the slot keying is physically different and the memory controller is DDR5-only. Reusing DDR4 sticks from an old build is the most common compatibility mistake we see. Intel's recent platforms also lean DDR5, but some boards still ship with DDR4 slots. Always check the motherboard's spec page before buying RAM."
+                 data-ar="أيّ معالج AMD يعمل على منفذ AM5 (سلسلة Ryzen 7000 و 8000 و 9000) يدعم DDR5 حصراً. قطع DDR4 لن تركّب — الفتحة مختلفة فيزيائياً ومتحكّم الذاكرة يدعم DDR5 فقط. إعادة استخدام قطع DDR4 من تجميعة قديمة هو أكثر خطأ توافق نراه. منصّات Intel الحديثة تميل أيضاً نحو DDR5، لكن بعض اللوحات لا تزال تأتي بفتحات DDR4. تحقّق دائماً من صفحة مواصفات اللوحة الأم (Motherboard) قبل شراء الرام (RAM).">
+                Any AMD CPU on the AM5 socket (Ryzen 7000, 8000, 9000 series) is strictly DDR5. DDR4 modules will not fit — the slot keying is physically different and the memory controller is DDR5-only. Reusing DDR4 sticks from an old build is the most common compatibility mistake we see. Intel's recent platforms also lean DDR5, but some boards still ship with DDR4 slots. Always check the motherboard's spec page before buying RAM.
+              </p>
+            </div>
+          </article>
+
+          <article class="warning-card is-warn">
+            <div class="warn-icon" aria-hidden="true">🔥</div>
+            <div>
+              <h4 data-en="High-end CPUs need real cooling"
+                  data-ar="المعالجات الراقية تحتاج تبريداً حقيقياً">
+                High-end CPUs need real cooling
+              </h4>
+              <p data-en="Top-tier chips like Core i9 or Ryzen 9 can pull 200W+ under sustained load. The basic cooler in the box (or no cooler at all — high-end AMD CPUs don't ship with one) cannot dissipate that heat, so the CPU throttles itself by 30–40% to avoid damage. You paid for performance you'll never see. Budget at least $80 for a quality air tower or ~$130 for a 280mm AIO liquid cooler. The cooler is part of the CPU's price, not an optional extra."
+                 data-ar="معالجات القمّة مثل Core i9 أو Ryzen 9 قد تستهلك أكثر من 200 واط تحت الحمل المتواصل. المبرّد الأصلي في العلبة (أو غيابه أصلاً، فمعالجات AMD الراقية لا تأتي بمبرّد) لا يستطيع تصريف هذه الحرارة، فيُخفّض المعالج (CPU) أداءه ذاتياً بنسبة 30-40% لتفادي التلف. دفعتَ مقابل أداء لن تراه. خصّص على الأقل 80$ لمبرّد هوائي برجي جيّد، أو 130$ لمبرّد مائي مغلق 280 ملم. المبرّد جزء من سعر المعالج (CPU)، وليس إضافة اختيارية.">
+                Top-tier chips like Core i9 or Ryzen 9 can pull 200W+ under sustained load. The basic cooler in the box (or no cooler at all — high-end AMD CPUs don't ship with one) cannot dissipate that heat, so the CPU throttles itself by 30–40% to avoid damage. You paid for performance you'll never see. Budget at least $80 for a quality air tower or ~$130 for a 280mm AIO liquid cooler. The cooler is part of the CPU's price, not an optional extra.
+              </p>
+            </div>
           </article>
 
         </div>
